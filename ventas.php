@@ -8,14 +8,47 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-title">
-                    <h4 style="display: inline;">Confección de Recibo</h4>
-                    <div class="float-right">
+                    <br>
+                    <h4 style="text-align: center;" >Factura Ventas</h4>
+                    <!-- <div class="float-right">
                         <h4><strong><?php echo hoy(); ?></strong></h4>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="card-body">
                     <form id="frm-linea" name="frm-linea">
                         <div class="form-row">
+                            <div class="form-group col-3">
+                                <!-- <label for="tipoventa" class="text-info">Tipo De Venta</label> -->
+                                <select class="form-control" name="tipoventa" id="tipoventa">
+                                    <option value="0" selected>Venta Contado</option>
+                                    <option value="1">Venta Cta. Cte.</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-6">
+                                <?php
+                                $sqlper = "SELECT * FROM personas";
+                                $resper = mysqli_query($link, $sqlper);
+                                // $cantidad=mysqli_num_rows($resOficinas);
+                                ?>
+                                <!-- <label for="personas" class="text-info">Cliente</label> -->
+                                <select class="form-control"  name="personas" id="personas" tabindex="0">
+                                    <option selected value="0">Consumidor Final...</option>
+                                    <?php
+                                    while ($reg_per = mysqli_fetch_array($resper)) {
+                                    ?>
+                                        <option value="<?php echo $reg_per['id_persona']; ?>"><?php echo $reg_per['pe_apellido']." ".$reg_per['pe_nombre']; ?></option>
+                                    <?php
+                                    };
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-3">
+                                <!-- <label for="fecha" class="text-info">Fecha</label> -->
+                                <input type="date" name="fecha" id="fecha" class="form-control" value="<?php echo formato_fecha_Y_mm_dd(hoy()); ?>">
+                            </div>
+
                             <div class="form-group col-md-2">
                                 <label for="codigo" class="text-info">Código De Pago</label>
                                 <div class="input-group">
@@ -51,6 +84,7 @@
 
 
     </div>
+    <div class="card">
     <div class="row">
         <div class="col-12">
             <div id="detalle_ajax">
@@ -61,18 +95,20 @@
                             <th scope="col">Descripción</th>
                             <th scope="col">Importe</th>
                             <th scope="col">Cantidad</th>
+                            <th scope="col">Subtotal</th>
                             <th scope="col">Eliminar</th>
                         </tr>
                     </thead>
                     <tbody id="ajax_lineas">
-                    
+
                     </tbody>
-                    
+
                 </table>
                 <input type="button" class="btn btn-primary" value="grabar" id="grabar" name="grabar">
 
             </div>
         </div>
+    </div>
     </div>
 
     <!-- Modal -->

@@ -32,122 +32,145 @@ $(document).ready(function () {
     },
     responsive: true,
   });
+  
+  $("#cantidad").keypress(function (e) {
+    if (e.which == 13) {
+      setTimeout(function() { $('#carga_codigo').focus() }, 500);
+    }
+  });
+  
   $("#codigo").keypress(function (e) {
     if (e.which == 13) {
-      fcnPrueba();
-    
-      $("#cantidad").focus();
+      traigoCodigo();
     }
   });
 
-  $("#candidad").keypress(function (e){
-    if (e.which == 13) {
-     alert('entre al bendito');
-    }
-    e.preventDefault();
-  });
+  $('#personas').select2();
+  $('#tipoventa').select2();
 
-  $('form').keypress(function(e){   
-    if(e == 13){
+  $("form").keypress(function (e) {
+    if (e == 13) {
       return false;
     }
   });
 
-  $('input').keypress(function(e){
-    if(e.which == 13){
+  $("input").keypress(function (e) {
+    if (e.which == 13) {
       return false;
     }
   });
 
   $("#detalle_ajax").hide();
-
-
-
 });
 
-function fcnPrueba(){
+function fcnPrueba() {
+  alert("aca entre a la fcnPrueba .....!!!!!");
+}
 
-  alert('aca entre a la fcnPrueba .....!!!!!');
-};
-
-function borro(numero){
+function borro(numero) {
   // delete linea[numero];
 
   linea.splice(numero, 1);
   MostrarTabla(linea);
   // alert('envie el numero de indice a borrar....'+numero );
+};
+function limpioLinea(){
+  $('#codigo').val("");
+  $('#descripcion').val("");
+  $('#importe').val("");
+  $('#cantidad').val("");
 
 };
 
+var total = 0;
 
-function MostrarTabla(linea){
-  if (linea.length > 0){
+function MostrarTabla(linea) {
+  if (linea.length > 0) {
     $("#detalle_ajax").show();
-    var d='';
-    console.log('cantidad de la linea recibida : ......'+linea.length);
+    var d = "";
+    total=0;
+    console.log("cantidad de la linea recibida : ......" + linea.length);
     for (var i = 0; i < linea.length; i++) {
-    d+= '<tr>'+
-    '<td>'+linea[i].codigo+'</td>'+
-    '<td>'+linea[i].descripcion+'</td>'+
-    '<td>'+linea[i].importe+'</td>'+
-    '<td>'+linea[i].cantidad+'</td>'+
-    "<td><div class='text-center'><div class='btn-group'><button class='btn btn-outline-danger btn-sm btnEliminar' onclick='borro("+i+");'><i class='far fa-trash-alt'></i></button></div></div></td>"
-    '</tr>';
+      var subtotal = (linea[i].importe *  linea[i].cantidad );
+      d +=
+        "<tr>" +
+        "<td>" +
+        linea[i].codigo +
+        "</td>" +
+        "<td>" +
+        linea[i].descripcion +
+        "</td>" +
+        "<td>" +
+        linea[i].importe +
+        "</td>" +
+        "<td>" +
+        linea[i].cantidad +
+        "</td>" +
+        "<td><div class='text-right'>" +
+        '$ '+subtotal.toFixed(2) +
+        "</div></td>" +
+        "<td><div class='text-center'><div class='btn-group'><button class='btn btn-outline-danger btn-sm btnEliminar' onclick='borro(" +
+        i +
+        ");'><i class='far fa-trash-alt'></i></button></div></div></td>";
+      ("</tr>");
+      total=total+subtotal;
     }
     // $("#ajax_lineas").append(d);
+     d+="<tr>"+"<td>"+"</td>"+"<td>"+"</td>"+"<td>"+"</td>"+"<td>"+"</td>"+"<td>"+"<strong>TOTAL . $ "+total.toFixed(2)+"</strong></td>"+"<td>"+"</td>";      
+
     $("#ajax_lineas").html(d);
-  }else{
+  } else {
     $("#detalle_ajax").hide();
   }
-  
-
 }
 
 var linea = new Array();
+var totalVenta=0;
 
 
 $("#carga_codigo").click(function (e) {
-    e.preventDefault();
-    var codigo = parseInt($("#codigo").val());
-    var descripcion = $("#descripcion").val();
-    var importe = parseFloat($("#importe").val()) ;
-    var cantidad = parseInt($("#cantidad").val()) ;
+  e.preventDefault();
+  var codigo = parseInt($("#codigo").val());
+  var descripcion = $("#descripcion").val();
+  var importe = parseFloat($("#importe").val());
+  var cantidad = parseInt($("#cantidad").val());
 
-    objLinea = {
-      codigo: codigo,
-      descripcion: descripcion,
-      importe: importe,
-      cantidad: cantidad,
-    };
+  objLinea = {
+    codigo: codigo,
+    descripcion: descripcion,
+    importe: importe,
+    cantidad: cantidad,
+  };
 
-    linea.push(objLinea);
-    console.log(linea);
-    $("#frm-linea")[0].reset();
-    $("#codigo").focus();
-    MostrarTabla(linea);
+  linea.push(objLinea);
+  console.log(linea);
+  // $("#frm-linea")[0].reset();
+  limpioLinea();
+  $("#codigo").focus();
+  MostrarTabla(linea);
 });
 
-$("#grabar").click(function (e) { 
+$("#grabar").click(function (e) {
   e.preventDefault();
   // var objparseado = JSON.parse(linea);
   alert("he llegado a entrar a grabar");
-  var fecha ='2021-09-21';
-  var cliente = 1;
-  var detalle=JSON.stringify(linea);
-  
+  var tipoVenta=parseInt($('#tipoventa').val());
+  var fecha = $('#fecha').val();
+  var cliente = parseInt($('#personas').val());
+  var detalle = JSON.stringify(linea);
+
   $.ajax({
     type: "POST",
     url: "ajax/registraVenta.php",
-    data: {fecha:fecha,cliente:cliente,detalle:detalle},
-    
+    data: { fecha: fecha, cliente: cliente, detalle: detalle, total:total },
+
     success: function (response) {
-      
-      linea=[];// vacia 
+      linea = []; // vacia
       MostrarTabla(linea);
       //console.log(response);
-    }
+    },
   });
-  console.log('esta es el objeto parseado JSON.stringify..... : '+detalle); 
+  console.log("esta es el objeto parseado JSON.stringify..... : " + detalle);
 });
 
 function focoImporte() {
@@ -156,96 +179,24 @@ function focoImporte() {
 }
 function foco() {
   $("#codigo").focus();
-}
-
-// function detalle() {
-//   var dni = $("#dni").val();
-//   $.ajax({
-//     type: "POST",
-//     url: "ajax/op-tem-detalles.php",
-//     data: { dni },
-//     success: function (response) {
-//       $("#detalle_ajax").html(response);
-//     },
-//   });
-// }
-
-// $("#frm-linea").submit(function (event) {
-//   var parametros = $(this).serialize();
-//   $.ajax({
-//     type: "POST",
-//     url: "ajax/tmp-op.php",
-//     data: parametros,
-//     beforeSend: function (objeto) {
-//       $("#resultados_ajax").html("Mensaje: Cargando...");
-//     },
-//     success: function (datos) {
-//       $("#resultados_ajax").html(datos);
-//       detalle();
-//       $("#frm-linea").trigger("reset");
-//       foco();
-//     },
-//   });
-//   event.preventDefault();
-// });
-
-// function buscosocio() {
-//   var dni = $("#dni").val();
-
-//   $.ajax({
-//     type: "POST",
-//     url: "ajax/busco_socio.php",
-//     data: { dni: dni },
-//     success: function (respuesta) {
-//       var socio = JSON.parse(respuesta);
-//       var template = "";
-
-//       socio.forEach((socios) => {
-//         //console.log(socios);
-//         template += `
-//                 <h4 style="display: inline;"><strong class="text-info">Alumno:</strong>  ${socios.nombre} ${socios.apellido} <strong> Dni: </strong> ${socios.dni} </h4>
-//                 <div class="float-right">
-//                     <h5><strong class="text-info"> ${socios.recidente}</strong></h5>
-//                 </div>
-                
-//                 `;
-//       });
-
-//       $("#socio").html(template);
-//     },
-//   });
-// }
-
-// $(document).on("click", ".btnElegir", function () {
-//     fila = $(this).closest("tr");
-//     id = parseInt(fila.find("td:eq(0)").text());
-//     $("#codigo").val(id);
-//     $("#modalCodigo").modal("hide");
-//     $("#codigo").blur();
-// });
+};
 
 $(document).on("click", ".btnElegir", function () {
   fila = $(this).closest("tr");
   id = parseInt(fila.find("td:eq(0)").text());
   $("#codigo").val(id);
   $("#modalCodigo").modal("hide");
-  $("#codigo").focus();
+  traigoCodigo();
+  setTimeout(function() { $('#carga_codigo').focus() }, 500);
 });
 
-function fococantidad() {
-  $("#cantidad").focus();
-  $("#cantidad").select();
-  // $("#frm-generar-pedido")[0].reset();
-}
-
-$("#codigo").blur(function () {
+////////////////////fcnpara traer buscar el codigo en sustituye al evento blur de codigo/////////////////////////
+function traigoCodigo() {
   var codigo = parseInt($("#codigo").val());
-  console.log(codigo);
- 
-  if (codigo == null || codigo.length == 0 || /^\s+$/.test(codigo) || codigo=="") {
-    alert('el codigo esta vacio');
-    $("#frm-linea").trigger("reset");
-    alert('el codigo esta vacio');
+  if (codigo == null || codigo.length == 0 || /^\s+$/.test(codigo) || isNaN(codigo)) {
+    limpioLinea();
+    // $("#frm-linea").trigger("reset");
+    alert("el codigo esta vacio");
   } else {
     $.ajax({
       type: "POST",
@@ -258,52 +209,40 @@ $("#codigo").blur(function () {
           $("#descripcion").val(cod[0].descripcion);
           $("#importe").val(cod[0].importe);
           $("#cantidad").val(1);
-          fococantidad();
+          setTimeout(function() { $('#carga_codigo').focus() }, 200);
+          // $("#carga_codigo").focus();
         } else {
-          $("#frm-linea")[0].reset();
+          limpioLinea();
+          // $("#frm-linea")[0].reset();
           $("#codigo").val("");
-          $("#codigo").focus();
-
           Swal.fire({
             icon: "error",
             title: "Atención...",
             text: "El Código de Artículo no existe!",
           });
         }
-
-        // $('#codNombre').html(template);
       }, ////fin del success
     }); /////fin de ajax
-    fococantidad();
   } ////fin del else
-});
+};
 
-// Borro solo un item del detalle de pagos
-// $(document).on("click", ".borro-item", function () {
-//   var elemento = $(this)[0].parentElement.parentElement;
-//   var id = $(elemento).attr("idcodigo");
-//   $.post("ajax/borro_item.php", { id }, function (respuesta) {
-//     detalle();
-    
+
+// $("#genero-op").on("click", function () {
+//   var dni = $("#dni").val();
+//   var totalop = $("#totalop").val();
+//   var hoy = $("#hoy").val();
+
+//   $.ajax({
+//     type: "POST",
+//     url: "ajax/nuevo_op.php",
+//     data: { dni, totalop, hoy },
+//     success: function (respuesta) {
+//       //console.log(respuesta);
+
+//       alert("Se dio de alta la orden de pagos " + respuesta);
+//       detalle();
+
+//       window.open("./reportes/orden_de_pago.php?op=" + respuesta, "_blank");
+//     },
 //   });
 // });
-
-$("#genero-op").on("click", function () {
-  var dni = $("#dni").val();
-  var totalop = $("#totalop").val();
-  var hoy = $("#hoy").val();
-
-  $.ajax({
-    type: "POST",
-    url: "ajax/nuevo_op.php",
-    data: { dni, totalop, hoy },
-    success: function (respuesta) {
-      //console.log(respuesta);
-
-      alert("Se dio de alta la orden de pagos " + respuesta);
-      detalle();
-
-      window.open("./reportes/orden_de_pago.php?op=" + respuesta, "_blank");
-    },
-  });
-});

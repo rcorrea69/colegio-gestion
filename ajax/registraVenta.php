@@ -3,10 +3,10 @@
 	require_once("../db/conexion.php");
 	require_once("../include/funciones.php");
 
-$fecha=$_POST['fecha']; /////arreglar
+$fecha=$_POST['fecha']; 
 $cliente=$_POST['cliente'];
 $detalle= json_decode($_POST['detalle'],true);
-$vtaimporte=99.99;////arreglar
+$vtaimporte=$_POST['total'];
 $usuario=$_SESSION['id_usuario'];
 
 

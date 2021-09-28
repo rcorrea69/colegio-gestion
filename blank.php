@@ -110,43 +110,58 @@ $vtasVegetal = $rowvegetal['venta'];
     </div>
 
 
-    <?php 
-    $sqlvtas="SELECT vta.id_venta,vta.vta_cliente,vta.vta_fecha,vta.vta_importe,vta.id_usuario,usu.usu_nombre,pe.pe_apellido,pe.pe_nombre
+    <?php
+    $sqlvtas = "SELECT vta.id_venta,vta.vta_cliente,vta.vta_fecha,vta.vta_importe,vta.id_usuario,usu.usu_nombre,pe.pe_apellido,pe.pe_nombre
     FROM ventas as vta
     LEFT JOIN usuarios as usu ON vta.id_usuario=usu.id_usuario
     LEFT JOIN personas as pe ON vta.vta_cliente=pe.id_persona
     WHERE MONTH(vta.vta_fecha) = MONTH(CURRENT_DATE()) AND YEAR(vta.vta_fecha) = YEAR(CURRENT_DATE())";
     $resvta = mysqli_query($link, $sqlvtas);
-    $rowvta = mysqli_fetch_array($resvta);
     ?>
-    <table class="table table-striped" id="tablavtas" name="tablavtas">
-        <thead>
-            <tr>
-                <th scope="col">Factura</th>
-                <th scope="col">Fecha</th>
-                <th scope="col">Cliente</th>
-                <th scope="col">Importe</th>
-                <th scope="col">Atendido por</th>
-            </tr>
-        </thead>
-        <tbody>
-        <?php
-        while ($rowvta=mysqli_fetch_array($resvta)) {
-            ?>        
-                <tr>
-                    <th scope="row"><?php echo $rowvta['id_venta'];?></th>
-                    <td><?php echo formato_fecha_dd_mm_Y($rowvta['vta_fecha']);?></td>
-                    <td><?php echo $rowvta['pe_apellido'];?></td>
-                    <td><?php echo $rowvta['vta_importe'];?></td>
-                    <td><?php echo $rowvta['usu_nombre'];?></td>
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-striped" id="tablavtas" name="tablavtas">
+                <thead>
+                    <tr>
+                        <th scope="col">Factura</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Importe</th>
+                        <th scope="col">Atendido por</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    while ($rowvta = mysqli_fetch_array($resvta)) {
+                    ?>
+                        <tr>
+                            <th scope="row"><?php echo $rowvta['id_venta']; ?></th>
+                            <td><?php echo formato_fecha_dd_mm_Y($rowvta['vta_fecha']); ?></td>
+                            <?php
+                            if ($rowvta['pe_apellido'] == NULL) { ?>
+                                <td>Consumidor Final </td>
+                            <?php
+                            } else {
+                            ?>
+                                <td><?php echo $rowvta['pe_apellido']; ?></td>
+                            <?php
+                            }
+                            ?>
+                            
+                            <td style="text-align: right;"><?php echo $rowvta['vta_importe']; ?></td>
+                            <td><?php echo $rowvta['usu_nombre']; ?></td>
 
-                </tr>
-            <?php 
+                        </tr>
+                    <?php
                     };
-            ?>
+                    ?>
 
-        </tbody>
-    </table>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
 
 </div>
 <!-- Fin del contenido Principal -->
@@ -154,33 +169,30 @@ $vtasVegetal = $rowvegetal['venta'];
 <?php require_once("include/parte_inferior.php"); ?>
 <script>
     $("#tablavtas").DataTable({
-    language: {
-      sProcessing: "Procesando...",
-      sLengthMenu: "Mostrar _MENU_ registros",
-      sZeroRecords: "No se encontraron resultados",
-      sEmptyTable: "Ningún dato disponible en esta tabla",
-      sInfo:
-        "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-      sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
-      sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
-      sInfoPostFix: "",
-      sSearch: "Buscar:",
-      sUrl: "",
-      sInfoThousands: ",",
-      sLoadingRecords: "Cargando...",
-      oPaginate: {
-        sFirst: "Primero",
-        sLast: "Último",
-        sNext: "Siguiente",
-        sPrevious: "Anterior",
-      },
-      oAria: {
-        sSortAscending:
-          ": Activar para ordenar la columna de manera ascendente",
-        sSortDescending:
-          ": Activar para ordenar la columna de manera descendente",
-      },
-    },
-    responsive: true,
-  });
+        language: {
+            sProcessing: "Procesando...",
+            sLengthMenu: "Mostrar _MENU_ registros",
+            sZeroRecords: "No se encontraron resultados",
+            sEmptyTable: "Ningún dato disponible en esta tabla",
+            sInfo: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
+            sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
+            sInfoPostFix: "",
+            sSearch: "Buscar:",
+            sUrl: "",
+            sInfoThousands: ",",
+            sLoadingRecords: "Cargando...",
+            oPaginate: {
+                sFirst: "Primero",
+                sLast: "Último",
+                sNext: "Siguiente",
+                sPrevious: "Anterior",
+            },
+            oAria: {
+                sSortAscending: ": Activar para ordenar la columna de manera ascendente",
+                sSortDescending: ": Activar para ordenar la columna de manera descendente",
+            },
+        },
+        responsive: true,
+    });
 </script>

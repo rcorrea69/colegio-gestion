@@ -7,7 +7,10 @@ $fecha=$_POST['fecha'];
 $cliente=$_POST['cliente'];
 $detalle= json_decode($_POST['detalle'],true);
 $vtaimporte=$_POST['total'];
+$tipoventa=$_POST['tipoventa'];
 $usuario=$_SESSION['id_usuario'];
+
+
 
 
 // $repuesta= "este es el post enviado desde registraventa.php". $_POST['detalle'];
@@ -15,10 +18,10 @@ $usuario=$_SESSION['id_usuario'];
 
 ////////grabo la linea de ventas y capturo el id insertado///////////////////////////
 
-$sql="INSERT INTO `ventas`(`vta_cliente`, `vta_fecha`, `vta_importe`, `id_usuario`)
-        VALUES ($cliente,'".$fecha."',$vtaimporte,$usuario)";
+$sql="INSERT INTO `ventas`(`vta_cliente`, `vta_fecha`, `vta_importe`, `id_usuario`,`vta_tipo`)
+        VALUES ($cliente,'".$fecha."',$vtaimporte,$usuario,$tipoventa)";
 $res = mysqli_query($link, $sql);
-$idvta=mysqli_insert_id($link);//obtengo el id de pedidos
+$idvta=mysqli_insert_id($link);//obtengo el id de ventas
 
 ////////grabo detalle de ventas//////////////////////////////////////
 foreach($detalle as $key => $val) {
@@ -34,6 +37,11 @@ foreach($detalle as $key => $val) {
     $ejectuto=mysqli_query($link, $sqld);
 }
 
-echo "este es el id de ventas generado".$idvta;
+/////////////////////////pregunto si la venta es cta cte y la registtro en clientes_ctacte/////////////////////
 
-?>
+if($tipoventa==1){
+        $sqlctacte="INSERT INTO `clientes_ctacte`(`id_cliente`, `ctacteDH`, `factura_recibo`, `ctacte_importe`) 
+        VALUES ($cliente,'D',$idvta,$vtaimporte)";
+        $ejectutoctacte=mysqli_query($link, $sqlctacte);        
+}
+echo "este es el id de ventas generado".$idvta;

@@ -1,4 +1,4 @@
-<?php require './validar_session.php';?>
+<?php require './validar_session.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -14,9 +14,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.css" rel="stylesheet">
@@ -26,8 +24,8 @@
     <link href="vendor/select2/select2.min.css" rel="stylesheet">
     <!-- <link href="vendor/sweetAlert23/select2.min.css" rel="stylesheet" /> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
-        <!-- Custom styles for this page -->
-        <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Custom styles for this page -->
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
 
 <body id="page-top" style="color:black">
@@ -65,38 +63,37 @@
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="ventas.php">
-                <i class="fas fa-dollar-sign"></i>
-                <span>Ventas</span></a>
-            </li>
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Salidas</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Opciones de Salidas</h6>
-                        <a class="collapse-item" href="frm-pedidos.php">Generar Pedidos</a>
-                        <a class="collapse-item" href="frm-panel-pedidos.php">Pedidos Pendientes</a>
-                    </div>
-                </div>
+                    <i class="fas fa-dollar-sign"></i>
+                    <span>Ventas</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIngresos"
-                    aria-expanded="true" aria-controls="collapseIngresos">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIngresos" aria-expanded="true" aria-controls="collapseIngresos">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Ingresos</span>
                 </a>
                 <div id="collapseIngresos" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones de Ingresos</h6>
-                        <a class="collapse-item" href="frm-remitos-ingresos.php">Remitos - Facturas</a>
-                        <a class="collapse-item" href="oc.php">Ordenes de Compras</a>
+                        <a class="collapse-item" href="clientes-ctacte.php">Clientes Cta. Cte.</a>
+                        <a class="collapse-item" href="#">Otros ingresos</a>
                     </div>
                 </div>
             </li>
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Salidas</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Opciones de Salidas</h6>
+                        <a class="collapse-item" href="#">Compras y Gastos</a>
+                        <a class="collapse-item" href="#">Otros Egresos</a>
+                    </div>
+                </div>
+            </li>
+
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <!-- <li class="nav-item">
@@ -127,8 +124,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Tablas Maestras</span>
                 </a>
@@ -139,15 +135,15 @@
                         <a class="collapse-item" href="panel-rubros.php">Rubros</a>
                         <a class="collapse-item" href="panel-subrubros.php">Subrubros</a>
                         <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Otras Tablas:</h6>
-                        <a class="collapse-item" href="panel-articulos.php">Panel de Artículos</a>
-                        <a class="collapse-item" href="panel-usuarios.php">Usuarios</a>
+                        <h6 class="collapse-header">Personas:</h6>
+                        <a class="collapse-item" href="#">Clientes y Proveedores</a>
+                        <a class="collapse-item" href="#">Usuarios</a>
                     </div>
                 </div>
             </li>
 
             <!-- Divider -->
-              <hr class="sidebar-divider">
+            <hr class="sidebar-divider">
 
             <!-- Heading -->
             <div class="sidebar-heading">
@@ -175,26 +171,26 @@
                 </div>
             </li> -->
 
-            
+
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="stock.php">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Stock de Artículos</span></a>
+                    <span>Ventas</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Ficha de Artículo</span></a>
+                    <span>Compras y Gastos</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
                 <a class="nav-link" href="consulta-oficinas.php">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Entregas por Oficinas</span></a>
+                    <span>Otras Consultas</span></a>
             </li>
 
             <!-- Divider -->
@@ -217,7 +213,7 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                     <div class="mt-1">
-                    <img src="img/superior80.png" class="img-fluid max-width: 100% height: auto" alt="Responsive image">
+                        <img src="img/superior80.png" class="img-fluid max-width: 100% height: auto" alt="Responsive image">
                     </div>
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -231,17 +227,14 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo " " .$_SESSION ['nombre']; ?></span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo " " . $_SESSION['nombre']; ?></span>
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                
-                                
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+
+
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Salir

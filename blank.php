@@ -46,7 +46,7 @@ $vtasVegetal = $rowvegetal['venta'];
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Ventas total del Mes en Curso</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '$ ' . $vtas; ?></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '$ ' . number_format($vtas, 2, ',', '.'); ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -64,7 +64,7 @@ $vtasVegetal = $rowvegetal['venta'];
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Ventas rubro industrias del Mes</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '$ ' . $vtasIndustrias; ?></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '$ ' .number_format($vtasIndustrias, 2, ',', '.'); ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -81,7 +81,7 @@ $vtasVegetal = $rowvegetal['venta'];
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                 Ventas rubro producción animal del Mes</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '$ ' . $vtasAnimal; ?></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '$ ' .number_format($vtasAnimal, 2, ',', '.') ; ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -98,7 +98,7 @@ $vtasVegetal = $rowvegetal['venta'];
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Ventas rubro producción vegetal del Mes</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '$ ' . $vtasVegetal; ?></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '$ ' .number_format($vtasVegetal, 2, ',', '.'); ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -147,9 +147,12 @@ $vtasVegetal = $rowvegetal['venta'];
                             <?php
                             }
                             ?>
-                            
-                            <td style="text-align: right;"><?php echo $rowvta['vta_importe']; ?></td>
-                            <td><?php echo $rowvta['usu_nombre']; ?></td>
+                            <?php
+                                $importe=floatval( $rowvta['vta_importe']);
+                                
+                            ?>
+                            <td style="text-align: right;"><?php echo  number_format($importe, 2, ',', '.'); ?></td>
+                            <td><?php echo $rowvta['usu_nombre']; ?></td> 
 
                         </tr>
                     <?php

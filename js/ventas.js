@@ -63,6 +63,11 @@ $(document).ready(function () {
   $("#detalle_ajax").hide();
 });
 
+$(document).on('focus', '.select2', function (e) {
+  if (e.originalEvent) {
+    $(this).siblings('select').select2('open');    
+  } 
+});
 function fcnPrueba() {
   alert("aca entre a la fcnPrueba .....!!!!!");
 }
@@ -153,24 +158,34 @@ $("#carga_codigo").click(function (e) {
 $("#grabar").click(function (e) {
   e.preventDefault();
   // var objparseado = JSON.parse(linea);
-  alert("he llegado a entrar a grabar");
-  var tipoVenta=parseInt($('#tipoventa').val());
+  
+  var tipoventa=parseInt($('#tipoventa').val());
   var fecha = $('#fecha').val();
   var cliente = parseInt($('#personas').val());
   var detalle = JSON.stringify(linea);
+  if (cliente==0 && tipoventa==1){
+  
+    Swal.fire({
+      icon: "error",
+      title: "Atención...",
+      text: "La venta es en cta-cte. Debe seleccionar un Cliente Valido!",
+    });
+  
+    
+  }else{
+    $.ajax({
+      type: "POST",
+      url: "ajax/registraVenta.php",
+      data: { fecha: fecha, cliente: cliente, detalle: detalle, total:total, tipoventa:tipoventa },
+      success: function (response) {
+        linea = []; // vacia
+        MostrarTabla(linea);
+        //console.log(response);
+      },
+    });
+  }
 
-  $.ajax({
-    type: "POST",
-    url: "ajax/registraVenta.php",
-    data: { fecha: fecha, cliente: cliente, detalle: detalle, total:total },
-
-    success: function (response) {
-      linea = []; // vacia
-      MostrarTabla(linea);
-      //console.log(response);
-    },
-  });
-  console.log("esta es el objeto parseado JSON.stringify..... : " + detalle);
+  // console.log("esta es el objeto parseado JSON.stringify..... : " + detalle);
 });
 
 function focoImporte() {

@@ -94,13 +94,12 @@ $(document).ready(function () {
         id = parseInt(fila.find("td:eq(0)").text()); //capturo el ID
         nombre = fila.find("td:eq(1)").text();
 
-        $("#nombre").val(nombre);
+      
+
+        window.location = "cli-ctacte.php?cliente=" + id;
 
 
-        $(".modal-header").css("background-color", "#007bff");
-        $(".modal-header").css("color", "white");
-        $(".modal-title").text("Editar Rubro");
-        $("#modalCRUD").modal("show");
+
     });
 
     //Borrar

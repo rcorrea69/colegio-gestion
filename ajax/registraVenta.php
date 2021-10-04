@@ -40,8 +40,8 @@ foreach($detalle as $key => $val) {
 /////////////////////////pregunto si la venta es cta cte y la registtro en clientes_ctacte/////////////////////
 
 if($tipoventa==1){
-        $sqlctacte="INSERT INTO `clientes_ctacte`(`id_cliente`, `ctacteDH`, `factura_recibo`, `ctacte_importe`) 
-        VALUES ($cliente,'D',$idvta,$vtaimporte)";
+        $sqlctacte="INSERT INTO `clientes_ctacte`(`id_cliente`, `ctacteDH`, `factura_recibo`, `ctacte_importe`,`ctacte_fecha`) 
+        VALUES ($cliente,'D',$idvta,$vtaimporte,'".$fecha."')";
         $ejectutoctacte=mysqli_query($link, $sqlctacte);        
 }
 echo "este es el id de ventas generado".$idvta;

@@ -46,7 +46,7 @@ switch($opcion){
         $consulta="SELECT id_cliente,pe_apellido,pe_nombre,pe_telefono,Debe,Haber
         FROM vista_clientectacte";    
         $res_art = mysqli_query($link, $consulta);
-        setlocale(LC_MONETARY, 'it_IT');
+        
         
         $data=array();
             while ($row=mysqli_fetch_array($res_art)) {

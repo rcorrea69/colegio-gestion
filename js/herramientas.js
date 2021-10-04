@@ -138,3 +138,61 @@ $("#codigo").blur(function () {
     }); /////fin de ajax
   } ////fin del else
 });
+
+//////////////////////////////inicializar datatable y en español//////////////////////////////
+    $('#dataInventario').DataTable({
+        language:{
+                    "sProcessing":     "Procesando...",
+                    "sLengthMenu":     "Mostrar _MENU_ registros",
+                    "sZeroRecords":    "No se encontraron resultados",
+                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix":    "",
+                    "sSearch":         "Buscar:",
+                    "sUrl":            "",
+                    "sInfoThousands":  ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst":    "Primero",
+                        "sLast":     "Último",
+                        "sNext":     "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                    },
+        responsive: true
+    });
+
+    $(document).on("click", ".btnBorrar", function () {
+      fila = $(this);
+      id = parseInt($(this).closest("tr").find("td:eq(0)").text());
+      opcion = 3; //eliminar
+
+      Swal.fire({
+      icon: "question",
+      title: "Está seguro que desea Eliminar el registro " + id + " ?",
+      showCancelButton: true,
+      confirmButtonText: `Eliminar`,
+      }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+
+      if (result.isConfirmed) {
+          $.ajax({
+          url: "./ajax/AbmOficinas.php",
+          type: "POST",
+          datatype: "json",
+
+          data: { opcion: opcion, id: id },
+          success: function () {
+              tablaOficinas.row(fila.parents("tr")).remove().draw();
+          },
+          });
+          Swal.fire("Registro Borrado!", "", "success");
+      }
+      });
+  });

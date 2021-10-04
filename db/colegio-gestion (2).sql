@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-09-2021 a las 13:47:15
+-- Tiempo de generación: 04-10-2021 a las 14:15:48
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 7.3.27
 
@@ -94,18 +94,49 @@ CREATE TABLE `clientes_ctacte` (
   `id_cliente` int(11) NOT NULL,
   `ctacteDH` text NOT NULL,
   `factura_recibo` int(11) NOT NULL,
-  `ctacte_importe` float(10,2) NOT NULL
+  `ctacte_importe` float(10,2) NOT NULL,
+  `ctacte_fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `clientes_ctacte`
 --
 
-INSERT INTO `clientes_ctacte` (`id_ctacte`, `id_cliente`, `ctacteDH`, `factura_recibo`, `ctacte_importe`) VALUES
-(1, 1, 'D', 10, 2000.00),
-(2, 1, 'H', 11, 1000.00),
-(3, 2, 'D', 16, 1500.00),
-(4, 2, 'D', 17, 250.89);
+INSERT INTO `clientes_ctacte` (`id_ctacte`, `id_cliente`, `ctacteDH`, `factura_recibo`, `ctacte_importe`, `ctacte_fecha`) VALUES
+(1, 1, 'D', 10, 2000.00, '2021-09-01'),
+(2, 1, 'H', 11, 1000.00, '2021-09-13'),
+(3, 2, 'D', 16, 1500.00, '2021-09-15'),
+(4, 2, 'D', 17, 250.89, '2021-09-22'),
+(5, 2, 'D', 18, 500.00, '2021-09-01'),
+(6, 1, 'H', 2, 11.00, '2021-10-02'),
+(7, 1, 'H', 3, 450.00, '2021-10-02'),
+(8, 1, 'H', 4, 10.00, '2021-10-02'),
+(9, 1, 'H', 5, 2.00, '2021-10-02'),
+(10, 1, 'H', 6, 2.00, '2021-10-02'),
+(11, 1, 'H', 7, 2.00, '2021-10-02'),
+(12, 1, 'H', 8, 5.00, '2021-10-02'),
+(13, 1, 'H', 9, 18.00, '2021-09-30'),
+(14, 1, 'H', 10, 10.00, '2021-10-02'),
+(15, 1, 'H', 11, 10.00, '2021-10-02'),
+(16, 1, 'H', 12, 600.00, '2021-10-02'),
+(17, 1, 'D', 19, 550.89, '2021-10-02'),
+(18, 1, 'H', 13, 10.00, '2021-10-04'),
+(19, 1, 'H', 14, 11.00, '2021-10-04'),
+(20, 1, 'H', 15, 9.89, '2021-10-04'),
+(21, 1, 'H', 16, 30.00, '2021-10-04'),
+(22, 1, 'H', 17, 20.00, '2021-10-04'),
+(23, 1, 'H', 18, 2.00, '2021-10-04'),
+(24, 1, 'H', 19, 3.00, '2021-10-04'),
+(25, 1, 'H', 20, 2.00, '2021-10-04'),
+(26, 1, 'H', 21, 3.00, '2021-10-04'),
+(27, 1, 'H', 22, 10.00, '2021-10-04'),
+(28, 1, 'H', 23, 10.00, '2021-10-04'),
+(29, 1, 'H', 24, 20.00, '2021-10-04'),
+(30, 1, 'H', 25, 151.00, '2021-10-04'),
+(31, 1, 'H', 26, 151.00, '2021-10-04'),
+(32, 1, 'H', 27, 22.00, '2021-10-04'),
+(33, 1, 'H', 28, 22.00, '2021-10-04'),
+(34, 1, 'H', 29, 4.00, '2021-10-04');
 
 -- --------------------------------------------------------
 
@@ -130,6 +161,54 @@ INSERT INTO `personas` (`id_persona`, `pe_apellido`, `pe_nombre`, `pe_domicilio`
 (2, 'Zambon ', 'Andrea', 'Giribone 2225 1B', '01122735837'),
 (3, 'Cracco', 'Claudio', 'en la casa', '6969696969'),
 (4, 'Otra ', 'Persona', 'gijjjjjjj', '96969696969');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `recibos`
+--
+
+CREATE TABLE `recibos` (
+  `id_recibo` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `rec_importe` float(10,2) NOT NULL,
+  `rec_fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `recibos`
+--
+
+INSERT INTO `recibos` (`id_recibo`, `id_cliente`, `rec_importe`, `rec_fecha`) VALUES
+(1, 1, 350.00, '2021-10-02'),
+(2, 1, 11.00, '2021-10-02'),
+(3, 1, 450.00, '2021-10-02'),
+(4, 1, 10.00, '2021-10-02'),
+(5, 1, 2.00, '2021-10-02'),
+(6, 1, 2.00, '2021-10-02'),
+(7, 1, 2.00, '2021-10-02'),
+(8, 1, 5.00, '2021-10-02'),
+(9, 1, 18.00, '2021-09-30'),
+(10, 1, 10.00, '2021-10-02'),
+(11, 1, 10.00, '2021-10-02'),
+(12, 1, 600.00, '2021-10-02'),
+(13, 1, 10.00, '2021-10-04'),
+(14, 1, 11.00, '2021-10-04'),
+(15, 1, 9.89, '2021-10-04'),
+(16, 1, 30.00, '2021-10-04'),
+(17, 1, 20.00, '2021-10-04'),
+(18, 1, 2.00, '2021-10-04'),
+(19, 1, 3.00, '2021-10-04'),
+(20, 1, 2.00, '2021-10-04'),
+(21, 1, 3.00, '2021-10-04'),
+(22, 1, 10.00, '2021-10-04'),
+(23, 1, 10.00, '2021-10-04'),
+(24, 1, 20.00, '2021-10-04'),
+(25, 1, 151.00, '2021-10-04'),
+(26, 1, 151.00, '2021-10-04'),
+(27, 1, 22.00, '2021-10-04'),
+(28, 1, 22.00, '2021-10-04'),
+(29, 1, 4.00, '2021-10-04');
 
 -- --------------------------------------------------------
 
@@ -246,7 +325,9 @@ INSERT INTO `ventas` (`id_venta`, `vta_cliente`, `vta_fecha`, `vta_importe`, `id
 (14, 0, '2021-09-29', 1000.00, 2, 0),
 (15, 0, '2021-09-29', 800.00, 2, 0),
 (16, 2, '2021-09-29', 1500.00, 2, 1),
-(17, 2, '2021-09-29', 250.89, 2, 1);
+(17, 2, '2021-09-29', 250.89, 2, 1),
+(18, 2, '2021-09-01', 500.00, 2, 1),
+(19, 1, '2021-10-02', 550.89, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -299,7 +380,11 @@ INSERT INTO `ventas_detalles` (`id_detalle`, `id_venta`, `art_codigo`, `art_deta
 (29, 15, 41, 'PLANTAS', 4, 200.00),
 (30, 16, 15, 'POLLO PARRILLERO X KG', 1, 300.00),
 (31, 16, 19, 'CHORICITOS X KG', 2, 600.00),
-(32, 17, 1, 'DULCE DE LECHE 1/2 KG Peña', 1, 250.89);
+(32, 17, 1, 'DULCE DE LECHE 1/2 KG Peña', 1, 250.89),
+(33, 18, 2, 'DULCE DE ZAPALLO 800 G', 1, 300.00),
+(34, 18, 3, 'DULCE DE ZAPALLO 1/2 KG', 1, 200.00),
+(35, 19, 1, 'DULCE DE LECHE 1/2 KG Peña', 1, 250.89),
+(36, 19, 2, 'DULCE DE ZAPALLO 800 G', 1, 300.00);
 
 -- --------------------------------------------------------
 
@@ -375,6 +460,12 @@ ALTER TABLE `personas`
   ADD PRIMARY KEY (`id_persona`);
 
 --
+-- Indices de la tabla `recibos`
+--
+ALTER TABLE `recibos`
+  ADD PRIMARY KEY (`id_recibo`);
+
+--
 -- Indices de la tabla `rubros`
 --
 ALTER TABLE `rubros`
@@ -418,13 +509,19 @@ ALTER TABLE `articulos`
 -- AUTO_INCREMENT de la tabla `clientes_ctacte`
 --
 ALTER TABLE `clientes_ctacte`
-  MODIFY `id_ctacte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_ctacte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `personas`
 --
 ALTER TABLE `personas`
   MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT de la tabla `recibos`
+--
+ALTER TABLE `recibos`
+  MODIFY `id_recibo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `rubros`
@@ -448,13 +545,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas_detalles`
 --
 ALTER TABLE `ventas_detalles`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

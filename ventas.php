@@ -50,12 +50,12 @@
                             </div>
 
                             <div class="form-group col-md-2">
-                                <label for="codigo" class="text-info">Código De Pago</label>
+                                <label for="codigo" class="text-info">Código De Artículo</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <button class="btn btn btn-primary" data-toggle="modal" data-target="#modalCodigo" id="espacio" name="espacio" type="button" tabindex="-1"><i class="fa fa-search"></i></button>
                                     </div>
-                                    <input type="text" class="form-control " id="codigo" name="codigo" placeholder="Código de Pago" tabindex="0">
+                                    <input type="text" class="form-control " id="codigo" name="codigo" placeholder="Código" tabindex="0">
                                 </div>
                             </div>
                             <div class="form-group col-5">

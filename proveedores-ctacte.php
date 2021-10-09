@@ -14,12 +14,12 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <i class="fas fa-table"></i> Cuenta Corriente Clientes
+                    <i class="fas fa-table"></i> Cuenta Corriente Proveedores
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table id="tablactacte" class="table table-striped table-bordered table-condensed table-sm" style="width:100%">
-                            <thead class="text-center thead-dark ">
+                            <thead class="text-center bg-gradient-danger  text-white  ">
                                 <tr>
                                     <th>Cliente</th>
                                     <th>Apellido y Nombre</th>
@@ -44,4 +44,4 @@
 
 <?php require_once("include/parte_inferior.php"); ?>
 
-<script src="js/clientes-ctacte.js"></script>
+<script src="js/proveedores-ctacte.js"></script>

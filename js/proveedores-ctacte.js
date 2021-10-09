@@ -4,13 +4,13 @@ $(document).ready(function () {
 
     tablactacte = $("#tablactacte").DataTable({
         ajax: {
-        url: "./ajax/abmClientesCtaCte.php",
+        url: "./ajax/ProveedoresCtaCte.php",
         method: "POST", //usamos el metodo POST
         data: { opcion: opcion }, //enviamos opcion 4 para que haga un SELECT
         dataSrc: "",
         },
         columns: [
-        { data: "id_cliente" },
+        { data: "id_proveedor" },
         { data: "nombre" },
         { data: "pe_telefono" },
         { data: "saldo" },
@@ -44,7 +44,7 @@ $(document).ready(function () {
         fila = $(this).closest("tr");
         id = parseInt(fila.find("td:eq(0)").text()); //capturo el ID
         nombre = fila.find("td:eq(1)").text();
-        window.location = "cli-ctacte.php?cliente=" + id;
+        window.location = "pro-ctacte.php?proveedor=" + id;
     });
 
 

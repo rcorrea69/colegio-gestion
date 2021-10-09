@@ -88,8 +88,8 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones de Salidas</h6>
-                        <a class="collapse-item" href="#">Compras y Gastos</a>
-                        <a class="collapse-item" href="#">Otros Egresos</a>
+                        <a class="collapse-item" href="gastos.php">Compras y Gastos</a>
+                        <a class="collapse-item" href="proveedores-ctacte.php">Proveedores Cta. Cte.</a>
                     </div>
                 </div>
             </li>
@@ -174,14 +174,14 @@
 
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="#">
+            <li class="nav-item">        
+                <a class="nav-link" href="consulta-ventasxrubro.php">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Ventas</span></a>
+                    <span>Ventas x Rubro</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="consulta-gastosxrubro.php">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Compras y Gastos</span></a>
             </li>

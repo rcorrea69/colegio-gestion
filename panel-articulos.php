@@ -61,42 +61,29 @@
                             <input type="text" class="form-control" id="nombre">
                         </div>
                     </div>
-                    <?php
-                    $sql = "SELECT * FROM rubros";
-                    $res = mysqli_query($link, $sql);
-                    ?>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="rubro">Rubro</label>
                         </div>
                         <select class="custom-select" id="rubro" name="rubro">
-                            <option selected>Seleccionar Rubro...</option>
-                            <?php while ($row = mysqli_fetch_array($res)) { ?>
-                                <option value=<?php echo $row['id_rubro']; ?>><?php echo $row['id_rubro'].' | '.$row['ru_nombre']; ?></option>
-                            <?php } ?>
                         </select>
                     </div>
-                    <?php
-                    $sql1 = "SELECT * FROM subrubros";
-                    $res1 = mysqli_query($link, $sql1);
-                    ?>
+
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="subrubro">Rubro</label>
                         </div>
                         <select class="custom-select" id="subrubro" name="subrubro">
-                            <option selected>Seleccionar Subrubro...</option>
-                            <?php while ($row1 = mysqli_fetch_array($res1)) { ?>
-                                <option value=<?php echo $row1['id_subrubro']; ?>><?php echo $row1['sub_nombre'] ?></option>
-                            <?php } ?>
+
                         </select>
                     </div>
+
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="precio"><i class="fas fa-dollar-sign"></i></label>
                         </div>
-                            <input type="number" id="precio" name="precio" class="form-control">   
+                        <input type="number" id="precio" name="precio" class="form-control">
                     </div>
 
                 </div>

@@ -138,7 +138,7 @@ $("#carga_codigo").click(function (e) {
   var codigo = parseInt($("#codigo").val());
   var descripcion = $("#descripcion").val();
   var importe = parseFloat($("#importe").val());
-  var cantidad = parseInt($("#cantidad").val());
+  var cantidad = parseFloat($("#cantidad").val());
 
   objLinea = {
     codigo: codigo,
@@ -159,10 +159,11 @@ $("#grabar").click(function (e) {
   e.preventDefault();
   // var objparseado = JSON.parse(linea);
   
-  var tipoventa=parseInt($('#tipoventa').val());
+  // var tipoventa=parseInt($('#tipoventa').val());
   var fecha = $('#fecha').val();
   var cliente = parseInt($('#personas').val());
   var detalle = JSON.stringify(linea);
+  if( $("#ctacte").is(':checked')) {tipoventa=1};
   if (cliente==0 && tipoventa==1){
   
     Swal.fire({
@@ -242,22 +243,3 @@ function traigoCodigo() {
 };
 
 
-// $("#genero-op").on("click", function () {
-//   var dni = $("#dni").val();
-//   var totalop = $("#totalop").val();
-//   var hoy = $("#hoy").val();
-
-//   $.ajax({
-//     type: "POST",
-//     url: "ajax/nuevo_op.php",
-//     data: { dni, totalop, hoy },
-//     success: function (respuesta) {
-//       //console.log(respuesta);
-
-//       alert("Se dio de alta la orden de pagos " + respuesta);
-//       detalle();
-
-//       window.open("./reportes/orden_de_pago.php?op=" + respuesta, "_blank");
-//     },
-//   });
-// });

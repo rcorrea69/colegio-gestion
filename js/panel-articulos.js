@@ -132,4 +132,39 @@ $(document).ready(function () {
         }
         });
     });
+    function cboRubros(){
+        $.ajax({
+            type: "POST",
+            url: "./ajax/cboRubros.php",
+            success: function (response) {
+                $('#rubro').html(response);
+                
+            }
+        });
+    };
+
+    cboRubros();
+
+    function cboSubrubros(rubro){
+        var ru = rubro;
+        console.log(ru);
+        $.ajax({
+            type: "POST",
+            url: "./ajax/cboSubrubros.php",
+            data: {ru:ru},
+            success: function (response) {
+                $('#subrubro').html(response);
+            }
+        });
+
+    };
+
+    $('#rubro').change(function (e) { 
+        e.preventDefault();
+        var rubro = $('#rubro').val();
+        console.log(rubro);
+        cboSubrubros(rubro);
+        
+    });
+
 });

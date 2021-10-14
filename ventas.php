@@ -9,72 +9,74 @@
             <div class="card">
                 <div class="card-title">
                     <br>
-                    <h4 style="text-align: center;" >Factura Ventas</h4>
-                    <!-- <div class="float-right">
-                        <h4><strong><?php echo hoy(); ?></strong></h4>
-                    </div> -->
+                    <h4 style="text-align: center;">Factura Ventas</h4>
+
                 </div>
                 <div class="card-body">
                     <form id="frm-linea" name="frm-linea">
+                        <!-- <div class="float-right">
+                            <div>
+                                <input type="date" class="form-control col-12">
+                            </div>
+                        </div> -->
                         <div class="form-row">
-                            <div class="form-group col-3">
-                                <!-- <label for="tipoventa" class="text-info">Tipo De Venta</label> -->
+                            <!-- <div class="form-group col-3">
+                                
                                 <select class="form-control" name="tipoventa" id="tipoventa">
                                     <option value="0" selected>Venta Contado</option>
                                     <option value="1">Venta Cta. Cte.</option>
                                 </select>
+                            </div> -->
+                            <div class="col-9">
+                                    <h5>Factura</h5>
                             </div>
 
-                            <div class="form-group col-6">
-                                <?php
-                                $sqlper = "SELECT * FROM personas";
-                                $resper = mysqli_query($link, $sqlper);
-                                // $cantidad=mysqli_num_rows($resOficinas);
-                                ?>
-                                <!-- <label for="personas" class="text-info">Cliente</label> -->
-                                <select class="form-control"  name="personas" id="personas" tabindex="0">
-                                    <option selected value="0">Consumidor Final...</option>
-                                    <?php
-                                    while ($reg_per = mysqli_fetch_array($resper)) {
-                                    ?>
-                                        <option value="<?php echo $reg_per['id_persona']; ?>"><?php echo $reg_per['pe_apellido']." ".$reg_per['pe_nombre']; ?></option>
-                                    <?php
-                                    };
-                                    ?>
-                                </select>
-                            </div>
 
-                            <div class="form-group col-3">
+                            <div class="form-group col-3 bg-">
+
                                 <!-- <label for="fecha" class="text-info">Fecha</label> -->
-                                <input type="date" name="fecha" id="fecha" class="form-control" value="<?php echo formato_fecha_Y_mm_dd(hoy()); ?>">
+                                
+                                <input type="date" name="fecha" id="fecha" class="form-control col-12 bg-gradient-light" value="<?php echo formato_fecha_Y_mm_dd(hoy()); ?>">
+                                
                             </div>
 
-                            <div class="form-group col-md-2">
-                                <label for="codigo" class="text-info">Código De Artículo</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn btn-primary" data-toggle="modal" data-target="#modalCodigo" id="espacio" name="espacio" type="button" tabindex="-1"><i class="fa fa-search"></i></button>
+                            <div class="row">
+                                <div class="form-group col-md-2">
+                                    <label for="codigo" class="text-info">Código De Artículo</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn btn-primary" data-toggle="modal" data-target="#modalCodigo" id="espacio" name="espacio" type="button" tabindex="-1"><i class="fa fa-search"></i></button>
+                                        </div>
+                                        <input type="text" class="form-control " id="codigo" name="codigo" placeholder="Código" tabindex="0">
                                     </div>
-                                    <input type="text" class="form-control " id="codigo" name="codigo" placeholder="Código" tabindex="0">
+                                </div>
+                                <div class="form-group col-5">
+                                    <label for="descripcion" class="text-info">Descripción</label>
+                                    <input type="text" class="form-control" id="descripcion" name="descripcion" readonly tabindex="-1">
+                                </div>
+                                <div class="form-group col-2">
+                                    <label for="importe" class="text-info">Importe</label>
+                                    <input type="text" class="form-control" id="importe" name="importe">
+                                </div>
+                                <div class="form-group col-2">
+                                    <label for="cantidad" class="text-info">Cantidad</label>
+                                    <input type="text" class="form-control" id="cantidad" name="cantidad">
+                                </div>
+                                <div class="form-group col-1 mt-2">
+                                    <br>
+                                    <button type="submit" class="btn btn-primary" id="carga_codigo" name="carga_codigo">Cargar</button>
                                 </div>
                             </div>
-                            <div class="form-group col-5">
-                                <label for="descripcion" class="text-info">Descripción</label>
-                                <input type="text" class="form-control" id="descripcion" name="descripcion" readonly tabindex="-1">
-                            </div>
-                            <div class="form-group col-2">
-                                <label for="importe" class="text-info">Importe</label>
-                                <input type="text" class="form-control" id="importe" name="importe">
-                            </div>
-                            <div class="form-group col-2">
-                                <label for="cantidad" class="text-info">Cantidad</label>
-                                <input type="text" class="form-control" id="cantidad" name="cantidad">
-                            </div>
-                            <div class="form-group col-1 mt-2">
-                                <br>
-                                <button type="submit" class="btn btn-primary" id="carga_codigo" name="carga_codigo">Cargar</button>
-                            </div>
+                            <!-- <div class="form-group col-3">
+                            
+                                <select class="form-control" name="tipoventa" id="tipoventa">
+                                    <option value="0" selected>Venta Contado</option>
+                                    <option value="1">Venta Cta. Cte.</option>
+                                </select>
+                            </div> -->
                         </div>
+
+
                     </form>
                 </div>
             </div>
@@ -85,30 +87,58 @@
 
     </div>
     <div class="card">
-    <div class="row">
-        <div class="col-12">
-            <div id="detalle_ajax">
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Código</th>
-                            <th scope="col">Descripción</th>
-                            <th scope="col">Importe</th>
-                            <th scope="col">Cantidad</th>
-                            <th scope="col">Subtotal</th>
-                            <th scope="col">Eliminar</th>
-                        </tr>
-                    </thead>
-                    <tbody id="ajax_lineas">
+        <div class="row">
+            <div class="col-12">
+                <div id="detalle_ajax">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Código</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Importe</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Subtotal</th>
+                                <th scope="col">Eliminar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ajax_lineas">
 
-                    </tbody>
+                        </tbody>
 
-                </table>
-                <input type="button" class="btn btn-primary" value="grabar" id="grabar" name="grabar">
+                    </table>
+                    <div class="form-group col-4 d-inline" style="display:inline-block;">   
+                        <div class="custom-control custom-radio custom-control-inline mt-2">
+                            <input type="radio" id="contado" name="tipoventa" class="custom-control-input" value="1" checked>
+                            <label class="custom-control-label" for="contado">Venta Contado</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline mt-2">
+                            <input type="radio" id="ctacte" name="tipoventa" class="custom-control-input" value="2">
+                            <label class="custom-control-label" for="ctacte">Venta Cta. Cte.</label>
+                        </div>
+                    </div> 
+                    <div class="form-group col-6 " style="display: inline-block;"  >
+                        <?php
+                        $sqlper = "SELECT * FROM personas";
+                        $resper = mysqli_query($link, $sqlper);
+                        // $cantidad=mysqli_num_rows($resOficinas);
+                        ?>
+                        <!-- <label for="personas" class="text-info">Cliente</label> -->
+                        <select class="form-control" name="personas" id="personas" tabindex="0">
+                            <option selected value="0">Consumidor Final...</option>
+                            <?php
+                            while ($reg_per = mysqli_fetch_array($resper)) {
+                            ?>
+                                <option value="<?php echo $reg_per['id_persona']; ?>"><?php echo $reg_per['pe_apellido'] . " " . $reg_per['pe_nombre']; ?></option>
+                            <?php
+                            };
+                            ?>
+                        </select>
+                    </div>
+                    <input type="button" class="btn btn-primary" value="grabar" id="grabar" name="grabar">
 
+                </div>
             </div>
         </div>
-    </div>
     </div>
 
     <!-- Modal -->

@@ -61,6 +61,7 @@ $(document).ready(function () {
   });
 
   $("#detalle_ajax").hide();
+  
 });
 
 $(document).on('focus', '.select2', function (e) {
@@ -159,7 +160,7 @@ $("#grabar").click(function (e) {
   e.preventDefault();
   // var objparseado = JSON.parse(linea);
   
-  // var tipoventa=parseInt($('#tipoventa').val());
+  var tipoventa=0;
   var fecha = $('#fecha').val();
   var cliente = parseInt($('#personas').val());
   var detalle = JSON.stringify(linea);

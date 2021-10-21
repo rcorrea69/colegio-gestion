@@ -106,35 +106,42 @@
                         </tbody>
 
                     </table>
-                    <div class="form-group col-4 d-inline" style="display:inline-block;">   
-                        <div class="custom-control custom-radio custom-control-inline mt-2">
-                            <input type="radio" id="contado" name="tipoventa" class="custom-control-input" value="1" checked>
-                            <label class="custom-control-label" for="contado">Venta Contado</label>
-                        </div>
-                        <div class="custom-control custom-radio custom-control-inline mt-2">
-                            <input type="radio" id="ctacte" name="tipoventa" class="custom-control-input" value="2">
-                            <label class="custom-control-label" for="ctacte">Venta Cta. Cte.</label>
-                        </div>
-                    </div> 
-                    <div class="form-group col-6 " style="display: inline-block;"  >
-                        <?php
-                        $sqlper = "SELECT * FROM personas";
-                        $resper = mysqli_query($link, $sqlper);
-                        // $cantidad=mysqli_num_rows($resOficinas);
-                        ?>
-                        <!-- <label for="personas" class="text-info">Cliente</label> -->
-                        <select class="form-control" name="personas" id="personas" tabindex="0">
-                            <option selected value="0">Consumidor Final...</option>
+                    <div class="d-flex">
+                    <div class="col-8">
+                        <div class="form-group col-12 d-inline" style="display:inline-block;">   
+                            <div class="custom-control custom-radio custom-control-inline mt-2">
+                                <input type="radio" id="contado" name="tipoventa" class="custom-control-input" value="1" checked>
+                                <label class="custom-control-label" for="contado">Venta Contado</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline mt-2">
+                                <input type="radio" id="ctacte" name="tipoventa" class="custom-control-input" value="2">
+                                <label class="custom-control-label" for="ctacte">Venta Cta. Cte.</label>
+                            </div>
+                        </div> 
+                        <div class="form-group col-12 mt-2"  id="cliente" >
                             <?php
-                            while ($reg_per = mysqli_fetch_array($resper)) {
+                            $sqlper = "SELECT * FROM personas";
+                            $resper = mysqli_query($link, $sqlper);
+                            // $cantidad=mysqli_num_rows($resOficinas);
                             ?>
-                                <option value="<?php echo $reg_per['id_persona']; ?>"><?php echo $reg_per['pe_apellido'] . " " . $reg_per['pe_nombre']; ?></option>
-                            <?php
-                            };
-                            ?>
-                        </select>
+                            <!-- <label for="personas" class="text-info">Cliente</label> -->
+                            <select class="form-control" name="personas" id="personas" tabindex="0">
+                                <option selected value="0">Consumidor Final...</option>
+                                <?php
+                                while ($reg_per = mysqli_fetch_array($resper)) {
+                                ?>
+                                    <option value="<?php echo $reg_per['id_persona']; ?>"><?php echo $reg_per['pe_apellido'] . " " . $reg_per['pe_nombre']; ?></option>
+                                <?php
+                                };
+                                ?>
+                            </select>
+                        </div>
                     </div>
-                    <input type="button" class="btn btn-primary" value="grabar" id="grabar" name="grabar">
+                    <div class="col-4 d-flex d-flex ">
+                        <input type="button" class="btn btn-primary" value="grabar" id="grabar" name="grabar" class="d-flex align-items-center">
+                    </div>
+                    </div>
+
 
                 </div>
             </div>

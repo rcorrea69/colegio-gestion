@@ -107,10 +107,10 @@ function MostrarTabla(linea) {
         linea[i].descripcion +
         "</td>" +
         "<td>" +
-        linea[i].importe +
+        linea[i].importe.toFixed(2) +
         "</td>" +
         "<td>" +
-        linea[i].cantidad +
+        linea[i].cantidad.toFixed(2) +
         "</td>" +
         "<td><div class='text-right'>" +
         '$ '+subtotal.toFixed(2) +
@@ -182,6 +182,13 @@ $("#grabar").click(function (e) {
       success: function (response) {
         linea = []; // vacia
         MostrarTabla(linea);
+        Swal.fire({
+          icon: 'success',
+          title: 'Ok...',
+          text: 'Se registro la FACTURA Nro :'+response
+          
+        });
+        setTimeout('location.reload()',1000);	
         //console.log(response);
       },
     });

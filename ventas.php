@@ -137,7 +137,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-4 d-flex d-flex ">
+                    <div class="col-4 d-flex ">
                         <input type="button" class="btn btn-primary" value="grabar" id="grabar" name="grabar" class="d-flex align-items-center">
                     </div>
                     </div>

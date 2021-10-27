@@ -44,4 +44,4 @@ if($tipoventa==1){
         VALUES ($cliente,'D',$idvta,$vtaimporte,'".$fecha."')";
         $ejectutoctacte=mysqli_query($link, $sqlctacte);        
 }
-echo "este es el id de ventas generado".$idvta;
+echo $idvta;

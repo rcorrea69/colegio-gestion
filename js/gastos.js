@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    $("#rubros").hide();
 
     $("#grabar").click(function (e) {
         e.preventDefault();
@@ -84,4 +84,20 @@ $(document).ready(function () {
     };
 
     cboProveedores();
+
+    $("#Grubros").click(function (e) { 
+        $("#rubros").show();
+        if($("#Grubros").is(':checked')) {  
+            alert("Está activado");  
+        } else {  
+            alert("No está activado");  
+        }  
+
+        
+    });
+    $("#GGenerales").click(function (e) { 
+        $("#rubros").hide();
+        
+    });
+
 });

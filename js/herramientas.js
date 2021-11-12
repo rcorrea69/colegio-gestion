@@ -196,3 +196,7 @@ $("#codigo").blur(function () {
       }
       });
   });
+
+  ///////ejecuta la funcion con una espera en milisegundos
+
+  setTimeout(function() { $('#carga_codigo').focus() }, 500);

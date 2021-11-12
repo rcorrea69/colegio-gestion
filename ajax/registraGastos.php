@@ -34,4 +34,4 @@ $idvta=mysqli_insert_id($link);//obtengo el id de ventas
 //         $ejectutoctacte=mysqli_query($link, $sqlctacte);     
 //         //die($sqlctacte);   
 // }
-echo "este es el id de ventas generado".$idvta;
+echo $idvta;

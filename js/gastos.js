@@ -38,11 +38,7 @@ $(document).ready(function () {
             return false;
           };
         if(tipogasto===1 && rubro==0  ){
-
-            console.log('tipo de gasto :'+tipogasto);
-            console.log('rubro :'+rubro);
-            console.log('tipo Subrubro :'+subrubro);
-
+            $("#rubro").focus();
             Swal.fire({
                 icon: "warning",
                 title: "Atención...",
@@ -51,10 +47,7 @@ $(document).ready(function () {
               return false;
         };
         if(tipogasto===1 && subrubro==0  ){
-
-            console.log('tipo de gasto :'+tipogasto);
-            console.log('rubro :'+rubro);
-            console.log('tipo Subrubro :'+subrubro);
+            $("#subrubro").focus();
 
             Swal.fire({
                 icon: "warning",
@@ -72,13 +65,19 @@ $(document).ready(function () {
 
 
 
-        alert('entree');
+ 
         $.ajax({
             type: "POST",
             url: "./ajax/registraGastos.php",
             data: { rubro: rubro, fecha: fecha, descripcion: descripcion, importe: importe, subrubro: subrubro,tipogasto:tipogasto },
             success: function (response) {
-                alert("Genial ok ................." + response);
+               
+                Swal.fire({
+                    icon: "success",
+                    title: "Correcto...",
+                    text: "Se Registro correctamente "+response,
+                    });
+                    setTimeout(function() { location.reload(); }, 2000);    
             },
         });
 

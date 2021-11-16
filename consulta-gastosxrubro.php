@@ -19,6 +19,17 @@
                 <!-- <div class="form-group "> -->
                 <div class="form-row">
 
+                    <div class="form-group col-6">
+                        <label for="rubro" class="text-info">Rubros</label>
+                        <select class="form-control" name="rubro" id="rubro" tabindex="0">
+                        </select>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="subrubro" class="text-info">Subrubro</label>
+                        <select class="form-control" name="subrubro" id="subrubro" tabindex="0">
+                        </select>
+                    </div>
+
                     <div class="form-group col-md-4">
                         <label for="desde" class="text-info">Desde:</label>
                         <input type="date" id="desde" name="desde" class="form-control" value="<?php echo formato_fecha_Y_mm_dd(hoy()); ?>">
@@ -30,7 +41,7 @@
                     </div>
                     <div class="form-group col-md-4">
                         <br>
-                        <button class="btn btn-primary col-12 mt-2" id="consultar" name="consultar" >Consultar</button>
+                        <button class="btn btn-primary col-12 mt-2" id="consultar" name="consultar">Consultar</button>
                     </div>
 
                 </div>
@@ -51,20 +62,24 @@
 
 <?php require_once("include/parte_inferior.php"); ?>
 <!-- <script type="text/javascript" src="js/nuevo_reporte.js"></script> -->
-<script>
+<script src="js/gastosxrubro.js"></script>
+<!-- <script>
     $(document).ready(function() {
-     
-        $('#consultar').click(function (e) { 
+
+        $('#consultar').click(function(e) {
             e.preventDefault();
-            var desde =$('#desde').val();
-            var hasta =$('#hasta').val();
+            var desde = $('#desde').val();
+            var hasta = $('#hasta').val();
             // $('#loader').html('<img src="img/ajax-loader.gif"> Cargando...')
 
 
             $.ajax({
                 type: "POST",
                 url: "ajax/gastosxrubro.php",
-                data: {desde:desde,hasta:hasta},
+                data: {
+                    desde: desde,
+                    hasta: hasta
+                },
                 beforeSend: function(objeto) {
                     //   $("#resultados").html("Mensaje: Cargando...");
                     $('#loader').html('<img src="img/ajax-loader.gif"> Cargando...');
@@ -74,8 +89,8 @@
                     $('#loader').html('');
                 },
             });
-            
+
         });
 
     });
-</script>
+</script> -->

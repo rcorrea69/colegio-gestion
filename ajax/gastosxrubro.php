@@ -56,7 +56,14 @@ $row_cnt = mysqli_num_rows($res);
 
     </tbody>
 </table>
-
+<div class="row">
+     <div class="col-6">
+        Industrias
+     </div>
+     <div class="col-6">
+        Dulce de Leche
+     </div>   
+</div>
 
 <?php
 

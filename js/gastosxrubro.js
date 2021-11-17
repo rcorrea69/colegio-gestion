@@ -5,6 +5,8 @@ $(document).ready(function () {
         var desde = $('#desde').val();
         var hasta = $('#hasta').val();
         // $('#loader').html('<img src="img/ajax-loader.gif"> Cargando...')
+        var rubro = parseInt($('#rubro').val());
+        var subrubro = parseInt($('#subrubro').val());
 
 
         $.ajax({
@@ -12,7 +14,9 @@ $(document).ready(function () {
             url: "./ajax/gastosxrubro.php",
             data: {
                 desde: desde,
-                hasta: hasta
+                hasta: hasta,
+                rubro: rubro,
+                subrubro: subrubro
             },
             beforeSend: function(objeto) {
                 //   $("#resultados").html("Mensaje: Cargando...");

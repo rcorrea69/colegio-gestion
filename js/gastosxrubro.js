@@ -15,12 +15,12 @@ $(document).ready(function () {
             data: {
                 desde: desde,
                 hasta: hasta,
-                rubro: rubro,
-                subrubro: subrubro
+
             },
             beforeSend: function(objeto) {
                 //   $("#resultados").html("Mensaje: Cargando...");
                 $('#loader').html('<img src="img/ajax-loader.gif"> Cargando...');
+                alert('lo pare para ver el gif loader');
             },
             success: function(datos) {
                 $("#resultados").html(datos);

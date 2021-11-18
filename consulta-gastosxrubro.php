@@ -19,7 +19,7 @@
                 <!-- <div class="form-group "> -->
                 <div class="form-row">
 
-                    <div class="form-group col-6">
+                    <!-- <div class="form-group col-6">
                         <label for="rubro" class="text-info">Rubros</label>
                         <select class="form-control" name="rubro" id="rubro" tabindex="0">
                         </select>
@@ -28,7 +28,7 @@
                         <label for="subrubro" class="text-info">Subrubro</label>
                         <select class="form-control" name="subrubro" id="subrubro" tabindex="0">
                         </select>
-                    </div>
+                    </div> -->
 
                     <div class="form-group col-md-4">
                         <label for="desde" class="text-info">Desde:</label>

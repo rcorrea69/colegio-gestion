@@ -3,43 +3,62 @@
 //print_r($_POST);
 $desde = $_POST["desde"];
 $hasta = $_POST["hasta"];
-
+$rubro  = $_POST["rubro"];
+$subrubro = $_POST["subrubro"];
 
 
 require_once "../db/conexion.php";
 require_once "../include/funciones.php";
 
-$total=0;
-?>
-    <h4 class="mt-3" style="text-align: center;">Compras y Gastos desde <?php echo formato_fecha_dd_mm_Y($desde ) ;?> hasta <?php echo formato_fecha_dd_mm_Y($hasta) ;?> </h4>
-<?php
 
-$sqlrubros = "SELECT * FROM rubros";
+//////////////////////////esto es para sacar el saldo anterior de caja///////////////////////
+
+function SaldoAnterior($caja, $desde)
+{
+    global $link;
+    $sqlsaldoAnterior = "SELECT SUM(importe) as saldoAnterior 
+                 FROM cajas
+                 WHERE caja_sub=$caja AND fecha < '" . $desde . "' ";
+    // die($sqlsaldoAnterior);
+    $resSaldo = mysqli_query($link, $sqlsaldoAnterior);
+    $rowsal = mysqli_fetch_assoc($resSaldo);
+    $SaldoAnterior = $rowsal["saldoAnterior"];
+    return $SaldoAnterior;
+};
+/////////////////////////////////////////////////////////////////////////////////////////////            
+$total = 0;
+?>
+<h4 class="mt-3" style="text-align: center;">Compras y Gastos desde <?php echo formato_fecha_dd_mm_Y($desde); ?> hasta <?php echo formato_fecha_dd_mm_Y($hasta); ?> </h4>
+<?php
+if($rubro==0){
+    $sqlrubros = "SELECT * FROM rubros";
+       
+}else {
+    $sqlrubros = "SELECT * FROM rubros WHERE id_rubro=$rubro";
+};
+//$sqlrubros = "SELECT * FROM rubros";
 $resrubros = mysqli_query($link, $sqlrubros);
 while ($rowr = mysqli_fetch_array($resrubros)) {
     $rub = $rowr['id_rubro'];
     $bandera = true;
     $totalRubro = 0;
-    $nomrubro= $rowr['ru_nombre'];
+    $nomrubro = $rowr['ru_nombre'];
 
-    $sqlsb = "SELECT id_subrubro,sub_nombre FROM subrubros WHERE id_rubro=$rub";
+    if($subrubro==0){
+        $sqlsb = "SELECT id_subrubro,sub_nombre FROM subrubros WHERE id_rubro=$rub";
+           
+    }else {
+        $sqlsb = "SELECT id_subrubro,sub_nombre FROM subrubros WHERE id_rubro=$rub AND id_subrubro=$subrubro";
+    };
+    //$sqlsb = "SELECT id_subrubro,sub_nombre FROM subrubros WHERE id_rubro=$rub";
     $ressub = mysqli_query($link, $sqlsb);
     while ($rows = mysqli_fetch_array($ressub)) {
         $caja = $rows['id_subrubro'];
-        $nomcaja=$rows['sub_nombre'];
+        $nomcaja = $rows['sub_nombre'];
 
-        $sqlsaldoAnterior="SELECT SUM(importe) as saldoAnterior 
-                        FROM cajas
-                        WHERE caja_sub=$caja AND fecha < '" . $desde . "' ";
-                        // die($sqlsaldoAnterior);
-        $resSaldo=mysqli_query($link,$sqlsaldoAnterior);
-        $rowsal = mysqli_fetch_assoc($resSaldo);
-            $SaldoAnterior=$rowsal["saldoAnterior"];
-
-        
-        $sqldetalle="SELECT * FROM cajas 
-        WHERE fecha >= '" . $desde . "' AND `fecha` <= '" . $hasta . "' AND `caja_rub`=$rub AND `caja_sub`=$caja";     
-        
+        $sqldetalle = "SELECT * FROM cajas 
+        WHERE fecha >= '" . $desde . "' AND `fecha` <= '" . $hasta . "' AND `caja_rub`=$rub AND `caja_sub`=$caja";
+        $bandera = true;
         //echo $sqldetalle;
         $resdetalle = mysqli_query($link, $sqldetalle);
         $row_cnt = mysqli_num_rows($resdetalle);
@@ -47,65 +66,84 @@ while ($rowr = mysqli_fetch_array($resrubros)) {
         while ($row = mysqli_fetch_array($resdetalle)) {
             if ($row_cnt > 0) {
                 if ($bandera) {
-            ?>      
-                    <h4><?php echo $nomrubro?></h4>
-                    <h4><?php echo $nomcaja?></h4>
+                    $saldo=SaldoAnterior($caja,$desde);
+?>
+
+
+                    <h5><?php echo 'Rubro : '.$nomrubro ?></h5>
+                    <h6><?php echo 'Caja : '.$caja.' '.$nomcaja ?></h6>
                     <table class="table">
                         <thead class="thead-dark">
                             <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Nro Doc</th>
-                            <th scope="col">Descripcion</th>
-                            <th scope="col">Ingreso</th>
-                            <th scope="col">Egreso</th>
-                            <th scope="col">Saldo</th>
+                                <th scope="col">#</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Nro Doc</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">Ingreso</th>
+                                <th scope="col">Egreso</th>
+                                <th scope="col">Saldo</th>
                             </tr>
                         </thead>
                         <tbody>
-                        
-                <?php
-                    $bandera = false;
+                            <tr>
+                                <th> </th>
+                                <td></td>
+                                <td></td>
+                                <td><?php echo 'SALDO AL ' . $desde; ?></td>
+                                <td> </td>
+                                <td></td>
+                                <!-- <td><?php echo '$ ' . number_format($row['importe'], 2, ',', '.'); ?></td> -->
+                                <td><?php echo  '$ ' . number_format($saldo, 2, ',', '.');  ?></td>
+
+                            </tr>
+
+
+                        <?php
+                        $bandera = false;
+                    }; ////////fin de cabecera/////////////
+                          $debe=($row['importe']>0)? $row['importe'] : 0;
+                          $haber=($row['importe']<0)? $row['importe'] : 0; 
+                          $saldo=$saldo+$debe+$haber ; 
+
+                        ?>
+
+                        <tr>
+                            <th scope="row"><?php echo $row['id_mov']; ?></th>
+                            <td><?php echo $row['fecha']; ?></td>
+                            <td><?php echo $row['nro_com']; ?></td>
+                            <td><?php echo $row['descripcion']; ?></td>
+                            <td> <?php echo '$ ' . number_format($debe, 2, ',', '.'); ?></td>
+                            <td><?php echo '$ ' . number_format($haber, 2, ',', '.'); ?></td>
+                            <td><?php echo '$ ' . number_format($saldo, 2, ',', '.'); ?></td>
+
+                        </tr>
+
+                    <?php
                 };
+                    ?>
 
+
+
+                <?php
+
+
+                //$totalRubro = $totalRubro + $rowimpo['importe'];
+
+            }; /////////////fin de los registros de la tabla tabla/////////////////////////
                 ?>
-                
-                    <tr>
-                        <th scope="row"><?php echo $row['id_mov']; ?></th>
-                        <td><?php echo $row['fecha']; ?></td>
-                        <td><?php echo $row['nro_com']; ?></td>
-                        <td><?php echo $row['descripcion']; ?></td>
-                        <td> <?php echo '$ ' . number_format($row['importe'], 2, ',', '.'); ?></td>
-                        <td><?php echo $row['importe']; ?></td>
-                        <td><?php echo $row['importe']; ?></td>
-                        
-                    </tr>
+                        </tbody>
+                    </table>
 
-        <?php
-            };
-            ?>
-                   
-                    
 
             <?php
-            
 
-            //$totalRubro = $totalRubro + $rowimpo['importe'];
-            
+
         };
-        ?>
-                    </tbody> 
-                    </table>
-            
-
-        <?php
-
-
     };
 
-};
+    echo 'rubro '.$rubro;
+    echo 'subrubro '.$subrubro;
 
+    mysqli_close($link);
 
-mysqli_close($link);
-
-?>
+            ?>

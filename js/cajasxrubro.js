@@ -11,10 +11,12 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: "./ajax/gastosxrubro.php",
+            url: "./ajax/cajasxrubro.php",
             data: {
                 desde: desde,
                 hasta: hasta,
+                rubro: rubro,
+                subrubro :subrubro
 
             },
             beforeSend: function(objeto) {

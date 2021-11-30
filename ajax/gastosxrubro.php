@@ -64,7 +64,7 @@ while ($rowr = mysqli_fetch_array($resrubros)) {
 
 
         ?>
-        <div class="row text-primary h5 mt-2">
+        <div class="row text-primary h6 mt-2">
             <div class="col-6" >
                 <?php echo "Total " . $rowr['ru_nombre']; ?>
             </div>
@@ -87,12 +87,12 @@ $rowimpog = mysqli_fetch_array($resimporteg);
 if ($rowimpog['importe'] <> 0) {
 
     ?>
-    <div class="row  text-white bg-dark mt-3">
+    <div class="row  text-white   bg-dark mt-3">
         <div class="col-12">
             <h5 class="pt-2"> GASTOS GENERALES  </h5>
         </div>
     </div>
-    <div class="row text-primary h5 mt-2">
+    <div class="row text-primary  mt-2">
         <div class="col-6  ">
             <?php echo "Total Gastos Generales " . $rowr['ru_nombre']; ?>
         </div>

@@ -77,7 +77,7 @@ $(document).ready(function () {
                     title: "Correcto...",
                     text: "Se Registro correctamente "+response,
                     });
-                    setTimeout(function() { location.reload(); }, 2000);    
+                    //setTimeout(function() { location.reload(); }, 2000);    
             },
         });
 

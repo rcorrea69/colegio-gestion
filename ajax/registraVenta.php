@@ -30,11 +30,29 @@ foreach($detalle as $key => $val) {
     $descripciond = $detalle[$key]['descripcion'];
     $imported = $detalle[$key]['importe'];
     $cantidadd = $detalle[$key]['cantidad'];
+    $total=$imported * $cantidadd;
 
     
     $sqld="INSERT INTO `ventas_detalles`(`id_venta`, `art_codigo`,`art_detalle`,`art_cantidad`, `importe`) 
             VALUES ($idvta,$codigod,'".$descripciond."',$cantidadd,$imported)";
     $ejectuto=mysqli_query($link, $sqld);
+    $iditem=mysqli_insert_id($link);//obtengo el id de detalle de ventas 
+
+    $sqlarticulo="SELECT art_rubro,art_subrubro FROM articulos WHERE id_articulo = $codigod";
+   
+    $rescodigo=mysqli_query($link, $sqlarticulo);
+    $rowart = mysqli_fetch_assoc($rescodigo);
+      $cajaRubro=$rowart["art_rubro"];
+      $cajaSubrubro=$rowart["art_subrubro"];
+
+    //////////////genero el movimiento de caja por rubro y subrubro
+    
+  
+
+    $sqlcaja=" INSERT INTO `cajas`(`fecha`, `tabla`, `nro_com`, `nro_item`, `descripcion`, `caja_rub`, `caja_sub`, `importe`, `usuario`)
+    VALUES ('".$fecha."','ventas',$idvta,$iditem,'".$descripciond."',$cajaRubro,$cajaSubrubro,$total,$usuario)";   
+    //die($sqlcaja);  
+    $rescaja=mysqli_query($link, $sqlcaja);    
 }
 
 /////////////////////////pregunto si la venta es cta cte y la registtro en clientes_ctacte/////////////////////

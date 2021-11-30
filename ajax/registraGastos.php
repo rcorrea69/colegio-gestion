@@ -23,7 +23,16 @@ $usuario=$_SESSION['id_usuario'];
 $sql="INSERT INTO `gastos` (`tipo_gasto`, `id_proveedor`, `ga_fecha`, `ga_descripcion`, `ga_importe`, `ga_rubro`, `ga_subrubro`, `ga_usuario`)
 VALUES ($tipogasto,$proveedor,'".$fecha."','".$descripcion."',$importe,$rubro,$subrubro,$usuario)";
 $res = mysqli_query($link, $sql);
-$idvta=mysqli_insert_id($link);//obtengo el id de ventas
+$idgto=mysqli_insert_id($link);//obtengo el id de ventas
+
+
+/////////////registro movimiento de caja//////////////////////////////////////////77
+
+$imp=(-1 * $importe);
+$sqlcaja=" INSERT INTO `cajas`(`fecha`, `tabla`, `nro_com`, `nro_item`, `descripcion`, `caja_rub`, `caja_sub`, `importe`, `usuario`)
+VALUES ('".$fecha."','gastos',$idgto,0,'".$descripcion."',$rubro,$subrubro,$imp,$usuario)";   
+die($sqlcaja);  
+$rescaja=mysqli_query($link, $sqlcaja);    
 
 //die($sql);
 /////////////////////////pregunto el gasto es  cta cte y la registtro en clientes_ctacte/////////////////////

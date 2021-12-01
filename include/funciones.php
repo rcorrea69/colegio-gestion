@@ -34,5 +34,32 @@ function hashPassword($password)
     $hash = password_hash($password, PASSWORD_DEFAULT);
     return $hash;
 }
+function SaldoAnterior($caja, $desde)
+{
+    global $link;
+    $sqlsaldoAnterior = "SELECT SUM(importe) as saldoAnterior 
+                 FROM cajas
+                 WHERE caja_sub=$caja AND fecha < '" . $desde . "' ";
+    // die($sqlsaldoAnterior);
+    $resSaldo = mysqli_query($link, $sqlsaldoAnterior);
+    $rowsal = mysqli_fetch_assoc($resSaldo);
+    $SaldoAnterior = $rowsal["saldoAnterior"];
+    return $SaldoAnterior;
+};
+
+function SaldoTotal($desde)
+{
+    global $link;
+    $sqlsaldoAnterior = "SELECT SUM(importe) as saldoTotal
+                 FROM cajas
+                 WHERE  fecha < '" . $desde . "' ";
+    // die($sqlsaldoAnterior);
+    $resSaldo = mysqli_query($link, $sqlsaldoAnterior);
+    $rowsal = mysqli_fetch_assoc($resSaldo);
+    $SaldoTotal = $rowsal["saldoTotal"];
+    return $SaldoTotal;
+};
+/////////////////////////////////////////////////////////////////////////////////////////////      
 ?>
+
 

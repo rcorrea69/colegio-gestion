@@ -201,10 +201,25 @@
             </li>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" href="consulta-cajasxrubro.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Cajas por Rubros</span></a>
+            </li> -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCajas" aria-expanded="true" aria-controls="collapseIngresos">
+                    <i class="fas fa-money-check-alt"></i>
+                    <span>Cajas</span>
+                </a>
+                <div id="collapseCajas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Consulta por Cajas</h6>
+                        <a class="collapse-item" href="consulta-cajadiaria.php">Caja Diaria</a>
+                        <a class="collapse-item" href="consulta-cajasxrubro.php">Cajas por Rubros</a>
+                        <a class="collapse-item" href="#">Cajas Saldos</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->

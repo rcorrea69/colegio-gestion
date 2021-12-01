@@ -13,22 +13,22 @@ require_once "../include/funciones.php";
 
 //////////////////////////esto es para sacar el saldo anterior de caja///////////////////////
 
-function SaldoAnterior($caja, $desde)
-{
-    global $link;
-    $sqlsaldoAnterior = "SELECT SUM(importe) as saldoAnterior 
-                 FROM cajas
-                 WHERE caja_sub=$caja AND fecha < '" . $desde . "' ";
-    // die($sqlsaldoAnterior);
-    $resSaldo = mysqli_query($link, $sqlsaldoAnterior);
-    $rowsal = mysqli_fetch_assoc($resSaldo);
-    $SaldoAnterior = $rowsal["saldoAnterior"];
-    return $SaldoAnterior;
-};
-/////////////////////////////////////////////////////////////////////////////////////////////            
+// function SaldoAnterior($caja, $desde)
+// {
+//     global $link;
+//     $sqlsaldoAnterior = "SELECT SUM(importe) as saldoAnterior 
+//                  FROM cajas
+//                  WHERE caja_sub=$caja AND fecha < '" . $desde . "' ";
+//     // die($sqlsaldoAnterior);
+//     $resSaldo = mysqli_query($link, $sqlsaldoAnterior);
+//     $rowsal = mysqli_fetch_assoc($resSaldo);
+//     $SaldoAnterior = $rowsal["saldoAnterior"];
+//     return $SaldoAnterior;
+// };
+// /////////////////////////////////////////////////////////////////////////////////////////////            
 $total = 0;
 ?>
-<h4 class="mt-3" style="text-align: center;">Compras y Gastos desde <?php echo formato_fecha_dd_mm_Y($desde); ?> hasta <?php echo formato_fecha_dd_mm_Y($hasta); ?> </h4>
+<h4 class="mt-3" style="text-align: center;">Cajas por Rubros  desde <?php echo formato_fecha_dd_mm_Y($desde); ?> hasta <?php echo formato_fecha_dd_mm_Y($hasta); ?> </h4>
 <?php
 if($rubro==0){
     $sqlrubros = "SELECT * FROM rubros";
@@ -89,11 +89,10 @@ while ($rowr = mysqli_fetch_array($resrubros)) {
                                 <th> </th>
                                 <td></td>
                                 <td></td>
-                                <td><?php echo 'SALDO AL ' . $desde; ?></td>
+                                <td><?php echo 'SALDO AL ' . formato_fecha_dd_mm_Y($desde) ; ?></td>
                                 <td> </td>
                                 <td></td>
-                                <!-- <td><?php echo '$ ' . number_format($row['importe'], 2, ',', '.'); ?></td> -->
-                                <td><?php echo  '$ ' . number_format($saldo, 2, ',', '.');  ?></td>
+                                <td style="text-align: right;"><?php echo  '$ ' . number_format($saldo, 2, ',', '.');  ?></td>
 
                             </tr>
 
@@ -109,12 +108,12 @@ while ($rowr = mysqli_fetch_array($resrubros)) {
 
                         <tr>
                             <th scope="row"><?php echo $row['id_mov']; ?></th>
-                            <td><?php echo $row['fecha']; ?></td>
+                            <td><?php echo formato_fecha_dd_mm_Y($row['fecha']) ; ?></td>
                             <td><?php echo $row['nro_com']; ?></td>
                             <td><?php echo $row['descripcion']; ?></td>
-                            <td> <?php echo '$ ' . number_format($debe, 2, ',', '.'); ?></td>
-                            <td><?php echo '$ ' . number_format($haber, 2, ',', '.'); ?></td>
-                            <td><?php echo '$ ' . number_format($saldo, 2, ',', '.'); ?></td>
+                            <td style="text-align: right;" > <?php echo '$ ' . number_format($debe, 2, ',', '.'); ?></td>
+                            <td style="text-align: right;"><?php echo '$ ' . number_format($haber, 2, ',', '.'); ?></td>
+                            <td style="text-align: right;"><?php echo '$ ' . number_format($saldo, 2, ',', '.'); ?></td>
 
                         </tr>
 

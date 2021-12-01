@@ -9,7 +9,7 @@
             <h4>Reportes</h4>
         </div> -->
         <div class="card-body">
-            <h5 class="card-title">Consulta de Cajas Por Rubros<div class="float-right">
+            <h5 class="card-title">Caja Diaria<div class="float-right">
                     <h4><strong><?php echo hoy(); ?></strong></h4>
                 </div>
                 <br>
@@ -19,7 +19,7 @@
                 <!-- <div class="form-group "> -->
                 <div class="form-row">
 
-                    <div class="form-group col-6">
+                    <!-- <div class="form-group col-6">
                         <label for="rubro" class="text-info">Rubros</label>
                         <select class="form-control" name="rubro" id="rubro" tabindex="0">
                         </select>
@@ -29,7 +29,7 @@
                         <label for="subrubro" class="text-info">Cajas</label>
                         <select class="form-control" name="subrubro" id="subrubro" tabindex="0">
                         </select>
-                    </div>
+                    </div> -->
 
                     <div class="form-group col-md-4">
                         <label for="desde" class="text-info">Desde</label>
@@ -63,4 +63,4 @@
 
 <?php require_once("include/parte_inferior.php"); ?>
 <!-- <script type="text/javascript" src="js/nuevo_reporte.js"></script> -->
-<script src="js/cajasxrubro.js"></script>
+<script src="js/cajadiaria.js"></script>

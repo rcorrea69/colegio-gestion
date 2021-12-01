@@ -217,7 +217,7 @@
                         <h6 class="collapse-header">Consulta por Cajas</h6>
                         <a class="collapse-item" href="consulta-cajadiaria.php">Caja Diaria</a>
                         <a class="collapse-item" href="consulta-cajasxrubro.php">Cajas por Rubros</a>
-                        <a class="collapse-item" href="#">Cajas Saldos</a>
+                        <a class="collapse-item" href="panel-cajas-saldos.php">Saldos de Cajas </a>
                     </div>
                 </div>
             </li>

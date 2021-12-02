@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-11-2021 a las 12:37:47
+-- Tiempo de generación: 02-12-2021 a las 13:41:26
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 7.3.27
 
@@ -123,7 +123,17 @@ INSERT INTO `cajas` (`id_mov`, `fecha`, `tabla`, `nro_com`, `nro_item`, `descrip
 (14, '2021-11-29', 'ventas', 46, 70, 'PLANTAS', 3, 13, 200.00, 2),
 (15, '2021-11-29', 'gastos', 27, 0, 'no se', 1, 1, -222.00, 2),
 (16, '2021-11-26', 'ventas', 47, 71, 'DULCE DE ZAPALLO 800 G', 1, 1, 300.00, 2),
-(17, '2021-11-30', 'ventas', 48, 72, 'CORDERO', 2, 9, 450.00, 2);
+(17, '2021-11-30', 'ventas', 48, 72, 'CORDERO', 2, 9, 450.00, 2),
+(18, '2021-11-30', 'ventas', 49, 73, 'MIEL 1/2 KG', 1, 2, 200.00, 2),
+(19, '2021-12-01', 'ventas', 50, 74, 'HUEVO DOCENA', 2, 9, 100.00, 2),
+(20, '2021-12-01', 'ventas', 50, 75, 'NARANJA BIN', 3, 10, 2000.00, 2),
+(21, '2021-12-01', 'ventas', 50, 76, 'KALE X KG', 3, 11, 16000.00, 2),
+(22, '2021-12-02', 'ventas', 51, 77, 'DULCE DE LECHE 1/2 KG Peña', 1, 1, 250.89, 2),
+(23, '2021-12-02', 'ventas', 52, 78, 'DULCE DE LECHE 1/2 KG Peña', 1, 1, 250.89, 2),
+(24, '2021-12-02', 'ventas', 53, 79, 'DULCE DE ZAPALLO 800 G', 1, 1, 300.00, 2),
+(25, '2021-12-02', 'ventas', 54, 80, 'DULCE DE LECHE 1/2 KG Peña', 1, 1, 250.89, 2),
+(26, '2021-12-02', 'ventas', 54, 81, 'DULCE DE ZAPALLO 1/2 KG', 1, 1, 200.00, 2),
+(27, '2021-12-02', 'ventas', 54, 82, 'DULCE DE ZAPALLO 1 KG', 1, 1, 330.00, 2);
 
 -- --------------------------------------------------------
 
@@ -184,7 +194,8 @@ INSERT INTO `clientes_ctacte` (`id_ctacte`, `id_cliente`, `ctacteDH`, `factura_r
 (38, 1, 'H', 33, 10.00, '2021-10-09'),
 (39, 1, 'H', 34, 12.00, '2021-10-13'),
 (40, 2, 'D', 28, 500.00, '2021-10-21'),
-(41, 1, 'H', 35, 100.00, '2021-10-26');
+(41, 1, 'H', 35, 100.00, '2021-10-26'),
+(42, 1, 'D', 53, 300.00, '2021-12-02');
 
 -- --------------------------------------------------------
 
@@ -509,7 +520,13 @@ INSERT INTO `ventas` (`id_venta`, `vta_cliente`, `vta_fecha`, `vta_importe`, `id
 (45, 0, '2021-11-29', 200.00, 2, 0),
 (46, 0, '2021-11-29', 200.00, 2, 0),
 (47, 0, '2021-11-26', 300.00, 2, 0),
-(48, 0, '2021-11-30', 450.00, 2, 0);
+(48, 0, '2021-11-30', 450.00, 2, 0),
+(49, 0, '2021-11-30', 200.00, 2, 0),
+(50, 0, '2021-12-01', 2160.00, 2, 0),
+(51, 0, '2021-12-02', 250.89, 2, 0),
+(52, 0, '2021-12-02', 250.89, 2, 0),
+(53, 1, '2021-12-02', 300.00, 2, 1),
+(54, 0, '2021-12-02', 780.89, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -602,7 +619,62 @@ INSERT INTO `ventas_detalles` (`id_detalle`, `id_venta`, `art_codigo`, `art_deta
 (69, 45, 10, 'MIEL 1/2 KG', 1.00, 200.00),
 (70, 46, 41, 'PLANTAS', 1.00, 200.00),
 (71, 47, 2, 'DULCE DE ZAPALLO 800 G', 1.00, 300.00),
-(72, 48, 26, 'CORDERO', 1.00, 450.00);
+(72, 48, 26, 'CORDERO', 1.00, 450.00),
+(73, 49, 10, 'MIEL 1/2 KG', 1.00, 200.00),
+(74, 50, 25, 'HUEVO DOCENA', 1.00, 100.00),
+(75, 50, 27, 'NARANJA BIN', 1.00, 2000.00),
+(76, 50, 29, 'KALE X KG', 1.00, 60.00),
+(77, 51, 1, 'DULCE DE LECHE 1/2 KG Peña', 1.00, 250.89),
+(78, 52, 1, 'DULCE DE LECHE 1/2 KG Peña', 1.00, 250.89),
+(79, 53, 2, 'DULCE DE ZAPALLO 800 G', 1.00, 300.00),
+(80, 54, 1, 'DULCE DE LECHE 1/2 KG Peña', 1.00, 250.89),
+(81, 54, 3, 'DULCE DE ZAPALLO 1/2 KG', 1.00, 200.00),
+(82, 54, 4, 'DULCE DE ZAPALLO 1 KG', 1.00, 330.00);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ventas_detalles_fiado`
+--
+
+CREATE TABLE `ventas_detalles_fiado` (
+  `id_detalle` int(11) NOT NULL,
+  `id_venta` int(11) NOT NULL,
+  `art_codigo` int(11) NOT NULL,
+  `art_detalle` varchar(50) NOT NULL,
+  `art_cantidad` float(10,2) NOT NULL,
+  `importe` float(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `ventas_detalles_fiado`
+--
+
+INSERT INTO `ventas_detalles_fiado` (`id_detalle`, `id_venta`, `art_codigo`, `art_detalle`, `art_cantidad`, `importe`) VALUES
+(1, 1, 10, 'MIEL 1/2 KG', 1.00, 200.00),
+(2, 1, 2, 'DULCE DE ZAPALLO 800 G', 1.00, 300.00);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ventas_fiado`
+--
+
+CREATE TABLE `ventas_fiado` (
+  `id_venta` int(11) NOT NULL,
+  `vta_cliente` int(11) NOT NULL,
+  `vta_fecha` date NOT NULL,
+  `vta_importe` double(10,2) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `vta_tipo` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `ventas_fiado`
+--
+
+INSERT INTO `ventas_fiado` (`id_venta`, `vta_cliente`, `vta_fecha`, `vta_importe`, `id_usuario`, `vta_tipo`) VALUES
+(1, 1, '2021-12-02', 500.00, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -783,6 +855,18 @@ ALTER TABLE `ventas_detalles`
   ADD PRIMARY KEY (`id_detalle`);
 
 --
+-- Indices de la tabla `ventas_detalles_fiado`
+--
+ALTER TABLE `ventas_detalles_fiado`
+  ADD PRIMARY KEY (`id_detalle`);
+
+--
+-- Indices de la tabla `ventas_fiado`
+--
+ALTER TABLE `ventas_fiado`
+  ADD PRIMARY KEY (`id_venta`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -796,13 +880,13 @@ ALTER TABLE `articulos`
 -- AUTO_INCREMENT de la tabla `cajas`
 --
 ALTER TABLE `cajas`
-  MODIFY `id_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes_ctacte`
 --
 ALTER TABLE `clientes_ctacte`
-  MODIFY `id_ctacte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_ctacte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `gastos`
@@ -856,13 +940,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas_detalles`
 --
 ALTER TABLE `ventas_detalles`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+
+--
+-- AUTO_INCREMENT de la tabla `ventas_detalles_fiado`
+--
+ALTER TABLE `ventas_detalles_fiado`
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `ventas_fiado`
+--
+ALTER TABLE `ventas_fiado`
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

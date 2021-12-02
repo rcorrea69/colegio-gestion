@@ -74,8 +74,8 @@
                 <div id="collapseIngresos" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones de Ingresos</h6>
-                        <a class="collapse-item" href="clientes-ctacte.php">Clientes Cta. Cte.</a>
-                        <a class="collapse-item" href="#">Otros ingresos</a>
+                        <!-- <a class="collapse-item" href="clientes-ctacte.php">Clientes Cta. Cte.</a> -->
+                        <a class="collapse-item" href="panel-venta-fiado.php">Ventas cta cte</a>
                     </div>
                 </div>
             </li>

@@ -95,7 +95,7 @@ function MostrarTabla(linea) {
     $("#detalle_ajax").show();
     var d = "";
     total=0;
-    console.log("cantidad de la linea recibida : ......" + linea.length);
+    // console.log("cantidad de la linea recibida : ......" + linea.length);
     for (var i = 0; i < linea.length; i++) {
       var subtotal = (linea[i].importe *  linea[i].cantidad );
       d +=

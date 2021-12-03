@@ -1,8 +1,9 @@
 <?php require_once("include/parte_superior.php"); ?>
 <!-- Inicio del contenido Principal -->
 <?php require_once("db/conexion.php"); ?>
-<?php require_once("include/funciones.php"); ?>
-
+<?php require_once("include/funciones.php");
+$idFiado=$_GET['fiado'];
+?>
 <div class="container">
     <div class="row">
         <div class="col-12">
@@ -17,6 +18,7 @@
                         <div class="form-row">
                             <div class="col-9">
                                 <h5>Factura</h5>
+                                <?php echo 'id_fiado'.$idFiado; ?>
                             </div>
                             <div class="form-group col-3 bg-">
                                 <input type="date" name="fecha" id="fecha" class="form-control col-12 bg-gradient-light" value="<?php echo formato_fecha_Y_mm_dd(hoy()); ?>">
@@ -46,14 +48,23 @@
                             </tr>
                         </thead>
                         <tbody id="ajax_lineas">
+                            <?php 
+                            
+                                $sqlfi="SELECT * FROM ventas_detalles_fiado WHERE id_venta = $idFiado";
+                                $resfi=mysqli_query($link,$sqlfi);
+                                while ($rowfi=mysqli_fetch_array($resfi)) {
+
+                                                  
+                            ?>
                             <tr>
-                                <td>Código</td>
-                                <td>Descripción</td>
-                                <td>Importe</td>
-                                <td>Cantidad</td>
-                                <td>Subtotal</td>
+                                <td><?php echo $rowfi['art_codigo']; ?></td>
+                                <td><?php echo $rowfi['art_detalle']; ?></td>
+                                <td><?php echo $rowfi['importe']; ?>Importe</td>
+                                <td><?php echo $rowfi['art_cantidad']; ?></td>
+                                <td><?php echo $rowfi['art_cantidad']*$rowfi['importe'] ; ?></td>
                                 <td>Eliminar</td>
                             </tr>
+                            <?php }          ?>
 
                         </tbody>
 
@@ -146,4 +157,4 @@
 
 
 <?php require_once("include/parte_inferior.php"); ?>
-<script type="text/javascript" src="js/ventas.js"></script>
+<!-- <script type="text/javascript" src="js/ventas.js"></script> -->

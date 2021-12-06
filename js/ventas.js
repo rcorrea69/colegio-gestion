@@ -188,7 +188,7 @@ $("#grabar").click(function (e) {
           text: 'Se registro la FACTURA Nro :'+response
           
         });
-        //setTimeout('location.reload()',1000);	
+        setTimeout('location.reload()',1000);	
         //console.log(response);
       },
     });

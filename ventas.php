@@ -138,7 +138,9 @@
                         </div>
                     </div>
                     <div class="col-4 d-flex ">
-                        <input type="button" class="btn btn-primary" value="grabar" id="grabar" name="grabar" class="d-flex align-items-center">
+
+                        <input type="button" class="btn btn-primary h1" value="Confirmar Venta" id="grabar" name="grabar" class="d-flex align-items-center">
+
                     </div>
                     </div>
 

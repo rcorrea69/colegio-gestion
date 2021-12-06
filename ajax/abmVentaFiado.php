@@ -46,7 +46,8 @@ switch($opcion){
     
         $consulta="SELECT fi.id_venta,fi.vta_fecha,per.pe_apellido,per.pe_nombre,per.pe_telefono, fi.vta_importe,usu.usu_nombre FROM ventas_fiado AS fi 
         LEFT JOIN personas as per  ON fi.vta_cliente =per.id_persona
-        LEFT JOIN usuarios as usu ON fi.id_usuario=usu.id_usuario";    
+        LEFT JOIN usuarios as usu ON fi.id_usuario=usu.id_usuario
+        WHERE factura_nro=0";    
 
         $res_art = mysqli_query($link, $consulta);
         

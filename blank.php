@@ -31,11 +31,65 @@ $resvegetal = mysqli_query($link, $sqlvegetal);
 $rowvegetal = mysqli_fetch_array($resvegetal);
 $vtasVegetal = $rowvegetal['venta'];
 
+$sqlRubros = "SELECT ru.id_rubro,ru.ru_nombre,(SELECT SUM(vi.saldo) FROM vista_saldos vi
+WHERE vi.rubro=ru.id_rubro) AS total
+FROM rubros ru";
+$rowR = mysqli_query($link, $sqlRubros);
 
+$sqlTotal="SELECT SUM(`saldo`)as saldo FROM `vista_saldos`";
+$rowt = mysqli_query($link, $sqlTotal);
+$regt = mysqli_fetch_assoc($rowt);
+$TotalCaja=$regt['saldo'];
 
 ?>
 <div class="container">
-    <h4 style="text-align: center;">VENTAS</h4>
+
+    <h4 style="text-align: center;" class="m-4">CAJAS</h4>
+    <div class="row">
+
+        <?php while ($reg = mysqli_fetch_array($rowR)) {
+        ?>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-bottom-secondary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    <?php echo $reg['ru_nombre']; ?>
+                                </div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '$ ' . number_format($reg['total'], 2, ',', '.'); ?></div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php
+
+        }; ?>
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-bottom-secondary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                TOTAL CAJA
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '$ ' . number_format($TotalCaja, 2, ',', '.'); ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <h4 style="text-align: center;"  class="m-4">VENTAS DEL MES</h4>
     <div class="row">
 
         <!-- Earnings (Monthly) Card Example -->
@@ -57,6 +111,24 @@ $vtasVegetal = $rowvegetal['venta'];
         </div>
 
         <!-- Earnings (Annual) Card Example -->
+        <!-- <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Ventas rubro industrias del Mes</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '$ ' . number_format($vtasIndustrias, 2, ',', '.'); ?></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Earnings (Annual) Card Example -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
@@ -64,12 +136,32 @@ $vtasVegetal = $rowvegetal['venta'];
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Ventas rubro industrias del Mes</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '$ ' .number_format($vtasIndustrias, 2, ',', '.'); ?></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '$ ' . number_format($vtasIndustrias, 2, ',', '.'); ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
                         </div>
+
                     </div>
+                    <!-- <div class="col-auto mt-3" style="text-align: center;">
+                        <button class="btn btn-primary">Detalle de cajas</button>
+                    </div>
+                    <div>
+                        <table  class="table table-striped">
+                            <tbody>
+                                <tr>
+                            
+                                    <td> miel </td>
+                                    <td> 30000 </td>
+                                </tr>
+                                <tr>
+                                
+                                    <td> VIVERO ORNAMENTAL </td>
+                                    <td> $ 150.000,00 </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -81,7 +173,7 @@ $vtasVegetal = $rowvegetal['venta'];
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                 Ventas rubro producción animal del Mes</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '$ ' .number_format($vtasAnimal, 2, ',', '.') ; ?></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '$ ' . number_format($vtasAnimal, 2, ',', '.'); ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -98,7 +190,7 @@ $vtasVegetal = $rowvegetal['venta'];
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Ventas rubro producción vegetal del Mes</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '$ ' .number_format($vtasVegetal, 2, ',', '.'); ?></div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '$ ' . number_format($vtasVegetal, 2, ',', '.'); ?></div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -148,11 +240,11 @@ $vtasVegetal = $rowvegetal['venta'];
                             }
                             ?>
                             <?php
-                                $importe=floatval( $rowvta['vta_importe']);
-                                
+                            $importe = floatval($rowvta['vta_importe']);
+
                             ?>
                             <td style="text-align: right;"><?php echo  number_format($importe, 2, ',', '.'); ?></td>
-                            <td><?php echo $rowvta['usu_nombre']; ?></td> 
+                            <td><?php echo $rowvta['usu_nombre']; ?></td>
 
                         </tr>
                     <?php

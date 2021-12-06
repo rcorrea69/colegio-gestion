@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-12-2021 a las 13:41:26
+-- Tiempo de generación: 06-12-2021 a las 13:26:42
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 7.3.27
 
@@ -133,7 +133,39 @@ INSERT INTO `cajas` (`id_mov`, `fecha`, `tabla`, `nro_com`, `nro_item`, `descrip
 (24, '2021-12-02', 'ventas', 53, 79, 'DULCE DE ZAPALLO 800 G', 1, 1, 300.00, 2),
 (25, '2021-12-02', 'ventas', 54, 80, 'DULCE DE LECHE 1/2 KG Peña', 1, 1, 250.89, 2),
 (26, '2021-12-02', 'ventas', 54, 81, 'DULCE DE ZAPALLO 1/2 KG', 1, 1, 200.00, 2),
-(27, '2021-12-02', 'ventas', 54, 82, 'DULCE DE ZAPALLO 1 KG', 1, 1, 330.00, 2);
+(27, '2021-12-02', 'ventas', 54, 82, 'DULCE DE ZAPALLO 1 KG', 1, 1, 330.00, 2),
+(28, '2021-12-02', 'ventas', 55, 83, 'DULCE DE LECHE 1/2 KG Peña', 1, 1, 250.89, 2),
+(29, '2021-12-02', 'ventas', 55, 84, 'BROCOLI ', 3, 11, 120.00, 2),
+(30, '2021-12-04', 'ventas', 56, 85, 'DULCE DE ZAPALLO 800 G', 1, 1, 300.00, 2),
+(31, '2021-12-04', 'ventas', 56, 86, 'DULCE DE ZAPALLO 1 KG', 1, 1, 330.00, 2),
+(32, '2021-12-04', 'ventas', 56, 87, 'PLANTINES CITRUS', 3, 12, 2000.00, 2),
+(33, '2021-12-04', 'ventas', 57, 88, 'DULCE DE LECHE 1/2 KG Peña', 1, 1, 250.89, 2),
+(34, '2021-12-04', 'ventas', 59, 89, 'MIEL 1/2 KG', 1, 2, 200.00, 2),
+(35, '2021-12-04', 'ventas', 59, 90, 'DULCE DE ZAPALLO 800 G', 1, 1, 300.00, 2),
+(36, '2021-12-04', 'ventas', 60, 91, 'MIEL 1/2 KG', 1, 2, 200.00, 2),
+(37, '2021-12-04', 'ventas', 60, 92, 'DULCE DE ZAPALLO 800 G', 1, 1, 300.00, 2),
+(38, '2021-12-04', 'ventas', 61, 93, 'MIEL 1/2 KG', 1, 2, 200.00, 2),
+(39, '2021-12-04', 'ventas', 61, 94, 'DULCE DE ZAPALLO 800 G', 1, 1, 300.00, 2),
+(40, '2021-12-04', 'ventas', 62, 95, 'MIEL 1/2 KG', 1, 2, 200.00, 2),
+(41, '2021-12-04', 'ventas', 62, 96, 'DULCE DE ZAPALLO 800 G', 1, 1, 300.00, 2),
+(42, '2021-12-04', 'ventas', 63, 97, 'DULCE DE ZAPALLO 1/2 KG', 1, 1, 200.00, 2),
+(43, '2021-12-04', 'ventas', 64, 98, 'MIEL 1/2 KG', 1, 2, 200.00, 2),
+(44, '2021-12-04', 'ventas', 64, 99, 'DULCE DE ZAPALLO 800 G', 1, 1, 300.00, 2),
+(45, '2021-12-04', 'ventas', 65, 100, 'CHIVITO X KG', 2, 9, 400.00, 2),
+(46, '2021-12-04', 'ventas', 66, 101, 'CHIVITO X KG', 2, 9, 400.00, 2),
+(47, '2021-12-04', 'ventas', 67, 102, 'CHIVITO X KG', 2, 9, 400.00, 2),
+(48, '2021-12-04', 'ventas', 68, 103, 'CHIVITO X KG', 2, 9, 400.00, 2),
+(49, '2021-12-04', 'ventas', 69, 104, 'CHIVITO X KG', 2, 9, 400.00, 2),
+(50, '2021-12-04', 'ventas', 70, 105, 'DULCE DE ZAPALLO 1/2 KG', 1, 1, 500.00, 2),
+(51, '2021-12-04', 'ventas', 70, 106, 'SALAME X KG', 2, 8, 1200.00, 2),
+(52, '2021-12-04', 'ventas', 70, 107, 'NARANJA BIN', 3, 10, 24000.00, 2),
+(53, '2021-12-04', 'ventas', 71, 108, 'MIEL 1/2 KG', 1, 2, 200.00, 2),
+(54, '2021-12-04', 'ventas', 71, 109, 'DULCE DE ZAPALLO 800 G', 1, 1, 300.00, 2),
+(55, '2021-12-04', 'ventas', 72, 110, 'DULCE DE ZAPALLO 1/2 KG', 1, 1, 200.00, 2),
+(56, '2021-12-05', 'ventas', 73, 111, 'CHIVITO X KG', 2, 9, 400.00, 2),
+(57, '2021-12-06', 'ventas', 74, 112, 'DULCE DE ZAPALLO 1/2 KG', 1, 1, 200.00, 2),
+(58, '2021-12-06', 'ventas', 75, 113, 'DULCE DE LECHE 1/2 KG Peña', 1, 1, 250.89, 2),
+(59, '2021-12-06', 'ventas', 76, 114, 'DULCE DE ZAPALLO 800 G', 1, 1, 300.00, 2);
 
 -- --------------------------------------------------------
 
@@ -526,7 +558,29 @@ INSERT INTO `ventas` (`id_venta`, `vta_cliente`, `vta_fecha`, `vta_importe`, `id
 (51, 0, '2021-12-02', 250.89, 2, 0),
 (52, 0, '2021-12-02', 250.89, 2, 0),
 (53, 1, '2021-12-02', 300.00, 2, 1),
-(54, 0, '2021-12-02', 780.89, 2, 0);
+(54, 0, '2021-12-02', 780.89, 2, 0),
+(55, 0, '2021-12-02', 370.89, 2, 0),
+(56, 0, '2021-12-04', 2630.00, 2, 0),
+(57, 0, '2021-12-04', 250.89, 2, 0),
+(58, 1, '2021-12-04', 500.00, 2, 0),
+(59, 1, '2021-12-04', 500.00, 2, 0),
+(60, 1, '2021-12-04', 500.00, 2, 0),
+(61, 1, '2021-12-04', 500.00, 2, 0),
+(62, 1, '2021-12-04', 500.00, 2, 0),
+(63, 1, '2021-12-04', 200.00, 2, 0),
+(64, 1, '2021-12-04', 500.00, 2, 0),
+(65, 3, '2021-12-04', 400.00, 2, 0),
+(66, 3, '2021-12-04', 400.00, 2, 0),
+(67, 3, '2021-12-04', 400.00, 2, 0),
+(68, 3, '2021-12-04', 400.00, 2, 0),
+(69, 3, '2021-12-04', 400.00, 2, 0),
+(70, 3, '2021-12-04', 25700.00, 2, 0),
+(71, 1, '2021-12-04', 500.00, 2, 0),
+(72, 1, '2021-12-04', 200.00, 2, 0),
+(73, 3, '2021-12-05', 400.00, 2, 0),
+(74, 0, '2021-12-06', 200.00, 2, 0),
+(75, 0, '2021-12-06', 250.89, 2, 0),
+(76, 0, '2021-12-06', 300.00, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -629,7 +683,39 @@ INSERT INTO `ventas_detalles` (`id_detalle`, `id_venta`, `art_codigo`, `art_deta
 (79, 53, 2, 'DULCE DE ZAPALLO 800 G', 1.00, 300.00),
 (80, 54, 1, 'DULCE DE LECHE 1/2 KG Peña', 1.00, 250.89),
 (81, 54, 3, 'DULCE DE ZAPALLO 1/2 KG', 1.00, 200.00),
-(82, 54, 4, 'DULCE DE ZAPALLO 1 KG', 1.00, 330.00);
+(82, 54, 4, 'DULCE DE ZAPALLO 1 KG', 1.00, 330.00),
+(83, 55, 1, 'DULCE DE LECHE 1/2 KG Peña', 1.00, 250.89),
+(84, 55, 34, 'BROCOLI ', 1.00, 120.00),
+(85, 56, 2, 'DULCE DE ZAPALLO 800 G', 1.00, 300.00),
+(86, 56, 4, 'DULCE DE ZAPALLO 1 KG', 1.00, 330.00),
+(87, 56, 39, 'PLANTINES CITRUS', 4.00, 500.00),
+(88, 57, 1, 'DULCE DE LECHE 1/2 KG Peña', 1.00, 250.89),
+(89, 59, 10, 'MIEL 1/2 KG', 1.00, 200.00),
+(90, 59, 2, 'DULCE DE ZAPALLO 800 G', 1.00, 300.00),
+(91, 60, 10, 'MIEL 1/2 KG', 1.00, 200.00),
+(92, 60, 2, 'DULCE DE ZAPALLO 800 G', 1.00, 300.00),
+(93, 61, 10, 'MIEL 1/2 KG', 1.00, 200.00),
+(94, 61, 2, 'DULCE DE ZAPALLO 800 G', 1.00, 300.00),
+(95, 62, 10, 'MIEL 1/2 KG', 1.00, 200.00),
+(96, 62, 2, 'DULCE DE ZAPALLO 800 G', 1.00, 300.00),
+(97, 63, 3, 'DULCE DE ZAPALLO 1/2 KG', 1.00, 200.00),
+(98, 64, 10, 'MIEL 1/2 KG', 1.00, 200.00),
+(99, 64, 2, 'DULCE DE ZAPALLO 800 G', 1.00, 300.00),
+(100, 65, 23, 'CHIVITO X KG', 1.00, 400.00),
+(101, 66, 23, 'CHIVITO X KG', 1.00, 400.00),
+(102, 67, 23, 'CHIVITO X KG', 1.00, 400.00),
+(103, 68, 23, 'CHIVITO X KG', 1.00, 400.00),
+(104, 69, 23, 'CHIVITO X KG', 1.00, 400.00),
+(105, 70, 3, 'DULCE DE ZAPALLO 1/2 KG', 2.50, 200.00),
+(106, 70, 20, 'SALAME X KG', 1.00, 1200.00),
+(107, 70, 27, 'NARANJA BIN', 12.00, 2000.00),
+(108, 71, 10, 'MIEL 1/2 KG', 1.00, 200.00),
+(109, 71, 2, 'DULCE DE ZAPALLO 800 G', 1.00, 300.00),
+(110, 72, 3, 'DULCE DE ZAPALLO 1/2 KG', 1.00, 200.00),
+(111, 73, 23, 'CHIVITO X KG', 1.00, 400.00),
+(112, 74, 3, 'DULCE DE ZAPALLO 1/2 KG', 1.00, 200.00),
+(113, 75, 1, 'DULCE DE LECHE 1/2 KG Peña', 1.00, 250.89),
+(114, 76, 2, 'DULCE DE ZAPALLO 800 G', 1.00, 300.00);
 
 -- --------------------------------------------------------
 
@@ -652,7 +738,15 @@ CREATE TABLE `ventas_detalles_fiado` (
 
 INSERT INTO `ventas_detalles_fiado` (`id_detalle`, `id_venta`, `art_codigo`, `art_detalle`, `art_cantidad`, `importe`) VALUES
 (1, 1, 10, 'MIEL 1/2 KG', 1.00, 200.00),
-(2, 1, 2, 'DULCE DE ZAPALLO 800 G', 1.00, 300.00);
+(2, 1, 2, 'DULCE DE ZAPALLO 800 G', 1.00, 300.00),
+(3, 2, 23, 'CHIVITO X KG', 1.00, 400.00),
+(4, 3, 3, 'DULCE DE ZAPALLO 1/2 KG', 2.50, 200.00),
+(5, 3, 20, 'SALAME X KG', 1.00, 1200.00),
+(6, 3, 27, 'NARANJA BIN', 12.00, 2000.00),
+(7, 4, 3, 'DULCE DE ZAPALLO 1/2 KG', 1.00, 200.00),
+(8, 5, 1, 'DULCE DE LECHE 1/2 KG Peña', 1.00, 250.89),
+(9, 6, 2, 'DULCE DE ZAPALLO 800 G', 1.00, 300.00),
+(10, 7, 3, 'DULCE DE ZAPALLO 1/2 KG', 1.00, 200.00);
 
 -- --------------------------------------------------------
 
@@ -666,15 +760,23 @@ CREATE TABLE `ventas_fiado` (
   `vta_fecha` date NOT NULL,
   `vta_importe` double(10,2) NOT NULL,
   `id_usuario` int(11) NOT NULL,
-  `vta_tipo` int(1) NOT NULL
+  `vta_tipo` int(1) NOT NULL,
+  `factura_fecha` date DEFAULT NULL,
+  `factura_nro` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `ventas_fiado`
 --
 
-INSERT INTO `ventas_fiado` (`id_venta`, `vta_cliente`, `vta_fecha`, `vta_importe`, `id_usuario`, `vta_tipo`) VALUES
-(1, 1, '2021-12-02', 500.00, 2, 1);
+INSERT INTO `ventas_fiado` (`id_venta`, `vta_cliente`, `vta_fecha`, `vta_importe`, `id_usuario`, `vta_tipo`, `factura_fecha`, `factura_nro`) VALUES
+(1, 1, '2021-12-02', 500.00, 2, 1, '2021-12-04', 71),
+(2, 3, '2021-12-02', 400.00, 2, 1, '2021-12-05', 73),
+(3, 3, '2021-12-04', 25700.00, 2, 1, '2021-12-04', 70),
+(4, 1, '2021-12-04', 200.00, 2, 1, '2021-12-04', 72),
+(5, 1, '2021-12-06', 250.89, 2, 1, NULL, 0),
+(6, 2, '2021-12-06', 300.00, 2, 1, NULL, 0),
+(7, 3, '2021-12-06', 200.00, 2, 1, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -880,7 +982,7 @@ ALTER TABLE `articulos`
 -- AUTO_INCREMENT de la tabla `cajas`
 --
 ALTER TABLE `cajas`
-  MODIFY `id_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes_ctacte`
@@ -940,25 +1042,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas_detalles`
 --
 ALTER TABLE `ventas_detalles`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas_detalles_fiado`
 --
 ALTER TABLE `ventas_detalles_fiado`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas_fiado`
 --
 ALTER TABLE `ventas_fiado`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

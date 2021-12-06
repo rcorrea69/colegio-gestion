@@ -10,20 +10,34 @@ $idFiado=$_GET['fiado'];
             <div class="card">
                 <div class="card-title">
                     <br>
-                    <h4 style="text-align: center;">Factura Ventas</h4>
+                    <h4 style="text-align: center;">Facturar Ventas Fiado</h4>
 
                 </div>
+                <?php
+               
+                $sqlvta=" SELECT vf.id_venta,vf.vta_fecha,vf.vta_importe,pe.pe_apellido,pe.pe_nombre  FROM ventas_fiado vf
+                LEFT JOIN personas pe
+                ON vf.vta_cliente= pe.id_persona
+                WHERE vf.id_venta=$idFiado";
+                $resvta=mysqli_query($link,$sqlvta);
+                $fila=mysqli_fetch_assoc($resvta);
+                $cliente=$fila['pe_apellido'].' '.$fila['pe_nombre'];
+
+                
+                ?>
                 <div class="card-body">
                     <form id="frm-linea" name="frm-linea">
                         <div class="form-row">
                             <div class="col-9">
-                                <h5>Factura</h5>
-                                <?php echo 'id_fiado'.$idFiado; ?>
+                                <h5>Ventas Fiado Nro: <?php echo $fila['id_venta']; ?></h5>
+                                <p class="h5"><?php echo$fila['pe_apellido'].' '.$fila['pe_nombre']; ?></p>
+                                <p><?php echo 'Fecha de Fiado '.formato_fecha_dd_mm_Y($fila['vta_fecha']) ; ?></p>
                             </div>
                             <div class="form-group col-3 bg-">
                                 <input type="date" name="fecha" id="fecha" class="form-control col-12 bg-gradient-light" value="<?php echo formato_fecha_Y_mm_dd(hoy()); ?>">
                             </div>
                         </div>
+                        <input type="text" id="idfiado" name="idfiado" value="<?php echo $idFiado; ?>">
                     </form>
                 </div>
             </div>
@@ -41,10 +55,10 @@ $idFiado=$_GET['fiado'];
                             <tr>
                                 <th scope="col">Código</th>
                                 <th scope="col">Descripción</th>
-                                <th scope="col">Importe</th>
-                                <th scope="col">Cantidad</th>
-                                <th scope="col">Subtotal</th>
-                                <th scope="col">Eliminar</th>
+                                <th scope="col" style="text-align: center;">Importe</th>
+                                <th scope="col" style="text-align: center;">Cantidad</th>
+                                <th style="text-align: right;">Subtotal</th>
+                                
                             </tr>
                         </thead>
                         <tbody id="ajax_lineas">
@@ -54,25 +68,30 @@ $idFiado=$_GET['fiado'];
                                 $resfi=mysqli_query($link,$sqlfi);
                                 while ($rowfi=mysqli_fetch_array($resfi)) {
 
-                                                  
                             ?>
                             <tr>
-                                <td><?php echo $rowfi['art_codigo']; ?></td>
+                                <td style="text-align: center;"><?php echo $rowfi['art_codigo']; ?></td>
                                 <td><?php echo $rowfi['art_detalle']; ?></td>
-                                <td><?php echo $rowfi['importe']; ?>Importe</td>
-                                <td><?php echo $rowfi['art_cantidad']; ?></td>
-                                <td><?php echo $rowfi['art_cantidad']*$rowfi['importe'] ; ?></td>
-                                <td>Eliminar</td>
+                                <td style="text-align: right;"><?php echo "$ " . number_format( $rowfi['importe'], 2, ',', '.'); ?></td>
+                                <td style="text-align: right;"><?php echo $rowfi['art_cantidad']; ?></td>
+                                <td style="text-align: right;"><?php echo "$ " . number_format( $rowfi['art_cantidad']*$rowfi['importe'] , 2, ',', '.'); ?></td>
                             </tr>
                             <?php }          ?>
-
                         </tbody>
+                            <tr>
+                                <th ></th>
+                                <th></th>
+                                <th ></th>
+                                <th ></th>
+                                <th class ="h5" style="text-align: right;"><?php echo "Total ...."."$ " . number_format( $fila['vta_importe'], 2, ',', '.'); ?></th>
+                                
+                            </tr>
 
                     </table>
                     <div class="d-flex">
 
-                        <div class="col-4 d-flex ">
-                            <input type="button" class="btn btn-primary" value="grabar" id="grabar" name="grabar" class="d-flex align-items-center">
+                        <div class="col-12 d-flex ">
+                            <input type="button" class="btn btn-primary" value="Confirmar Venta" id="grabar" name="grabar" class="d-flex align-items-center">
                         </div>
                     </div>
 
@@ -157,4 +176,4 @@ $idFiado=$_GET['fiado'];
 
 
 <?php require_once("include/parte_inferior.php"); ?>
-<!-- <script type="text/javascript" src="js/ventas.js"></script> -->
+<script type="text/javascript" src="js/ventas-fiado-factura.js"></script>

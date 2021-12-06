@@ -140,8 +140,8 @@ while ($rowr = mysqli_fetch_array($resrubros)) {
         };
     };
 
-    echo 'rubro '.$rubro;
-    echo 'subrubro '.$subrubro;
+    // echo 'rubro '.$rubro;
+    // echo 'subrubro '.$subrubro;
 
     mysqli_close($link);
 

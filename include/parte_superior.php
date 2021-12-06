@@ -75,7 +75,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones de Ingresos</h6>
                         <!-- <a class="collapse-item" href="clientes-ctacte.php">Clientes Cta. Cte.</a> -->
-                        <a class="collapse-item" href="panel-venta-fiado.php">Ventas cta cte</a>
+                        <a class="collapse-item" href="panel-venta-fiado.php">Facturar Venta Fiado</a>
                     </div>
                 </div>
             </li>
@@ -89,7 +89,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones de Salidas</h6>
                         <a class="collapse-item" href="gastos.php">Compras y Gastos</a>
-                        <a class="collapse-item" href="proveedores-ctacte.php">Proveedores Cta. Cte.</a>
+                        <!-- <a class="collapse-item" href="proveedores-ctacte.php">Proveedores Cta. Cte.</a> -->
                     </div>
                 </div>
             </li>
@@ -102,8 +102,8 @@
                 <div id="collapseTree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones de Cajas</h6>
-                        <a class="collapse-item" href="gastos.php">Cajas</a>
-                        <a class="collapse-item" href="proveedores-ctacte.php">Movimientos</a>
+                        <!-- <a class="collapse-item" href="gastos.php">Cajas</a> -->
+                        <a class="collapse-item" href="#">Movimientos Entre Cajas</a>
                     </div>
                 </div>
             </li>

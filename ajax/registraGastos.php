@@ -31,7 +31,7 @@ $idgto=mysqli_insert_id($link);//obtengo el id de ventas
 $imp=(-1 * $importe);
 $sqlcaja=" INSERT INTO `cajas`(`fecha`, `tabla`, `nro_com`, `nro_item`, `descripcion`, `caja_rub`, `caja_sub`, `importe`, `usuario`)
 VALUES ('".$fecha."','gastos',$idgto,0,'".$descripcion."',$rubro,$subrubro,$imp,$usuario)";   
-die($sqlcaja);  
+//die($sqlcaja);  
 $rescaja=mysqli_query($link, $sqlcaja);    
 
 //die($sql);

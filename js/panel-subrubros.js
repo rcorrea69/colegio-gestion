@@ -39,11 +39,12 @@ $(document).ready(function () {
     $("#formRubros").submit(function (e) {
         e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
         var nombre = $.trim($("#nombre").val());
+        var rubro= parseInt($('#rubros').val()) ;
         var mensaje = "";
             if (id == 1) {
-                mensaje = "Se dió de alta un Nuevo Rubro";
+                mensaje = "Se dió de alta un Nuevo Sububro";
             } else {
-                mensaje = "Se actualizó Correctamente el Rubro";
+                mensaje = "Se actualizó Correctamente el subrubro";
             }
             if (nombre == null || nombre.length == 0 || /^\s+$/.test(nombre)) {
                 //alert('El dni esta vacio desde aca');
@@ -55,12 +56,27 @@ $(document).ready(function () {
                   //footer: '<a href>Why do I have this issue?</a>'
                 });
                 return false;
-            }
+            };
+
+            if(rubro==0){
+                $("#rubros").focus();
+                Swal.fire({
+                icon: "warning",
+                title: "Atención...",
+                text: "Debe Seleccionar un Rubro ",
+                  //footer: '<a href>Why do I have this issue?</a>'
+                });
+                return false;
+
+            };
+
+
+
         $.ajax({
         url: "./ajax/abmSubrubros.php",
         type: "POST",
         datatype: "json",
-        data: { nombre: nombre, opcion: opcion, id: id },
+        data: { nombre: nombre, opcion: opcion, id: id,rubro:rubro },
         success: function (data) {
             tablaSubrubros.ajax.reload(null, false);
             Swal.fire({
@@ -130,4 +146,15 @@ $(document).ready(function () {
         }
         });
     });
+    cboRubros();
+
+    function cboRubros() {
+        $.ajax({
+          type: "POST",
+          url: "./ajax/cboRubros.php",
+          success: function (response) {
+            $("#rubros").html(response);
+          },
+        });
+      }
 });

@@ -103,7 +103,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones de Cajas</h6>
                         <!-- <a class="collapse-item" href="gastos.php">Cajas</a> -->
-                        <a class="collapse-item" href="#">Movimientos Entre Cajas</a>
+                        <a class="collapse-item" href="cajas-movimientos.php">Movimientos Entre Cajas</a>
                     </div>
                 </div>
             </li>
@@ -150,7 +150,7 @@
                         <a class="collapse-item" href="panel-subrubros.php">Subrubros</a>
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Personas:</h6>
-                        <a class="collapse-item" href="#">Clientes y Proveedores</a>
+                        <a class="collapse-item" href="panel-personas.php">Clientes </a>
                         <a class="collapse-item" href="#">Usuarios</a>
                     </div>
                 </div>

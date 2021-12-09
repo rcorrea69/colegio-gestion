@@ -49,12 +49,15 @@
             <form id="formRubros">
                 <div class="modal-body">
                     <div class="form-row">
-                        <!-- <div class="form-group col-2">
-                            <label for="rubro" class="col-form-label">Rubros:</label>
-                            <input type="text" class="form-control" id="rubro">
-                        </div> -->
+                        
                         <div class="form-group col-12">
-                            <label for="nombre" class="col-form-label">Descripción de Rubro:</label>
+                        <label for="rubros" class="col-form-label">Rubros</label>
+                            <select class="form-control" id="rubros" name="rubros">
+                            </select>
+                        </div>
+                       
+                        <div class="form-group col-12">
+                            <label for="nombre" class="col-form-label">Nombre de Subrubro y su Caja:</label>
                             <input type="text" class="form-control" id="nombre">
                         </div>
                     </div>

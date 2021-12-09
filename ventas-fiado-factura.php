@@ -37,7 +37,7 @@ $idFiado=$_GET['fiado'];
                                 <input type="date" name="fecha" id="fecha" class="form-control col-12 bg-gradient-light" value="<?php echo formato_fecha_Y_mm_dd(hoy()); ?>">
                             </div>
                         </div>
-                        <input type="text" id="idfiado" name="idfiado" value="<?php echo $idFiado; ?>">
+                        <input type="hidden" id="idfiado" name="idfiado" value="<?php echo $idFiado; ?>" >
                     </form>
                 </div>
             </div>

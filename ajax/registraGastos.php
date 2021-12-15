@@ -43,4 +43,4 @@ $rescaja=mysqli_query($link, $sqlcaja);
 //         $ejectutoctacte=mysqli_query($link, $sqlctacte);     
 //         //die($sqlctacte);   
 // }
-echo $idvta;
+echo $idgto;

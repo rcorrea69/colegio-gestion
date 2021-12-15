@@ -40,6 +40,7 @@ $(document).ready(function () {
         e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
         var nombre = $.trim($("#nombre").val());
         var rubro= parseInt($('#rubros').val()) ;
+        var saldoI = parseFloat($('#importe').val()) ;
         var mensaje = "";
             if (id == 1) {
                 mensaje = "Se dió de alta un Nuevo Sububro";
@@ -76,7 +77,7 @@ $(document).ready(function () {
         url: "./ajax/abmSubrubros.php",
         type: "POST",
         datatype: "json",
-        data: { nombre: nombre, opcion: opcion, id: id,rubro:rubro },
+        data: { nombre: nombre, opcion: opcion, id: id,rubro:rubro,saldoI:saldoI },
         success: function (data) {
             tablaSubrubros.ajax.reload(null, false);
             Swal.fire({

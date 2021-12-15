@@ -49,17 +49,29 @@
             <form id="formRubros">
                 <div class="modal-body">
                     <div class="form-row">
-                        
+
                         <div class="form-group col-12">
-                        <label for="rubros" class="col-form-label">Rubros</label>
+                            <label for="rubros" class="col-form-label">Rubros</label>
                             <select class="form-control" id="rubros" name="rubros">
                             </select>
                         </div>
-                       
+
                         <div class="form-group col-12">
                             <label for="nombre" class="col-form-label">Nombre de Subrubro y su Caja:</label>
                             <input type="text" class="form-control" id="nombre">
                         </div>
+                        <div class="form-group col-12 ">
+                            <label for="importe" class="col-form-label">Saldo Inicial de Caja</label>
+                            <div class="input-group col-12 px-0">
+                                <!-- <label for="importe" class="col-form-label">Nombre de Subrubro y su Caja:</label> -->
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="importe"><i class="fas fa-dollar-sign"></i></label>
+                                </div>
+                                <input type="text" id="importe" name="importe" value="0" class="form-control">
+                            </div>
+                        </div>
+
+
                     </div>
 
                 </div>

@@ -1,27 +1,30 @@
 <?php
+require_once("../include/validar_session.php");
 include_once '../db/conexion.php';
+require_once("../include/funciones.php");
+
 
 
 $nombre = (isset($_POST['nombre'])) ? $_POST['nombre'] : '';
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 $rubro = (isset($_POST['rubro'])) ? $_POST['rubro'] : '';
+$saldoInicial = (isset($_POST['saldoI'])) ? $_POST['saldoI'] : '';
+$fecha = formato_fecha_Y_mm_dd(hoy());
+$usuario=$_SESSION['id_usuario'];
+
+
 
 
 switch($opcion){
     case 1:
         $consulta="INSERT INTO subrubros (sub_nombre,id_rubro) VALUES('".$nombre."',$rubro)";
         $resultado= mysqli_query($link,$consulta);
+        $idcaja = mysqli_insert_id($link); 
         
-        $consulta="SELECT * FROM subrubros";
-        $resultado= mysqli_query($link,$consulta);
-        $data=array();
-        while ($row=mysqli_fetch_array($resultado)) {
-                    $data[]=array(
-                        'id_subrubro'=> $row['id_subrubro'],
-                        'sub_nombre'=> $row['sub_nombre']
-                    );    
-        };
+        $sqlcaja=" INSERT INTO `cajas`(`fecha`, `tabla`, `nro_com`, `nro_item`, `descripcion`, `caja_rub`, `caja_sub`, `importe`, `usuario`)
+        VALUES ('".$fecha."','sInicial',0,0,'Saldo Inicial',$rubro,$idcaja,$saldoInicial,$usuario)";   
+        $rescaja=mysqli_query($link, $sqlcaja); 
 
         break;    
     case 2:        

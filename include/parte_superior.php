@@ -151,7 +151,7 @@
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Personas:</h6>
                         <a class="collapse-item" href="panel-personas.php">Clientes </a>
-                        <a class="collapse-item" href="#">Usuarios</a>
+                        <!-- <a class="collapse-item" href="#">Usuarios</a> -->
                     </div>
                 </div>
             </li>

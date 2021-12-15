@@ -1,21 +1,21 @@
 $(document).ready(function () {
-    $("#rubros").hide();
+    // $("#rubros").hide();
 
     $("#grabar").click(function (e) {
         e.preventDefault();
         var fecha = $("#fecha").val();
         var descripcion = $("#descripcion").val();
         var importe = parseFloat($("#importe").val());
-        var subrubro = 0;
-        var rubro = 0;
+        var subrubro = parseInt($("#subrubro").val());
+        var rubro = rubro = parseInt($("#rubro").val());
         var tipogasto=0;
 
-        if ($("#Grubros").is(':checked')) {
-            subrubro = parseInt($("#subrubro").val());
-            rubro = parseInt($("#rubro").val());
-            tipogasto=1;
+        // if ($("#Grubros").is(':checked')) {
+        //     subrubro = parseInt($("#subrubro").val());
+        //     rubro = parseInt($("#rubro").val());
+        //     tipogasto=1;
 
-        };
+        // };
         if (descripcion == null || descripcion.length == 0 || /^\s+$/.test(descripcion)) {
             //alert('El dni esta vacio desde aca');
             $("#descripcion").focus();
@@ -37,31 +37,53 @@ $(document).ready(function () {
             });
             return false;
           };
-        if(tipogasto===1 && rubro==0  ){
+        // if(tipogasto===1 && rubro==0  ){
+        //     $("#rubro").focus();
+        //     Swal.fire({
+        //         icon: "warning",
+        //         title: "Atención...",
+        //         text: "El Gasto que intenta ingresar es por Rubros, Debe Seleccionar un Rubro",
+        //       });
+        //       return false;
+        // };
+        // if(tipogasto===1 && subrubro==0  ){
+        //     $("#subrubro").focus();
+
+        //     Swal.fire({
+        //         icon: "warning",
+        //         title: "Atención...",
+        //         text: "El Gasto que intenta ingresar es por Rubros, Debe Seleccionar un Subrubro",
+        //       });
+        //       return false;
+        // };
+
+        if(rubro==0  ){
             $("#rubro").focus();
+
             Swal.fire({
                 icon: "warning",
                 title: "Atención...",
-                text: "El Gasto que intenta ingresar es por Rubros, Debe Seleccionar un Rubro",
+                text: "Debe Seleccionar un Rubro",
               });
               return false;
         };
-        if(tipogasto===1 && subrubro==0  ){
+
+        if(subrubro==0  ){
             $("#subrubro").focus();
 
             Swal.fire({
                 icon: "warning",
                 title: "Atención...",
-                text: "El Gasto que intenta ingresar es por Rubros, Debe Seleccionar un Subrubro",
+                text: "Debe Seleccionar una Caja Valida",
               });
               return false;
         };
 
-        console.log(fecha);
-        console.log('Rubro : ' + rubro);
-        console.log('subRubro : ' + subrubro);
-        console.log('Descripcion : ' + descripcion);
-        console.log('Importe : ' + importe);
+        // console.log(fecha);
+        // console.log('Rubro : ' + rubro);
+        // console.log('subRubro : ' + subrubro);
+        // console.log('Descripcion : ' + descripcion);
+        // console.log('Importe : ' + importe);
 
 
 
@@ -77,7 +99,7 @@ $(document).ready(function () {
                     title: "Correcto...",
                     text: "Se Registro correctamente "+response,
                     });
-                    //setTimeout(function() { location.reload(); }, 2000);    
+                    setTimeout(function() { location.reload(); }, 2000);    
             },
         });
 
@@ -130,19 +152,19 @@ $(document).ready(function () {
 
     cboProveedores();
 
-    $("#Grubros").click(function (e) {
-        $("#rubros").show();
-        // if ($("#Grubros").is(':checked')) {
-        //     alert("Está activado");
-        // } else {
-        //     alert("No está activado");
-        // }
+    // $("#Grubros").click(function (e) {
+    //     $("#rubros").show();
+    //     // if ($("#Grubros").is(':checked')) {
+    //     //     alert("Está activado");
+    //     // } else {
+    //     //     alert("No está activado");
+    //     // }
 
 
-    });
-    $("#GGenerales").click(function (e) {
-        $("#rubros").hide();
+    // });
+    // $("#GGenerales").click(function (e) {
+    //     $("#rubros").hide();
 
-    });
+    // });
 
 });

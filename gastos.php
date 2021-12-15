@@ -30,7 +30,7 @@
                                 <select class="form-control"  name="proveedor" id="proveedor" tabindex="0">
                                 </select>
                             </div> -->
-                            <div class="form-group col-12 d-inline" style="display:inline-block;">
+                            <!-- <div class="form-group col-12 d-inline" style="display:inline-block;">
                                 <div class="custom-control custom-radio custom-control-inline mt-2">
                                     <input type="radio" id="GGenerales" name="radiogastos" class="custom-control-input" value="1" checked>
                                     <label class="custom-control-label" for="GGenerales">Gastos Generales</label>
@@ -39,7 +39,7 @@
                                     <input type="radio" id="Grubros" name="radiogastos" class="custom-control-input" value="2">
                                     <label class="custom-control-label" for="Grubros">Gastos Por Rubros</label>
                                 </div>
-                            </div>
+                            </div> -->
                             <div id="rubros" class="row col-12">
                                 <div class="form-group col-6">
                                     <label for="rubro" class="text-info">Rubros</label>
@@ -47,7 +47,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-6">
-                                    <label for="subrubro" class="text-info">Subrubro</label>
+                                    <label for="subrubro" class="text-info">Caja</label>
                                     <select class="form-control" name="subrubro" id="subrubro" tabindex="0">
                                     </select>
                                 </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-12-2021 a las 13:53:57
+-- Tiempo de generación: 15-12-2021 a las 13:36:24
 -- Versión del servidor: 10.4.18-MariaDB
 -- Versión de PHP: 7.3.27
 
@@ -181,7 +181,14 @@ INSERT INTO `cajas` (`id_mov`, `fecha`, `tabla`, `nro_com`, `nro_item`, `descrip
 (72, '2021-12-07', 'cajas_mov', 0, 0, 'Movimiento entre Cajas', 1, 3, 0.00, 2),
 (73, '2021-12-07', 'cajas_mov', 6, 0, 'Movimiento entre Cajas', 2, 4, -99.50, 2),
 (74, '2021-12-07', 'cajas_mov', 6, 0, 'Movimiento entre Cajas', 1, 1, 99.50, 2),
-(75, '2021-12-07', 'ventas', 77, 115, 'DULCE DE ZAPALLO 1/2 KG', 1, 1, 200.00, 2);
+(75, '2021-12-07', 'ventas', 77, 115, 'DULCE DE ZAPALLO 1/2 KG', 1, 1, 200.00, 2),
+(76, '2021-12-10', 'cajas_mov', 7, 0, 'Movimiento entre Cajas', 1, 1, -99.53, 2),
+(77, '2021-12-10', 'cajas_mov', 7, 0, 'Movimiento entre Cajas', 1, 2, 99.53, 2),
+(78, '2021-12-13', 'ventas', 78, 116, 'DULCE DE LECHE 1/2 KG Peña', 1, 1, 250.89, 2),
+(79, '2021-12-14', 'sInicial', 0, 0, 'Saldo Inicial', 1, 15, 300.00, 2),
+(80, '2021-12-15', 'gastos', 28, 0, 'este es mi primer gasto', 1, 1, -1000.99, 2),
+(81, '2021-12-15', 'gastos', 29, 0, 'segundo gasto', 1, 1, -124.23, 2),
+(82, '2021-12-15', 'ventas', 79, 117, 'DULCE DE ZAPALLO 800 G', 1, 1, 300.00, 2);
 
 -- --------------------------------------------------------
 
@@ -208,7 +215,8 @@ INSERT INTO `cajas_mov` (`id_mov`, `fecha`, `caja_envia`, `caja_recibe`, `import
 (3, '2021-12-07', 10, 13, 700.00, 2),
 (4, '2021-12-07', 10, 13, 300.00, 2),
 (5, '2021-12-07', 1, 2, 900.00, 2),
-(6, '2021-12-07', 4, 1, 99.50, 2);
+(6, '2021-12-07', 4, 1, 99.50, 2),
+(7, '2021-12-10', 1, 2, 99.53, 2);
 
 -- --------------------------------------------------------
 
@@ -321,7 +329,9 @@ INSERT INTO `gastos` (`id_gasto`, `tipo_gasto`, `id_proveedor`, `ga_fecha`, `ga_
 (24, 1, 0, '2021-11-29', 'Metros de Membrana autoadhesiva', 400.88, 1, 2, 2),
 (25, 0, 0, '2021-11-29', 'Cuota mensual', 450.00, 0, 0, 2),
 (26, 1, 0, '2021-11-29', 'Cuota mensual', 333.44, 1, 2, 2),
-(27, 1, 0, '2021-11-29', 'no se', 222.00, 1, 1, 2);
+(27, 1, 0, '2021-11-29', 'no se', 222.00, 1, 1, 2),
+(28, 0, 0, '2021-12-15', 'este es mi primer gasto', 1000.99, 1, 1, 2),
+(29, 0, 0, '2021-12-15', 'segundo gasto', 124.23, 1, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -499,7 +509,8 @@ INSERT INTO `subrubros` (`id_subrubro`, `sub_nombre`, `id_rubro`) VALUES
 (11, 'HUERTA', 3),
 (12, 'VIVERO CITRUS', 3),
 (13, 'VIVERO ORNAMENTAL', 3),
-(14, 'mi nuevo subrubro y caja', 3);
+(14, 'mi nuevo subrubro y caja', 3),
+(15, 'Primer CAJA', 1);
 
 -- --------------------------------------------------------
 
@@ -625,7 +636,9 @@ INSERT INTO `ventas` (`id_venta`, `vta_cliente`, `vta_fecha`, `vta_importe`, `id
 (74, 0, '2021-12-06', 200.00, 2, 0),
 (75, 0, '2021-12-06', 250.89, 2, 0),
 (76, 0, '2021-12-06', 300.00, 2, 0),
-(77, 3, '2021-12-07', 200.00, 2, 0);
+(77, 3, '2021-12-07', 200.00, 2, 0),
+(78, 1, '2021-12-13', 250.89, 2, 0),
+(79, 2, '2021-12-15', 300.00, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -761,7 +774,9 @@ INSERT INTO `ventas_detalles` (`id_detalle`, `id_venta`, `art_codigo`, `art_deta
 (112, 74, 3, 'DULCE DE ZAPALLO 1/2 KG', 1.00, 200.00),
 (113, 75, 1, 'DULCE DE LECHE 1/2 KG Peña', 1.00, 250.89),
 (114, 76, 2, 'DULCE DE ZAPALLO 800 G', 1.00, 300.00),
-(115, 77, 3, 'DULCE DE ZAPALLO 1/2 KG', 1.00, 200.00);
+(115, 77, 3, 'DULCE DE ZAPALLO 1/2 KG', 1.00, 200.00),
+(116, 78, 1, 'DULCE DE LECHE 1/2 KG Peña', 1.00, 250.89),
+(117, 79, 2, 'DULCE DE ZAPALLO 800 G', 1.00, 300.00);
 
 -- --------------------------------------------------------
 
@@ -792,7 +807,9 @@ INSERT INTO `ventas_detalles_fiado` (`id_detalle`, `id_venta`, `art_codigo`, `ar
 (7, 4, 3, 'DULCE DE ZAPALLO 1/2 KG', 1.00, 200.00),
 (8, 5, 1, 'DULCE DE LECHE 1/2 KG Peña', 1.00, 250.89),
 (9, 6, 2, 'DULCE DE ZAPALLO 800 G', 1.00, 300.00),
-(10, 7, 3, 'DULCE DE ZAPALLO 1/2 KG', 1.00, 200.00);
+(10, 7, 3, 'DULCE DE ZAPALLO 1/2 KG', 1.00, 200.00),
+(11, 8, 1, 'DULCE DE LECHE 1/2 KG Peña', 1.00, 250.89),
+(12, 8, 3, 'DULCE DE ZAPALLO 1/2 KG', 1.00, 200.00);
 
 -- --------------------------------------------------------
 
@@ -820,9 +837,10 @@ INSERT INTO `ventas_fiado` (`id_venta`, `vta_cliente`, `vta_fecha`, `vta_importe
 (2, 3, '2021-12-02', 400.00, 2, 1, '2021-12-05', 73),
 (3, 3, '2021-12-04', 25700.00, 2, 1, '2021-12-04', 70),
 (4, 1, '2021-12-04', 200.00, 2, 1, '2021-12-04', 72),
-(5, 1, '2021-12-06', 250.89, 2, 1, NULL, 0),
-(6, 2, '2021-12-06', 300.00, 2, 1, NULL, 0),
-(7, 3, '2021-12-06', 200.00, 2, 1, '2021-12-07', 77);
+(5, 1, '2021-12-06', 250.89, 2, 1, '2021-12-13', 78),
+(6, 2, '2021-12-06', 300.00, 2, 1, '2021-12-15', 79),
+(7, 3, '2021-12-06', 200.00, 2, 1, '2021-12-07', 77),
+(8, 3, '2021-12-15', 450.89, 2, 1, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -891,7 +909,7 @@ CREATE TABLE `vista_ventasxrubros` (
 --
 DROP TABLE IF EXISTS `vista_clientectacte`;
 
-CREATE VIEW `vista_clientectacte`  AS SELECT `cta`.`id_cliente` AS `id_cliente`, `per`.`pe_apellido` AS `pe_apellido`, `per`.`pe_nombre` AS `pe_nombre`, `per`.`pe_telefono` AS `pe_telefono`, sum(if(`cta`.`ctacteDH` = 'D',`cta`.`ctacte_importe`,0)) AS `Debe`, sum(if(`cta`.`ctacteDH` = 'H',`cta`.`ctacte_importe`,0)) AS `Haber` FROM (`clientes_ctacte` `cta` join `personas` `per` on(`cta`.`id_cliente` = `per`.`id_persona`)) GROUP BY `cta`.`id_cliente` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_clientectacte`  AS SELECT `cta`.`id_cliente` AS `id_cliente`, `per`.`pe_apellido` AS `pe_apellido`, `per`.`pe_nombre` AS `pe_nombre`, `per`.`pe_telefono` AS `pe_telefono`, sum(if(`cta`.`ctacteDH` = 'D',`cta`.`ctacte_importe`,0)) AS `Debe`, sum(if(`cta`.`ctacteDH` = 'H',`cta`.`ctacte_importe`,0)) AS `Haber` FROM (`clientes_ctacte` `cta` join `personas` `per` on(`cta`.`id_cliente` = `per`.`id_persona`)) GROUP BY `cta`.`id_cliente` ;
 
 -- --------------------------------------------------------
 
@@ -900,7 +918,7 @@ CREATE VIEW `vista_clientectacte`  AS SELECT `cta`.`id_cliente` AS `id_cliente`,
 --
 DROP TABLE IF EXISTS `vista_saldos`;
 
-CREATE VIEW `vista_saldos`  AS SELECT `sub`.`id_rubro` AS `rubro`, `sub`.`id_subrubro` AS `caja`, `sub`.`sub_nombre` AS `sub_nombre`, (select sum(`ca`.`importe`) AS `saldo` from `cajas` `ca` where `ca`.`caja_sub` = `sub`.`id_subrubro`) AS `saldo` FROM `subrubros` AS `sub` WHERE 1 ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_saldos`  AS SELECT `sub`.`id_rubro` AS `rubro`, `sub`.`id_subrubro` AS `caja`, `sub`.`sub_nombre` AS `sub_nombre`, (select sum(`ca`.`importe`) AS `saldo` from `cajas` `ca` where `ca`.`caja_sub` = `sub`.`id_subrubro`) AS `saldo` FROM `subrubros` AS `sub` WHERE 1 ;
 
 -- --------------------------------------------------------
 
@@ -909,7 +927,7 @@ CREATE VIEW `vista_saldos`  AS SELECT `sub`.`id_rubro` AS `rubro`, `sub`.`id_sub
 --
 DROP TABLE IF EXISTS `vista_ventasdetalle`;
 
-CREATE VIEW `vista_ventasdetalle`  AS SELECT `de`.`id_venta` AS `id_venta`, `de`.`art_codigo` AS `art_codigo`, `de`.`art_detalle` AS `art_detalle`, `de`.`art_cantidad` AS `art_cantidad`, `de`.`importe` AS `importe`, `de`.`art_cantidad`* `de`.`importe` AS `subtotal`, `ve`.`vta_fecha` AS `vta_fecha`, `art`.`art_rubro` AS `art_rubro`, `art`.`art_subrubro` AS `art_subrubro` FROM ((`ventas_detalles` `de` left join `articulos` `art` on(`de`.`art_codigo` = `art`.`id_articulo`)) left join `ventas` `ve` on(`de`.`id_venta` = `ve`.`id_venta`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_ventasdetalle`  AS SELECT `de`.`id_venta` AS `id_venta`, `de`.`art_codigo` AS `art_codigo`, `de`.`art_detalle` AS `art_detalle`, `de`.`art_cantidad` AS `art_cantidad`, `de`.`importe` AS `importe`, `de`.`art_cantidad`* `de`.`importe` AS `subtotal`, `ve`.`vta_fecha` AS `vta_fecha`, `art`.`art_rubro` AS `art_rubro`, `art`.`art_subrubro` AS `art_subrubro` FROM ((`ventas_detalles` `de` left join `articulos` `art` on(`de`.`art_codigo` = `art`.`id_articulo`)) left join `ventas` `ve` on(`de`.`id_venta` = `ve`.`id_venta`)) ;
 
 -- --------------------------------------------------------
 
@@ -918,7 +936,7 @@ CREATE VIEW `vista_ventasdetalle`  AS SELECT `de`.`id_venta` AS `id_venta`, `de`
 --
 DROP TABLE IF EXISTS `vista_ventasxrubros`;
 
-CREATE  VIEW `vista_ventasxrubros`  AS SELECT `ve`.`art_rubro` AS `art_rubro`, `ve`.`art_subrubro` AS `art_subrubro`, `ve`.`vta_fecha` AS `vta_fecha`, `ru`.`ru_nombre` AS `ru_nombre`, sum(`ve`.`subtotal`) AS `subtotal` FROM (`vista_ventasdetalle` `ve` join `rubros` `ru` on(`ve`.`art_rubro` = `ru`.`id_rubro`)) GROUP BY `ve`.`art_rubro`, `ve`.`vta_fecha`, `ve`.`art_subrubro` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vista_ventasxrubros`  AS SELECT `ve`.`art_rubro` AS `art_rubro`, `ve`.`art_subrubro` AS `art_subrubro`, `ve`.`vta_fecha` AS `vta_fecha`, `ru`.`ru_nombre` AS `ru_nombre`, sum(`ve`.`subtotal`) AS `subtotal` FROM (`vista_ventasdetalle` `ve` join `rubros` `ru` on(`ve`.`art_rubro` = `ru`.`id_rubro`)) GROUP BY `ve`.`art_rubro`, `ve`.`vta_fecha`, `ve`.`art_subrubro` ;
 
 --
 -- Índices para tablas volcadas
@@ -1034,13 +1052,13 @@ ALTER TABLE `articulos`
 -- AUTO_INCREMENT de la tabla `cajas`
 --
 ALTER TABLE `cajas`
-  MODIFY `id_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT de la tabla `cajas_mov`
 --
 ALTER TABLE `cajas_mov`
-  MODIFY `id_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_mov` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes_ctacte`
@@ -1052,7 +1070,7 @@ ALTER TABLE `clientes_ctacte`
 -- AUTO_INCREMENT de la tabla `gastos`
 --
 ALTER TABLE `gastos`
-  MODIFY `id_gasto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_gasto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `personas`
@@ -1088,7 +1106,7 @@ ALTER TABLE `rubros`
 -- AUTO_INCREMENT de la tabla `subrubros`
 --
 ALTER TABLE `subrubros`
-  MODIFY `id_subrubro` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_subrubro` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -1100,25 +1118,25 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas_detalles`
 --
 ALTER TABLE `ventas_detalles`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas_detalles_fiado`
 --
 ALTER TABLE `ventas_detalles_fiado`
-  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas_fiado`
 --
 ALTER TABLE `ventas_fiado`
-  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_venta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

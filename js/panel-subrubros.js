@@ -12,6 +12,8 @@ $(document).ready(function () {
         columns: [
         { data: "id_subrubro" },
         { data: "sub_nombre" },
+        { data: "si" },
+        { data: "fecha" },
         {
             defaultContent:
             "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='far fa-edit '></i></button></div></div>",
@@ -104,20 +106,22 @@ $(document).ready(function () {
     });
 
     //Editar
-    // $(document).on("click", ".btnEditar", function () {
-    //     opcion = 2; //editar
-    //     fila = $(this).closest("tr");
-    //     id = parseInt(fila.find("td:eq(0)").text()); //capturo el ID
-    //     nombre = fila.find("td:eq(1)").text();
+    $(document).on("click", ".btnEditar", function () {
+        opcion = 2; //editar
+        fila = $(this).closest("tr");
+        id = parseInt(fila.find("td:eq(0)").text()); //capturo el ID
+        nombre = fila.find("td:eq(1)").text();
+        saldoInicial = fila.find("td:eq(2)").text();
+        fecha = fila.find("td:eq(3)").text();
 
-    //     $("#nombre").val(nombre);
+        $("#nombre").val(nombre);
+       
 
-
-    //     $(".modal-header").css("background-color", "#007bff");
-    //     $(".modal-header").css("color", "white");
-    //     $(".modal-title").text("Editar Rubro");
-    //     $("#modalCRUD").modal("show");
-    // });
+        $(".modal-header").css("background-color", "#007bff");
+        $(".modal-header").css("color", "white");
+        $(".modal-title").text("Editar Rubro");
+        $("#modalCRUD").modal("show");
+    });
 
     //Borrar
     // $(document).on("click", ".btnBorrar", function () {

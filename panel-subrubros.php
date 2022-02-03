@@ -24,6 +24,8 @@
                                 <tr>
                                     <th>Código</th>
                                     <th>Nombre</th>
+                                    <th>Saldo Inicial</th>
+                                    <th>Fecha </th>
                                     <th>Acción</th>
                                 </tr>
                             </thead>

@@ -32,7 +32,7 @@
                             </div>
 
 
-                            <div class="form-group col-3 bg-">
+                            <div class="form-group col-3 ">
 
                                 <!-- <label for="fecha" class="text-info">Fecha</label> -->
                                 

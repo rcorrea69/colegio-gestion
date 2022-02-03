@@ -30,17 +30,22 @@
                         <select class="form-control" name="subrubro" id="subrubro" tabindex="0">
                         </select>
                     </div> -->
+                    <div class="form-group col-md-3 ">
+                        <label for="caja" class="text-info">Caja</label>
+                        <select class="form-control" name="caja" id="caja" >
+                        </select>
+                    </div>
 
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-3">
                         <label for="desde" class="text-info">Desde</label>
                         <input type="date" id="desde" name="desde" class="form-control" value="<?php echo formato_fecha_Y_mm_dd(hoy()); ?>">
                     </div>
 
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-3">
                         <label for="hasta" class="text-info">Hasta</label>
                         <input type="date" id="hasta" name="hasta" class="form-control" value="<?php echo formato_fecha_Y_mm_dd(hoy()); ?>">
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-3">
                         <br>
                         <button class="btn btn-primary col-12 mt-2" id="consultar" name="consultar">Consultar</button>
                     </div>

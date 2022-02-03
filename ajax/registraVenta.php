@@ -9,6 +9,10 @@ $detalle = json_decode($_POST['detalle'], true);
 $vtaimporte = $_POST['total'];
 $tipoventa = $_POST['tipoventa'];
 $usuario = $_SESSION['id_usuario'];
+$caja=1;//Caja Principal. las vtas son solo en efectivo
+
+$data=array();
+
 
 if($tipoventa == 0){
 
@@ -45,12 +49,13 @@ if($tipoventa == 0){
 
 
 
-                $sqlcaja = " INSERT INTO `cajas`(`fecha`, `tabla`, `nro_com`, `nro_item`, `descripcion`, `caja_rub`, `caja_sub`, `importe`, `usuario`)
-                VALUES ('" . $fecha . "','ventas',$idvta,$iditem,'" . $descripciond . "',$cajaRubro,$cajaSubrubro,$total,$usuario)";
+                $sqlcaja = " INSERT INTO `cajas`(`id_caja`,`fecha`, `tabla`, `nro_com`, `nro_item`, `descripcion`, `caja_rub`, `caja_sub`, `importe`, `usuario`)
+                VALUES ($caja,'" . $fecha . "','ventas',$idvta,$iditem,'" . $descripciond . "',$cajaRubro,$cajaSubrubro,$total,$usuario)";
                 //die($sqlcaja);  
                 $rescaja = mysqli_query($link, $sqlcaja);
         }
-        echo "Contado ".$idvta;
+        //echo "Contado ".$idvta;
+        $data=['Venta'=>'Contado','facturaNro'=>$idvta];
 /////////////////////////pregunto si la venta es cta cte y la registtro en clientes_ctacte/////////////////////
 } else{
                         ////////grabo la linea de ventas y capturo el id insertado///////////////////////////
@@ -88,7 +93,8 @@ foreach ($detalle as $key => $val) {
         //die($sqlcaja);  
         //$rescaja = mysqli_query($link, $sqlcaja);
 }
-echo "Fiado ".$idvta;
+//echo "Fiado ".$idvta;
+$data=['Venta'=>'Fiado','facturaNro'=>$idvta];
 }  
 // if ($tipoventa == 1) {
 //         $sqlctacte = "INSERT INTO `clientes_ctacte`(`id_cliente`, `ctacteDH`, `factura_recibo`, `ctacte_importe`,`ctacte_fecha`) 
@@ -97,3 +103,4 @@ echo "Fiado ".$idvta;
 // }
 
 //echo $idvta;
+echo json_encode($data);

@@ -26,11 +26,16 @@
 
 
                             </div>
-                            <!-- <div class="form-group col-6 ">
-                                <select class="form-control"  name="proveedor" id="proveedor" tabindex="0">
+                            <div class="form-group col-6 ">
+                                <select class="form-control" name="proveedor" id="proveedor" tabindex="0">
                                 </select>
-                            </div> -->
-                            <!-- <div class="form-group col-12 d-inline" style="display:inline-block;">
+                            </div>
+                            <div class="form-group col-6 ">
+                                <select class="form-control" name="caja" id="caja" >
+                                </select>
+                            </div>
+
+                            <div class="form-group col-12 d-inline" style="display:inline-block;">
                                 <div class="custom-control custom-radio custom-control-inline mt-2">
                                     <input type="radio" id="GGenerales" name="radiogastos" class="custom-control-input" value="1" checked>
                                     <label class="custom-control-label" for="GGenerales">Gastos Generales</label>
@@ -39,15 +44,15 @@
                                     <input type="radio" id="Grubros" name="radiogastos" class="custom-control-input" value="2">
                                     <label class="custom-control-label" for="Grubros">Gastos Por Rubros</label>
                                 </div>
-                            </div> -->
+                            </div>
                             <div id="rubros" class="row col-12">
                                 <div class="form-group col-6">
-                                    <label for="rubro" class="text-info">Rubros</label>
+                                    <label for="rubro" class="text-info">Rubro</label>
                                     <select class="form-control" name="rubro" id="rubro" tabindex="0">
                                     </select>
                                 </div>
                                 <div class="form-group col-6">
-                                    <label for="subrubro" class="text-info">Caja</label>
+                                    <label for="subrubro" class="text-info">Subrubro</label>
                                     <select class="form-control" name="subrubro" id="subrubro" tabindex="0">
                                     </select>
                                 </div>

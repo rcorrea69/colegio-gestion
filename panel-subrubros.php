@@ -1,6 +1,7 @@
 <?php require_once("include/parte_superior.php"); ?>
 <!-- Inicio del contenido Principal -->
 <?php require_once('db/conexion.php'); ?>
+<?php require_once("include/funciones.php"); ?>
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
@@ -57,11 +58,20 @@
                         </div>
 
                         <div class="form-group col-12">
-                            <label for="nombre" class="col-form-label">Nombre de Subrubro y su Caja:</label>
+                            <label for="nombre" class="col-form-label">Subrubro:</label>
                             <input type="text" class="form-control" id="nombre">
                         </div>
-                        <div class="form-group col-12 ">
-                            <label for="importe" class="col-form-label">Saldo Inicial de Caja</label>
+                        <div class="form-group col-12">
+                            <h5 style="text-align: center;" class="mb-0" ><p class="text-primary">Datos del Saldo Inicial del Subrubro</p></h5>
+                        </div>
+
+                        <div class="form-group col-6 ">
+                            <label for="fecha" class="col-form-label">Fecha</label> 
+                            <input type="date" name="fecha" id="fecha" class="form-control col-12 bg-gradient-light" value="<?php echo formato_fecha_Y_mm_dd(hoy()); ?>">
+                        </div>
+                        
+                        <div class="form-group col-6 ">
+                            <label for="importe" class="col-form-label">Saldo Inicial de Subrubro</label>
                             <div class="input-group col-12 px-0">
                                 <!-- <label for="importe" class="col-form-label">Nombre de Subrubro y su Caja:</label> -->
                                 <div class="input-group-prepend">

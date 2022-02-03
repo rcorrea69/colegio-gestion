@@ -11,12 +11,9 @@ $(document).ready(function () {
       dataSrc: "",
     },
     columns: [
-      { data: "rubro" },
+      { data: "id_caja" },
       { data: "nombre" },
-      { data: "caja" },
-      { data: "sub_nombre" },
-      { data: "importe" },
-
+      { data: "saldo" },
       {
         defaultContent:
           "<div class='text-center'><div class='btn-group'><button class='btn btn-success btn-sm btnEditar'><i class='fas fa-exchange-alt' title='Movimiento de Caja'></i></button></div></div>",
@@ -39,14 +36,8 @@ $(document).ready(function () {
     },
   });
 
-  //Editar
-  // $(document).on("click", ".btnEditar", function () {
-  //     opcion = 2; //editar
-  //     fila = $(this).closest("tr");
-  //     id = parseInt(fila.find("td:eq(0)").text()); //capturo el ID
-  //     nombre = fila.find("td:eq(1)").text();
-  //     window.location = "ventas-fiado-factura.php?fiado=" + id;
-  // });
+  
+  
   $("#formCajasMov").submit(function (e) {
     e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
     var cajadesde = parseInt($("#idcaja").val());
@@ -121,21 +112,17 @@ $(document).ready(function () {
   $(document).on("click", ".btnEditar", function () {
     opcion = 2; //editar
     fila = $(this).closest("tr");
-    id = parseInt(fila.find("td:eq(2)").text()); //capturo el ID
-    nombre = fila.find("td:eq(3)").text();
-    saldo = fila.find("td:eq(4)").text();
+    id = parseInt(fila.find("td:eq(0)").text()); //capturo el ID
+    nombre = fila.find("td:eq(1)").text();
+    saldo = fila.find("td:eq(2)").text();
 
-    // console.log(id);
-    // console.log(nombre);
-    // console.log(parseFloat(saldo) + 100);
 
-    // console.log(saldo);
 
     $("#idcaja").val(id);
     $("#nombre").val(nombre);
     $("#saldo").val(saldo);
-    // $("#rubro").val(rubro);
-    // $("#subrubro").val(subrubro);
+    
+
 
     $(".modal-header").css("background-color", "#007bff");
     $(".modal-header").css("color", "white");
@@ -146,10 +133,12 @@ $(document).ready(function () {
   function cboSaldosCajas() {
     $.ajax({
       type: "POST",
-      url: "./ajax/cboSaldosCajas.php",
+      url: "./ajax/cboCajas.php",
       success: function (response) {
         $("#cajas").html(response);
       },
     });
   }
+
+
 });

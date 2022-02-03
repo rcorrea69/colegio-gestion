@@ -10,7 +10,7 @@ $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 $rubro = (isset($_POST['rubro'])) ? $_POST['rubro'] : '';
 $saldoInicial = (isset($_POST['saldoI'])) ? $_POST['saldoI'] : '';
-$fecha = formato_fecha_Y_mm_dd(hoy());
+$fecha = $_POST['fecha'];
 $usuario=$_SESSION['id_usuario'];
 
 
@@ -18,7 +18,9 @@ $usuario=$_SESSION['id_usuario'];
 
 switch($opcion){
     case 1:
-        $consulta="INSERT INTO subrubros (sub_nombre,id_rubro) VALUES('".$nombre."',$rubro)";
+        $consulta="INSERT INTO subrubros (sub_nombre,id_rubro, `sub_saldoInicial`, `sub_fecha`)
+        VALUES('".$nombre."',$rubro,$saldoInicial,'".$fecha."')";
+        die ($consulta);
         $resultado= mysqli_query($link,$consulta);
         $idcaja = mysqli_insert_id($link); 
         

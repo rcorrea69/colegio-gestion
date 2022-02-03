@@ -24,44 +24,44 @@ switch($opcion){
         };
 
         break;    
-    case 2:        
+    // case 2:        
         
-        $consulta = "UPDATE subrubros SET sub_nombre='".$nombre."' WHERE id_subrubro=$id ";		
-        $resultado= mysqli_query($link,$consulta);
-        $consulta = "SELECT * FROM subrubros WHERE id_subrubro=$id ";    
-        $resultado= mysqli_query($link,$consulta);
-        $data=array();
-        while ($row=mysqli_fetch_array($res_cli)) {
-                    $data[]=array(
-                        'id_subrubro'=> $row['id_subrubro'],
-                        'sub_nombre'=> $row['sub_nombre']
-                    );    
-        };
-        break;
+    //     $consulta = "UPDATE subrubros SET sub_nombre='".$nombre."' WHERE id_subrubro=$id ";		
+    //     $resultado= mysqli_query($link,$consulta);
+    //     $consulta = "SELECT * FROM subrubros WHERE id_subrubro=$id ";    
+    //     $resultado= mysqli_query($link,$consulta);
+    //     $data=array();
+    //     while ($row=mysqli_fetch_array($res_cli)) {
+    //                 $data[]=array(
+    //                     'id_subrubro'=> $row['id_subrubro'],
+    //                     'sub_nombre'=> $row['sub_nombre']
+    //                 );    
+    //     };
+    //     break;
     case 3:  /// borro logicamente el articulos      
         // $consulta = "DELETE FROM oficinas WHERE id_oficina=$id";	
         // $resultado= mysqli_query($link,$consulta);	
         // break;
     case 4: ///selecciono todos los Rubros
     
-        $consulta = "SELECT ru.ru_nombre,vs.rubro,vs.caja,vs.sub_nombre,vs.saldo 
-        FROM vista_saldos vs
-        LEFT JOIN rubros ru
-        ON vs.rubro = ru.id_rubro";   
+        // $consulta = "SELECT ru.ru_nombre,vs.rubro,vs.caja,vs.sub_nombre,vs.saldo 
+        // FROM vista_saldos vs
+        // LEFT JOIN rubros ru
+        // ON vs.rubro = ru.id_rubro";
+        $consulta="SELECT caja.id_caja,caja.nombre,caja.saldo_inicial,(SELECT SUM(cajas.importe)
+                FROM cajas   WHERE caja.id_caja=cajas.id_caja)as total 
+                FROM `caja`";
 
         $res_art = mysqli_query($link, $consulta);
 
-           
+
         
         $data=array();
             while ($row=mysqli_fetch_array($res_art)) {
                         $data[]=array(
-                            'rubro'=> $row['rubro'],
-                            'nombre'=> $row['ru_nombre'],
-                            'caja'=> $row['caja'],
-                            'sub_nombre'=> $row['sub_nombre'],
-                            'importe'=>  number_format($row['saldo'], 2, ',', '.')
-                       
+                            'id_caja'=> $row['id_caja'],
+                            'nombre'=> $row['nombre'],
+                            'saldo'=> $row['saldo_inicial'] + $row['total']
 
                         );    
             };

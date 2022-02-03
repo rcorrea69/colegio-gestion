@@ -6,6 +6,8 @@ require_once("../include/funciones.php");
 $fecha = $_POST['fecha'];
 $idfiado = $_POST['idfiado'];
 $usuario = $_SESSION['id_usuario'];
+$caja=1;//Caja Principal. las vtas son solo en efectivo
+$data=array();
 
 ////////////////copio ventas fiado a Ventas////////////////////////////////
 
@@ -19,6 +21,7 @@ $sql = "INSERT INTO `ventas`(`vta_cliente`, `vta_fecha`, `vta_importe`, `id_usua
         VALUES ($clientef,'" . $fecha . "',$importef,$usuario,0)";
 $res = mysqli_query($link, $sql);
 $idvta = mysqli_insert_id($link); //obtengo el id de ventas  
+$data=['Venta'=>'Contado','facturaNro'=>$idvta];
 
 //////////////////////////copio detalles de vtas fiado a vtas/////////////////////////////////
 
@@ -45,8 +48,8 @@ $resfd=mysqli_query($link,$sqlVtafd);
         $cajaRubro = $rowart["art_rubro"];
         $cajaSubrubro = $rowart["art_subrubro"];
 
-        $sqlcaja = " INSERT INTO `cajas`(`fecha`, `tabla`, `nro_com`, `nro_item`, `descripcion`, `caja_rub`, `caja_sub`, `importe`, `usuario`)
-        VALUES ('" . $fecha . "','ventas',$idvta,$iditem,'" . $descripciond . "',$cajaRubro,$cajaSubrubro,$total,$usuario)";
+        $sqlcaja = " INSERT INTO `cajas`(`id_caja`,`fecha`, `tabla`, `nro_com`, `nro_item`, `descripcion`, `caja_rub`, `caja_sub`, `importe`, `usuario`)
+        VALUES ($caja,'" . $fecha . "','ventas',$idvta,$iditem,'" . $descripciond . "',$cajaRubro,$cajaSubrubro,$total,$usuario)";
         //die($sqlcaja);  
         $rescaja = mysqli_query($link, $sqlcaja);
 
@@ -57,6 +60,6 @@ $sqlA="UPDATE `ventas_fiado` SET `factura_fecha`='".$fecha."',`factura_nro`=$idv
 $resA=mysqli_query($link,$sqlA);
 
 
-echo "Factura ".$idvta;
-
+//echo "Factura ".$idvta;
+echo json_encode($data);
 mysqli_close($link);

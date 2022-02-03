@@ -3,15 +3,16 @@
 //print_r($_POST);
 $desde = $_POST["desde"];
 $hasta = $_POST["hasta"];
-
+$caja = $_POST["caja"];
 
 
 require_once "../db/conexion.php";
 require_once "../include/funciones.php";
 
-$saldo = SaldoTotal ($desde);
+$saldo = SaldoTotal ($desde,$caja) + SaldoInicial($caja);
+$nombreCaja= cajaNombre($caja);
 ?>
-<h4 class="mt-3" style="text-align: center;">Cajas Diaria desde <?php echo formato_fecha_dd_mm_Y($desde); ?> hasta <?php echo formato_fecha_dd_mm_Y($hasta); ?> </h4>
+<h4 class="mt-3" style="text-align: center;">Caja : <?php echo $nombreCaja.' '. formato_fecha_dd_mm_Y($desde); ?> hasta <?php echo formato_fecha_dd_mm_Y($hasta); ?> </h4>
 <?php
 
    ?>
@@ -46,9 +47,9 @@ $saldo = SaldoTotal ($desde);
 
 
 $sqldetalle = "SELECT * FROM cajas 
-        WHERE fecha >= '" . $desde . "' AND `fecha` <= '" . $hasta . "'";
+                WHERE fecha >= '" . $desde . "' AND fecha <= '" . $hasta . "' AND id_caja=$caja";
 
-//echo $sqldetalle;
+echo $sqldetalle;
 $resdetalle = mysqli_query($link, $sqldetalle);
 $row_cnt = mysqli_num_rows($resdetalle);
 

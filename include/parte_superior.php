@@ -103,7 +103,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Opciones de Cajas</h6>
                         <!-- <a class="collapse-item" href="gastos.php">Cajas</a> -->
-                        <a class="collapse-item" href="cajas-movimientos.php">Movimientos Entre Cajas</a>
+                        <!-- <a class="collapse-item" href="cajas-movimientos.php">Movimientos Entre Cajas</a> -->
+                        <a class="collapse-item" href="cajas-mov.php">Movimientos Entre Cajas</a>
                     </div>
                 </div>
             </li>

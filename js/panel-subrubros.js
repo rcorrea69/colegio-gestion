@@ -41,6 +41,7 @@ $(document).ready(function () {
         var nombre = $.trim($("#nombre").val());
         var rubro= parseInt($('#rubros').val()) ;
         var saldoI = parseFloat($('#importe').val()) ;
+        var fecha = $("#fecha").val();
         var mensaje = "";
             if (id == 1) {
                 mensaje = "Se dió de alta un Nuevo Sububro";
@@ -77,7 +78,7 @@ $(document).ready(function () {
         url: "./ajax/abmSubrubros.php",
         type: "POST",
         datatype: "json",
-        data: { nombre: nombre, opcion: opcion, id: id,rubro:rubro,saldoI:saldoI },
+        data: { nombre: nombre, opcion: opcion, id: id,rubro:rubro,saldoI:saldoI,fecha:fecha },
         success: function (data) {
             tablaSubrubros.ajax.reload(null, false);
             Swal.fire({
@@ -103,50 +104,50 @@ $(document).ready(function () {
     });
 
     //Editar
-    $(document).on("click", ".btnEditar", function () {
-        opcion = 2; //editar
-        fila = $(this).closest("tr");
-        id = parseInt(fila.find("td:eq(0)").text()); //capturo el ID
-        nombre = fila.find("td:eq(1)").text();
+    // $(document).on("click", ".btnEditar", function () {
+    //     opcion = 2; //editar
+    //     fila = $(this).closest("tr");
+    //     id = parseInt(fila.find("td:eq(0)").text()); //capturo el ID
+    //     nombre = fila.find("td:eq(1)").text();
 
-        $("#nombre").val(nombre);
+    //     $("#nombre").val(nombre);
 
 
-        $(".modal-header").css("background-color", "#007bff");
-        $(".modal-header").css("color", "white");
-        $(".modal-title").text("Editar Rubro");
-        $("#modalCRUD").modal("show");
-    });
+    //     $(".modal-header").css("background-color", "#007bff");
+    //     $(".modal-header").css("color", "white");
+    //     $(".modal-title").text("Editar Rubro");
+    //     $("#modalCRUD").modal("show");
+    // });
 
     //Borrar
-    $(document).on("click", ".btnBorrar", function () {
-        fila = $(this);
-        id = parseInt($(this).closest("tr").find("td:eq(0)").text());
-        opcion = 3; //eliminar
+    // $(document).on("click", ".btnBorrar", function () {
+    //     fila = $(this);
+    //     id = parseInt($(this).closest("tr").find("td:eq(0)").text());
+    //     opcion = 3; //eliminar
 
-        Swal.fire({
-        icon: "question",
-        title: "Está seguro que desea Eliminar el registro " + id + " ?",
-        showCancelButton: true,
-        confirmButtonText: `Eliminar`,
-        }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
+    //     Swal.fire({
+    //     icon: "question",
+    //     title: "Está seguro que desea Eliminar el registro " + id + " ?",
+    //     showCancelButton: true,
+    //     confirmButtonText: `Eliminar`,
+    //     }).then((result) => {
+    //     /* Read more about isConfirmed, isDenied below */
 
-        if (result.isConfirmed) {
-            $.ajax({
-            url: "./ajax/AbmOficinas.php",
-            type: "POST",
-            datatype: "json",
+    //     if (result.isConfirmed) {
+    //         $.ajax({
+    //         url: "./ajax/AbmOficinas.php",
+    //         type: "POST",
+    //         datatype: "json",
 
-            data: { opcion: opcion, id: id },
-            success: function () {
-                tablaOficinas.row(fila.parents("tr")).remove().draw();
-            },
-            });
-            Swal.fire("Registro Borrado!", "", "success");
-        }
-        });
-    });
+    //         data: { opcion: opcion, id: id },
+    //         success: function () {
+    //             tablaOficinas.row(fila.parents("tr")).remove().draw();
+    //         },
+    //         });
+    //         Swal.fire("Registro Borrado!", "", "success");
+    //     }
+    //     });
+    // });
     cboRubros();
 
     function cboRubros() {

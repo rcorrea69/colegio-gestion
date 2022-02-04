@@ -23,6 +23,8 @@
                             <thead class="text-center thead-dark ">
                                 <tr>
                                     <th>Código</th>
+                                    <th>Rubro</th>
+                                    <th>Rubro Nombre</th>
                                     <th>Nombre</th>
                                     <th>Saldo Inicial</th>
                                     <th>Fecha </th>
@@ -59,10 +61,11 @@
                             </select>
                         </div>
 
-                        <div class="form-group col-12">
-                            <label for="nombre" class="col-form-label">Subrubro:</label>
+                        <div class="form-group col-12" id="alta">
+                            <label for="nombre" class="col-form-label">Nombre de Subrubro:</label>
                             <input type="text" class="form-control" id="nombre">
                         </div>
+                        
                         <div class="form-group col-12">
                             <h5 style="text-align: center;" class="mb-0" ><p class="text-primary">Datos del Saldo Inicial del Subrubro</p></h5>
                         </div>

@@ -44,7 +44,7 @@ switch($opcion){
         $resultado= mysqli_query($link,$consulta);	
         break;
     case 4:
-        $consulta="SELECT art.id_articulo,art.art_nombre,art.art_precio,ru.ru_nombre,sub.sub_nombre
+        $consulta="SELECT art.id_articulo,art.art_nombre,art.art_precio,ru.id_rubro,ru.ru_nombre,id_subrubro,sub.sub_nombre
         FROM articulos art
         LEFT JOIN rubros ru ON ru.id_rubro=art.art_rubro
         LEFT JOIN subrubros sub ON sub.id_subrubro=art.art_subrubro
@@ -58,7 +58,9 @@ switch($opcion){
                             'id_articulo'=> $row['id_articulo'],
                             'art_nombre'=> $row['art_nombre'],
                             'art_precio'=> $row['art_precio'],
+                            'id_rubro'=> $row['id_rubro'],
                             'ru_nombre'=> $row['ru_nombre'],
+                            'id_subrubro'=> $row['id_subrubro'],
                             'sub_nombre'=> $row['sub_nombre']
                         );    
             };

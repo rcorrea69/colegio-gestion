@@ -13,7 +13,9 @@ $(document).ready(function () {
         { data: "id_articulo" },
         { data: "art_nombre" },
         { data: "art_precio" },
+        { data: "id_rubro" },
         { data: "ru_nombre" },
+        { data: "id_subrubro" },
         { data: "sub_nombre" },
         {
             defaultContent:

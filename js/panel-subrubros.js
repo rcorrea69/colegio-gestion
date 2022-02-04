@@ -11,6 +11,8 @@ $(document).ready(function () {
         },
         columns: [
         { data: "id_subrubro" },
+        { data: "id_rubro" },
+        { data: "ru_nombre" },
         { data: "sub_nombre" },
         { data: "si" },
         { data: "fecha" },
@@ -110,12 +112,17 @@ $(document).ready(function () {
         opcion = 2; //editar
         fila = $(this).closest("tr");
         id = parseInt(fila.find("td:eq(0)").text()); //capturo el ID
-        nombre = fila.find("td:eq(1)").text();
-        saldoInicial = fila.find("td:eq(2)").text();
-        fecha = fila.find("td:eq(3)").text();
+        id_rubro = parseInt(fila.find("td:eq(1)").text());
+        nombre = fila.find("td:eq(3)").text();
+        saldoInicial = fila.find("td:eq(4)").text();
+        fecha = fila.find("td:eq(5)").text();
+        
 
         $("#nombre").val(nombre);
-       
+        $("#rubros").val(id_rubro);
+        $("#fecha").val(fecha);
+        $("#importe").val(saldoInicial);
+
 
         $(".modal-header").css("background-color", "#007bff");
         $(".modal-header").css("color", "white");
@@ -162,5 +169,17 @@ $(document).ready(function () {
             $("#rubros").html(response);
           },
         });
-      }
+      };
+
+      cbosubrubros();
+
+      function cbosubrubros() {
+        $.ajax({
+          type: "POST",
+          url: "./ajax/cboSrubros.php",
+          success: function (response) {
+            $("#subrubros").html(response);
+          },
+        });
+      };
 });

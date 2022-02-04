@@ -24,7 +24,9 @@
                                     <th>Código</th>
                                     <th>Nombre</th>
                                     <th>Precio</th>
+                                    <th>Id R </th>
                                     <th>Rubro</th>
+                                    <th>Id S</th>
                                     <th>Subrubro</th>
                                     <th>Acción</th>
                                 </tr>

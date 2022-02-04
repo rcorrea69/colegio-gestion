@@ -43,20 +43,22 @@ $(document).ready(function () {
     //submit para el Alta y Actualización
     $("#formArticulos").submit(function (e) {
         e.preventDefault(); //evita el comportambiento normal del submit, es decir, recarga total de la página
-        var articulo = $.trim($("#articulo").val());
+        // var articulo = $.trim($("#articulo").val());
         var nombre = $.trim($("#nombre").val());
-        var rubro= $.trim($("rubro").val());
-        var subrubro = $.trim($("#subrubro").val());
-        var precio = $.trim($("#precio").val());
+        var rubro= parseInt($("rubro").val()) ;
+        var subrubro = parseInt($("#subrubro").val()) ;
+        var precio = parseFloat($.trim($("#precio").val())) ;
 
-        console.log(articulo);
-        console.log(opcion);
-        console.log(id);
+        console.log('nombre '+nombre);    
+        console.log('rubro '+rubro);
+        console.log('subrubro '+subrubro); 
+        console.log('precio '+precio);
+        console.log('opcion '+opcion);  
         $.ajax({
         url: "./ajax/AbmArticulos.php",
         type: "POST",
         datatype: "json",
-        data: { articulo: articulo, opcion: opcion },
+        data: { nombre : nombre, rubro : rubro, subrubro : subrubro, precio : precio, opcion: opcion },
         success: function (data) {
             tablaArticulos.ajax.reload(null, false);
             Swal.fire({
@@ -149,7 +151,7 @@ $(document).ready(function () {
 
     function cboSubrubros(rubro){
         var ru = rubro;
-        console.log(ru);
+       
         $.ajax({
             type: "POST",
             url: "./ajax/cboSubrubros.php",
@@ -164,7 +166,7 @@ $(document).ready(function () {
     $('#rubro').change(function (e) { 
         e.preventDefault();
         var rubro = $('#rubro').val();
-        console.log(rubro);
+        
         cboSubrubros(rubro);
         
     });

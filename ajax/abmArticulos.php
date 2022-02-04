@@ -4,24 +4,32 @@ include_once '../db/conexion.php';
 
 
 $opcion = (isset($_POST['opcion'])) ? $_POST['opcion'] : '';
+$nombre = (isset($_POST['nombre'])) ? $_POST['nombre'] : '';
+$rubro = (isset($_POST['rubro'])) ? $_POST['rubro'] : '';
+$subrubro = (isset($_POST['subrubro'])) ? $_POST['subrubro'] : '';
+$precio = (isset($_POST['precio'])) ? $_POST['precio'] : '';
 $id = (isset($_POST['id'])) ? $_POST['id'] : '';
 
 
 switch($opcion){
     case 1:
         
-        $consulta="INSERT INTO oficinas (ofi_nombre) VALUES('".$oficina."')";
+        // $consulta="INSERT INTO oficinas (ofi_nombre) VALUES('".$oficina."')";
+        $consulta="INSERT INTO `articulos`( `art_nombre`, `art_precio`, `art_rubro`, `art_subrubro`, `art_activo`) 
+                    VALUES ('".$nombre."',$precio,$rubro,$subrubro,1)";
+        //             die($consulta);
+        // echo $consulta;
         $resultado= mysqli_query($link,$consulta);
         
-        $consulta="SELECT * FROM oficinas";
-        $resultado= mysqli_query($link,$consulta);
-        $data=array();
-        while ($row=mysqli_fetch_array($resultado)) {
-                    $data[]=array(
-                        'id_oficina'=> $row['id_oficina'],
-                        'ofi_nombre'=> $row['ofi_nombre']
-                    );    
-        };
+        // $consulta="SELECT * FROM oficinas";
+        // $resultado= mysqli_query($link,$consulta);
+        // $data=array();
+        // while ($row=mysqli_fetch_array($resultado)) {
+        //             $data[]=array(
+        //                 'id_oficina'=> $row['id_oficina'],
+        //                 'ofi_nombre'=> $row['ofi_nombre']
+        //             );    
+        // };
 
         break;    
     case 2:        

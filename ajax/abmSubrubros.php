@@ -50,7 +50,7 @@ switch($opcion){
         // $resultado= mysqli_query($link,$consulta);	
         // break;
     case 4: ///selecciono todos los Rubros
-        $consulta="SELECT id_subrubro, sub_nombre ,sub_saldoInicial,sub_fecha  FROM subrubros";    
+        // $consulta="SELECT id_subrubro, sub_nombre ,sub_saldoInicial,sub_fecha  FROM subrubros";    
         $consulta="SELECT subrubros.id_subrubro,subrubros.sub_nombre,subrubros.sub_saldoInicial,subrubros.sub_fecha,rubros.id_rubro,rubros.ru_nombre  FROM subrubros
                     LEFT JOIN rubros
                     ON subrubros.id_rubro=rubros.id_rubro";

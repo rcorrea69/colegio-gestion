@@ -1,12 +1,21 @@
 $(document).ready(function () {
 
+    function cboCaja() {
+        $.ajax({
+        type: "POST",
+        url: "./ajax/cboCaja.php",
+        success: function (response) {
+            $("#caja").html(response);
+        },
+        });
+    };
+    cboCaja();
+
     $('#consultar').click(function(e) {
         e.preventDefault();
         var desde = $('#desde').val();
         var hasta = $('#hasta').val();
-        // $('#loader').html('<img src="img/ajax-loader.gif"> Cargando...')
-        var rubro = parseInt($('#rubro').val());
-        var subrubro = parseInt($('#subrubro').val());
+        var caja =  parseInt($('#caja').val());
 
 
         $.ajax({
@@ -15,6 +24,7 @@ $(document).ready(function () {
             data: {
                 desde: desde,
                 hasta: hasta,
+                caja : caja
 
             },
             beforeSend: function(objeto) {

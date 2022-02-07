@@ -49,7 +49,7 @@ $nombreCaja= cajaNombre($caja);
 $sqldetalle = "SELECT * FROM cajas 
                 WHERE fecha >= '" . $desde . "' AND fecha <= '" . $hasta . "' AND id_caja=$caja";
 
-echo $sqldetalle;
+//echo $sqldetalle;
 $resdetalle = mysqli_query($link, $sqldetalle);
 $row_cnt = mysqli_num_rows($resdetalle);
 

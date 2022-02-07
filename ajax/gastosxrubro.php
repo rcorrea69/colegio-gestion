@@ -3,7 +3,7 @@
 //print_r($_POST);
 $desde = $_POST["desde"];
 $hasta = $_POST["hasta"];
-
+$caja = $_POST["caja"];
 
 
 require_once "../db/conexion.php";
@@ -28,7 +28,7 @@ while ($rowr = mysqli_fetch_array($resrubros)) {
 
         $sqlsum = "SELECT SUM(`ga_importe`) AS importe
             FROM gastos
-            WHERE `ga_fecha` >= '" . $desde . "' AND `ga_fecha` <= '" . $hasta . "' AND `ga_rubro`=$rub AND `ga_subrubro`=$sub";
+            WHERE `ga_fecha` >= '" . $desde . "' AND `ga_fecha` <= '" . $hasta . "' AND `ga_rubro`=$rub AND `ga_subrubro`=$sub  AND id_caja=$caja";
         //echo $sqlsum;
         $resimporte = mysqli_query($link, $sqlsum);
         while ($rowimpo = mysqli_fetch_array($resimporte)) {
@@ -80,7 +80,7 @@ while ($rowr = mysqli_fetch_array($resrubros)) {
 ///////////////Gastos Generales////////////////////////////////////////
 $sqlsumg = "SELECT SUM(`ga_importe`) AS importe
 FROM gastos
-WHERE `ga_fecha` >= '" . $desde . "' AND `ga_fecha` <= '" . $hasta . "' AND `ga_rubro`=0 AND `ga_subrubro`=0";
+WHERE `ga_fecha` >= '" . $desde . "' AND `ga_fecha` <= '" . $hasta . "' AND `ga_rubro`=0 AND `ga_subrubro`=0  AND id_caja=$caja" ;
 //echo $sqlsum;
 $resimporteg = mysqli_query($link, $sqlsumg);
 $rowimpog = mysqli_fetch_array($resimporteg);

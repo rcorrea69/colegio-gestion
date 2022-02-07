@@ -1,5 +1,6 @@
 <?php
 include_once '../db/conexion.php';
+require_once'../include/funciones.php';
 
 
 
@@ -55,23 +56,27 @@ switch($opcion){
         $resultado= mysqli_query($link,$consulta);	
         break;
     case 4:
-        $consulta="SELECT art.id_articulo,art.art_nombre,art.art_precio,ru.id_rubro,ru.ru_nombre,id_subrubro,sub.sub_nombre
-        FROM articulos art
-        LEFT JOIN rubros ru ON ru.id_rubro=art.art_rubro
-        LEFT JOIN subrubros sub ON sub.id_subrubro=art.art_subrubro
-        WHERE art.art_activo=1 
-        ORDER BY art.id_articulo";    
+
         
+        $consulta="SELECT ga.id_gasto,ga.id_caja,ca.nombre, ga.tipo_gasto,ga.ga_fecha,ga.ga_descripcion, ga.ga_importe,ga.ga_rubro, ru.ru_nombre,ga.ga_subrubro,sub.sub_nombre 
+        FROM gastos ga
+        LEFT JOIN caja ca ON ga.id_caja=ca.id_caja
+        LEFT JOIN rubros ru ON ga.ga_rubro=ru.id_rubro
+        LEFT JOIN subrubros sub ON ga.ga_subrubro=sub.id_subrubro
+        ORDER BY ga.id_gasto";
+
+
         $res_art = mysqli_query($link, $consulta);
         $data=array();
             while ($row=mysqli_fetch_array($res_art)) {
                         $data[]=array(
-                            'id_articulo'=> $row['id_articulo'],
-                            'art_nombre'=> $row['art_nombre'],
-                            'art_precio'=> $row['art_precio'],
-                            'id_rubro'=> $row['id_rubro'],
+                            'id_gasto'=> $row['id_gasto'],
+                            'nombre'=> $row['nombre'],
+                            'ga_fecha'=> formato_fecha_dd_mm_Y($row['ga_fecha']) ,
+                            'ga_descripcion'=> $row['ga_descripcion'],
+                            'ga_importe'=> $row['ga_importe'],
+                            // 'tipo_gasto'=> $row['tipo_gasto'],
                             'ru_nombre'=> $row['ru_nombre'],
-                            'id_subrubro'=> $row['id_subrubro'],
                             'sub_nombre'=> $row['sub_nombre']
                         );    
             };

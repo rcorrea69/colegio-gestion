@@ -66,7 +66,7 @@ while ($rowr = mysqli_fetch_array($resrubros)) {
         while ($row = mysqli_fetch_array($resdetalle)) {
             if ($row_cnt > 0) {
                 if ($bandera) {
-                    $saldo=SaldoAnterior($caja,$desde);
+                    $saldo=SaldoAnterior($caja,$desde)+SaldoInicialSubrubro($caja);
 ?>
 
 

@@ -2,26 +2,27 @@ $(document).ready(function () {
   var id, opcion;
   opcion = 4;
 
-    tablaArticulos = $("#tablaArticulos").DataTable({
+  tablaGastos = $("#tablaGastos").DataTable({
         ajax: {
-        url: "./ajax/abmArticulos.php",
+        url: "./ajax/abmComprasGastos.php",
         method: "POST", //usamos el metodo POST
         data: { opcion: opcion }, //enviamos opcion 4 para que haga un SELECT
         dataSrc: "",
         },
         columns: [
-        { data: "id_articulo" },
-        { data: "art_nombre" },
-        { data: "art_precio" },
-        { data: "id_rubro" },
+        { data: "id_gasto" },
+        { data: "nombre" },
+        { data: "ga_fecha" },
+        { data: "ga_descripcion" },
+        { data: "ga_importe" },
+        // { data: "tipo_gasto" },
         { data: "ru_nombre" },
-        { data: "id_subrubro" },
         { data: "sub_nombre" },
-        {
-            defaultContent:
-            //"<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='far fa-edit '></i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='far fa-trash-alt '></i></button></div></div>",
-            "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='far fa-edit '></i></div></div>",
-        },
+        // {
+        //     defaultContent:
+        //     //"<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='far fa-edit '></i></button><button class='btn btn-danger btn-sm btnBorrar'><i class='far fa-trash-alt '></i></button></div></div>",
+        //     "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btn-sm btnEditar'><i class='far fa-edit '></i></div></div>",
+        // },
         ],
         language: {
         lengthMenu: "Mostrar _MENU_ registros",

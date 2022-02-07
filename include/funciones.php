@@ -60,6 +60,16 @@ function SaldoTotal($desde, $caja)
     return $SaldoTotal;
 };
 
+function SaldoInicialSubrubro($caja)
+{
+
+    global $link;
+    $sqlsaldoInicial = "SELECT sub_saldoInicial FROM subrubros WHERE id_subrubro=$caja";
+    $resSaldo = mysqli_query($link, $sqlsaldoInicial);
+    $rowsal = mysqli_fetch_assoc($resSaldo);
+    $SaldoInicial = $rowsal["sub_saldoInicial"];
+    return $SaldoInicial;
+};
 function SaldoInicial($caja)
 {
 

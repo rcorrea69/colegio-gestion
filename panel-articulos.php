@@ -85,7 +85,9 @@
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="precio"><i class="fas fa-dollar-sign"></i></label>
                         </div>
-                        <input type="number" id="precio" name="precio" class="form-control">
+                        <!-- <input type="text" id="precio" name="precio" class="form-control"> -->
+                        <input type="text"  pattern="^[0-9]{0,12}([.][0-9]{2,2})?$" class="form-control" id="precio" name="precio" value="@Model.Precio" required />
+
                     </div>
 
                 </div>

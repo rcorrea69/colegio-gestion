@@ -190,35 +190,46 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">        
-                <a class="nav-link" href="consulta-ventasxrubro.php">
+                <a class="nav-link" href="consulta-cajadiaria.php">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Ventas x Rubro</span></a>
+                    <span>Caja Diaria</span></a>
             </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="consulta-gastosxrubro.php">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Compras y Gastos</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="consulta-cajasxrubro.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Cajas por Rubros</span></a>
-            </li> -->
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCajas" aria-expanded="true" aria-controls="collapseIngresos">
                     <i class="fas fa-money-check-alt"></i>
-                    <span>Cajas</span>
+                    <span>Resultados </span>
                 </a>
                 <div id="collapseCajas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Consulta por Cajas</h6>
-                        <a class="collapse-item" href="consulta-cajadiaria.php">Caja Diaria</a>
-                        <a class="collapse-item" href="consulta-cajasxrubro.php">Cajas por Rubros</a>
-                        <a class="collapse-item" href="panel-cajas-saldos.php">Saldos de Cajas </a>
+                        <h6 class="collapse-header">Resultados</h6>
+                        <!-- <a class="collapse-item" href="consulta-cajadiaria.php">Caja Diaria</a> -->
+                        <a class="collapse-item" href="panel-cajas-saldos.php">Cuadro de Resultados </a>
+                        <a class="collapse-item" href="consulta-cajasxrubro.php">Movimientos por Rubros</a>
+                        <a class="collapse-item" href="consulta-ventasxrubro.php">Ventas x Rubros</a>
+                    </div>
+                </div>
+            </li>    
+
+
+
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="consulta-gastosxrubro.php">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Compras y Gastos</span></a>
+            </li> -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGastos" aria-expanded="true" aria-controls="collapseIngresos">
+                    <i class="fas fa-money-check-alt"></i>
+                    <span>Compras y Gastos</span>
+                </a>
+                <div id="collapseGastos" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Compras y Gastos</h6>
+                        <a class="collapse-item" href="consulta-gastosxrubro.php">X Rubros</a>
+                        <a class="collapse-item" href="panel-compras-gastos.php">Compras y Gastos</a>
+                        <!-- <a class="collapse-item" href="panel-cajas-saldos.php">Saldos de Cajas </a> -->
                     </div>
                 </div>
             </li>

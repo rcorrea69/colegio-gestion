@@ -9,7 +9,7 @@
             <h4>Reportes</h4>
         </div> -->
         <div class="card-body">
-            <h5 class="card-title">Consulta de Cajas Por Rubros<div class="float-right">
+            <h5 class="card-title">Consulta de Movimientos Por Rubros<div class="float-right">
                     <h4><strong><?php echo hoy(); ?></strong></h4>
                 </div>
                 <br>
@@ -26,7 +26,7 @@
                         <small class="text-muted ml-3" style="font-size: 70%;"  >Si no elige rubro se mostrarán todos</small>
                     </div>
                     <div class="form-group col-6">
-                        <label for="subrubro" class="text-info">Cajas</label>
+                        <label for="subrubro" class="text-info">Subrubros</label>
                         <select class="form-control" name="subrubro" id="subrubro" tabindex="0">
                         </select>
                     </div>

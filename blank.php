@@ -44,7 +44,7 @@ $TotalCaja=$regt['saldo'];
 ?>
 <div class="container">
 
-    <h4 style="text-align: center;" class="m-4">CAJAS</h4>
+    <h4 style="text-align: center;" class="m-4">RESULTADOS PRODUCCIÓN</h4>
     <div class="row">
 
         <?php while ($reg = mysqli_fetch_array($rowR)) {
@@ -75,7 +75,7 @@ $TotalCaja=$regt['saldo'];
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                TOTAL CAJA
+                                TOTAL 
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo '$ ' . number_format($TotalCaja, 2, ',', '.'); ?></div>
                         </div>

@@ -14,7 +14,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <i class="fas fa-table"></i> Clientes
+                    <i class="fas fa-table"></i> Proveedores
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -77,7 +77,7 @@
             </div>
             <div class="modal-footer">
                 <div class="row d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary" id="guardar_datos">Confirmar Alta de Cliente</button>
+                    <button type="submit" class="btn btn-primary" id="guardar_datos">Confirmar Alta de Proveedor</button>
                 </div>
             </div>
 
@@ -91,4 +91,4 @@
 
 <?php require_once("include/parte_inferior.php"); ?>
 
-<script src="js/panel-personas.js"></script>
+<script src="js/panel-proveedores.js"></script>

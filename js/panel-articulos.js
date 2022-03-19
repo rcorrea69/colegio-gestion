@@ -205,4 +205,11 @@ $(document).ready(function () {
       },
     });
   }
+
+  $('#rubro').change(function (e) { 
+    e.preventDefault();
+    rubro=$('#rubro').val();
+    cboSubrubros(rubro);
+    
+  });
 });

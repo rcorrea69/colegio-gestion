@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     tablaPersonas = $("#tablaPersonas").DataTable({
         ajax: {
-        url: "./ajax/abmPersonas.php",
+        url: "./ajax/abmProveedores.php",
         method: "POST", //usamos el metodo POST
         data: { opcion: opcion }, //enviamos opcion 4 para que haga un SELECT
         dataSrc: "",
@@ -75,7 +75,7 @@ $(document).ready(function () {
         // console.log(opcion);
         // console.log(id);
         $.ajax({
-        url: "./ajax/AbmPersonas.php",
+        url: "./ajax/abmProveedores.php",
         type: "POST",
         datatype: "json",
         data: { apellido: apellido, nombre : nombre, domicilio :domicilio,telefono:telefono, opcion: opcion, id: id },
@@ -95,10 +95,10 @@ $(document).ready(function () {
     $("#btnNuevo").click(function () {
         opcion = 1; //alta
         id = null;
-        $("#formArticulos").trigger("reset");
+        $("#clientes").trigger("reset");
         $(".modal-header").css("background-color", "#17a2b8");
         $(".modal-header").css("color", "white");
-        $(".modal-title").text("Alta de Cliente");
+        $(".modal-title").text("Alta de Proveedores");
         $("#modalCRUD").modal("show");
     });
 
@@ -143,7 +143,7 @@ $(document).ready(function () {
 
         if (result.isConfirmed) {
             $.ajax({
-            url: "./ajax/AbmPersonas.php",
+            url: "./ajax/abmProveedores.php",
             type: "POST",
             datatype: "json",
             data: { opcion: opcion, id: id },

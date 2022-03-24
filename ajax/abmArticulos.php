@@ -20,16 +20,6 @@ switch($opcion){
         
         echo $consulta;
         $resultado= mysqli_query($link,$consulta);
-        //die($consulta);
-        // $consulta="SELECT * FROM oficinas";
-        // $resultado= mysqli_query($link,$consulta);
-        // $data=array();
-        // while ($row=mysqli_fetch_array($resultado)) {
-        //             $data[]=array(
-        //                 'id_oficina'=> $row['id_oficina'],
-        //                 'ofi_nombre'=> $row['ofi_nombre']
-        //             );    
-        // };
 
         break;    
     case 2:        
@@ -40,15 +30,6 @@ switch($opcion){
         
         $resultado= mysqli_query($link,$consulta);
         
-        // $consulta = "SELECT * FROM oficinas WHERE id_oficina=$id ";    
-        // $resultado= mysqli_query($link,$consulta);
-        $data=array();
-        // while ($row=mysqli_fetch_array($res_cli)) {
-        //             $data[]=array(
-        //                 'id_oficina'=> $row['id_oficina'],
-        //                 'ofi_nombre'=> $row['ofi_nombre']
-        //             );    
-        // };
         break;
     case 3:        
         $consulta = "DELETE FROM oficinas WHERE id_oficina=$id";	

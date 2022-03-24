@@ -120,7 +120,7 @@
                         </div> 
                         <div class="form-group col-12 mt-2"  id="cliente" >
                             <?php
-                            $sqlper = "SELECT * FROM personas";
+                            $sqlper = "SELECT * FROM personas WHERE activo=1";
                             $resper = mysqli_query($link, $sqlper);
                             // $cantidad=mysqli_num_rows($resOficinas);
                             ?>

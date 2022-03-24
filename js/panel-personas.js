@@ -75,7 +75,7 @@ $(document).ready(function () {
         // console.log(opcion);
         // console.log(id);
         $.ajax({
-        url: "./ajax/AbmPersonas.php",
+        url: "./ajax/abmPersonas.php",
         type: "POST",
         datatype: "json",
         data: { apellido: apellido, nombre : nombre, domicilio :domicilio,telefono:telefono, opcion: opcion, id: id },
@@ -143,7 +143,7 @@ $(document).ready(function () {
 
         if (result.isConfirmed) {
             $.ajax({
-            url: "./ajax/AbmPersonas.php",
+            url: "./ajax/abmPersonas.php",
             type: "POST",
             datatype: "json",
             data: { opcion: opcion, id: id },

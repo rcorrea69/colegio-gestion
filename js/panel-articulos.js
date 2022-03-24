@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     tablaArticulos = $("#tablaArticulos").DataTable({
         ajax: {
-        url: "./ajax/abmArticulos.php",
+        url: "ajax/abmArticulos.php",
         method: "POST", //usamos el metodo POST
         data: { opcion: opcion }, //enviamos opcion 4 para que haga un SELECT
         dataSrc: "",
@@ -90,7 +90,8 @@ $(document).ready(function () {
         console.log("precio " + precio);
         console.log("opcion " + opcion);
         $.ajax({
-        url: "./ajax/AbmArticulos.php",
+        url: "ajax/abmArticulos.php",
+        
         type: "POST",
         datatype: "json",
         data: { nombre: nombre,rubro: rubro,subrubro: subrubro,precio: precio,opcion: opcion,id:id},
